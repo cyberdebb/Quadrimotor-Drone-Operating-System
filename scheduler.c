@@ -5,9 +5,8 @@
 
 #include <stdio.h>
 
-// Declaração da fila de aptos
+// Declaraï¿½ï¿½o da fila de aptos
 extern f_aptos_t readyQueue;
-
 
 tcb_t *rr_scheduler()
 {
@@ -29,9 +28,18 @@ tcb_t *rr_scheduler()
 
 tcb_t *priority_scheduler()
 {
-    tcb_t *next = NULL;
-    
-    return next;
+    uint8_t highest_priority = 0;
+    uint8_t pos_highest_priority_task = 0;
+
+    for (int i = 0; i < readyQueue.readyQueueSize; i++) {
+        if (readyQueue.readyQueue[i].task_priority > highest_priority && 
+            readyQueue.readyQueue[i].task_state == READY) {
+            highest_priority = readyQueue.readyQueue[i].task_priority;
+            pos_highest_priority_task = i;
+        }
+    }
+
+    return &readyQueue.readyQueue[pos_highest_priority_task];
 }
 
 void scheduler()

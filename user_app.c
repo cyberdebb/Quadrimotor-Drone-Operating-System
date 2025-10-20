@@ -14,6 +14,10 @@ void config_app(void) {
     asm("GLOBAL _motors_control, _sensors_reading");
 }
 
+typedef struct {
+    double M1, M2, M3, M4;  
+} motors;
+
 TASK motors_control(void) {
     mutex_lock(&x);
     while (1) {
