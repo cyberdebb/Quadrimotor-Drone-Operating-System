@@ -38,5 +38,10 @@ typedef struct f_aptos {
     tcb_t *taskRunning;
 } f_aptos_t;
 
+// Mutex
+typedef struct {
+    unsigned int locked;
+} Mutex;
+
 #endif	/* TYPES_H */
 

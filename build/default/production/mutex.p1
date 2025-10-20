@@ -1,27 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F47 `(v ~T0 @X0 0 tf ]
-"12 scheduler.c
-[; ;scheduler.c: 12: tcb_t *rr_scheduler()
-[c E39 0 1 2 .. ]
-[n E39 . READY RUNNING WAITING  ]
-"20 ./types.h
-[; ;./types.h: 20: typedef struct tcb {
-[s S1 `uc 1 `*F47 1 `E39 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `um -> 32 `i `uc 1 ]
-[n S1 tcb task_id task_func task_state task_priority task_time_to_waiting BSR_reg WORK_reg STATUS_reg STACK task_sp ]
-[v F3391 `(v ~T0 @X0 0 tf ]
-"14 ./kernel.h
-[; ;./kernel.h: 14: uint8_t os_task_pos(f_ptr task);
-[v _os_task_pos `(uc ~T0 @X0 0 ef1`*F3391 ]
-"35 ./types.h
-[; ;./types.h: 35: typedef struct f_aptos {
-[s S2 `S1 -> 5 `i `uc 1 `*S1 1 ]
-[n S2 f_aptos readyQueue readyQueueSize taskRunning ]
-"9 scheduler.c
-[; ;scheduler.c: 9: extern f_aptos_t readyQueue;
-[v _readyQueue `S2 ~T0 @X0 0 e ]
-"13 ./kernel.h
-[; ;./kernel.h: 13: void os_idle_task(void);
-[v _os_idle_task `(v ~T0 @X0 0 ef ]
+"42 ./types.h
+[; ;./types.h: 42: typedef struct {
+[s S393 `ui 1 ]
+[n S393 . locked ]
 "52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 52: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -532,91 +513,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8891
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"12 scheduler.c
-[; ;scheduler.c: 12: tcb_t *rr_scheduler()
-[v _rr_scheduler `(*S1 ~T0 @X0 1 ef ]
-"13
-[; ;scheduler.c: 13: {
+"4 mutex.c
+[; ;mutex.c: 4: void mutex_lock(Mutex *m) {
+[v _mutex_lock `(v ~T0 @X0 1 ef1`*S393 ]
 {
-[e :U _rr_scheduler ]
+[e :U _mutex_lock ]
+[v _m `*S393 ~T0 @X0 1 r1 ]
 [f ]
-"14
-[; ;scheduler.c: 14:     uint8_t pos_task_running = os_task_pos(readyQueue.taskRunning->task_func);
-[v _pos_task_running `uc ~T0 @X0 1 a ]
-[e = _pos_task_running ( _os_task_pos (1 . *U . _readyQueue 2 1 ]
-"15
-[; ;scheduler.c: 15:     uint8_t idle_selected = 0;
-[v _idle_selected `uc ~T0 @X0 1 a ]
-[e = _idle_selected -> -> 0 `i `uc ]
-"17
-[; ;scheduler.c: 17:     do {
-[e :U 399 ]
+"5
+[; ;mutex.c: 5:     if (m->locked == 0) {
+[e $ ! == . *U _m 0 -> -> 0 `i `ui 395  ]
 {
-"18
-[; ;scheduler.c: 18:         pos_task_running = (pos_task_running+1) % readyQueue.readyQueueSize;
-[e = _pos_task_running -> % + -> _pos_task_running `i -> 1 `i -> . _readyQueue 1 `i `uc ]
-"19
-[; ;scheduler.c: 19:         if (readyQueue.readyQueue[pos_task_running].task_func == os_idle_task) {
-[e $ ! == . *U + &U . _readyQueue 0 * -> _pos_task_running `ux -> -> # *U &U . _readyQueue 0 `ui `ux 1 &U _os_idle_task 400  ]
+"6
+[; ;mutex.c: 6:         m->locked = 1;
+[e = . *U _m 0 -> -> 1 `i `ui ]
+"7
+[; ;mutex.c: 7:     }
+}
+[e :U 395 ]
+"8
+[; ;mutex.c: 8: }
+[e :UE 394 ]
+}
+"10
+[; ;mutex.c: 10: void mutex_unlock(Mutex *m) {
+[v _mutex_unlock `(v ~T0 @X0 1 ef1`*S393 ]
 {
-"20
-[; ;scheduler.c: 20:             idle_selected++;
-[e ++ _idle_selected -> -> 1 `i `uc ]
-"21
-[; ;scheduler.c: 21:             if (idle_selected > 1) return &readyQueue.readyQueue[0];
-[e $ ! > -> _idle_selected `i -> 1 `i 401  ]
-[e ) &U *U + &U . _readyQueue 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _readyQueue 0 `ui `ux ]
-[e $UE 396  ]
-[e :U 401 ]
-"22
-[; ;scheduler.c: 22:         }
-}
-[e :U 400 ]
-"24
-[; ;scheduler.c: 24:     } while (readyQueue.readyQueue[pos_task_running].task_state != READY ||
-}
-[e $ || != -> . *U + &U . _readyQueue 0 * -> _pos_task_running `ux -> -> # *U &U . _readyQueue 0 `ui `ux 2 `ui -> . `E39 0 `ui == . *U + &U . _readyQueue 0 * -> _pos_task_running `ux -> -> # *U &U . _readyQueue 0 `ui `ux 1 &U _os_idle_task 399  ]
-[e :U 398 ]
-"27
-[; ;scheduler.c: 27:     return &readyQueue.readyQueue[pos_task_running];
-[e ) &U *U + &U . _readyQueue 0 * -> _pos_task_running `ux -> -> # *U &U . _readyQueue 0 `ui `ux ]
-[e $UE 396  ]
-"28
-[; ;scheduler.c: 28: }
+[e :U _mutex_unlock ]
+[v _m `*S393 ~T0 @X0 1 r1 ]
+[f ]
+"11
+[; ;mutex.c: 11:     m->locked = 0;
+[e = . *U _m 0 -> -> 0 `i `ui ]
+"12
+[; ;mutex.c: 12: }
 [e :UE 396 ]
-}
-"30
-[; ;scheduler.c: 30: tcb_t *priority_scheduler()
-[v _priority_scheduler `(*S1 ~T0 @X0 1 ef ]
-"31
-[; ;scheduler.c: 31: {
-{
-[e :U _priority_scheduler ]
-[f ]
-"32
-[; ;scheduler.c: 32:     tcb_t *next = ((void*)0);
-[v _next `*S1 ~T0 @X0 1 a ]
-[e = _next -> -> -> 0 `i `*v `*S1 ]
-"34
-[; ;scheduler.c: 34:     return next;
-[e ) _next ]
-[e $UE 402  ]
-"35
-[; ;scheduler.c: 35: }
-[e :UE 402 ]
-}
-"37
-[; ;scheduler.c: 37: void scheduler()
-[v _scheduler `(v ~T0 @X0 1 ef ]
-"38
-[; ;scheduler.c: 38: {
-{
-[e :U _scheduler ]
-[f ]
-"40
-[; ;scheduler.c: 40:     readyQueue.taskRunning = rr_scheduler();
-[e = . _readyQueue 2 ( _rr_scheduler ..  ]
-"44
-[; ;scheduler.c: 44: }
-[e :UE 403 ]
 }

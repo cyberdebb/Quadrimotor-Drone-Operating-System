@@ -3,32 +3,29 @@
 #include "user_app.h"
 #include "syscall.h"
 
-void config_app(void)
-{
-    TRISDbits.RD0 = TRISDbits.RD1 = TRISDbits.RD2 = 0;
-    
-    asm("GLOBAL _tarefa_1, _tarefa_2, _tarefa_3");
+void config_app(void) {
+    TRISDbits.RD0 = 0; // M1
+    TRISDbits.RD1 = 0; // M2
+    TRISDbits.RD2 = 0; // M3
+    TRISDbits.RD3 = 0; // M4
+    TRISDbits.RD4 = 1; // gyroscope
+    TRISDbits.RD5 = 1; // accelerometer
+
+    asm("GLOBAL _motors_control, _sensors_reading");
 }
 
-TASK tarefa_1(void)
-{
+TASK motors_control(void) {
+    mutex_lock(&x);
     while (1) {
-        LATDbits.LD0 = ~PORTDbits.RD0;
+        
     }
+    mutex_unlock(&x);
 }
 
-TASK tarefa_2(void)
-{
+TASK sensors_reading(void) {
+    mutex_lock(&x);
     while (1) {
-        LATDbits.LD1 = ~PORTDbits.RD1;
-        os_delay(200);
-    }    
+        
+    }
+    mutex_unlock(&x);
 }
-
-TASK tarefa_3(void)
-{
-    while (1) {
-        LATDbits.LD2 = ~PORTDbits.RD2;
-    }    
-}
-

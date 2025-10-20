@@ -2,14 +2,13 @@
 #define	USER_APP_H
 
 #include "types.h"
+#include "mutex.h"
+
+Mutex x;
 
 void config_app(void);
 
-TASK tarefa_1(void);
-TASK tarefa_2(void);
-TASK tarefa_3(void);
-
-
+TASK motors_control(void);
+TASK sensors_reading(void);
 
 #endif	/* USER_APP_H */
-
