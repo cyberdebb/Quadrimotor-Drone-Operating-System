@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=BF161RTOS.X
+PROJECTNAME=Quadrimotor-Drone-Operating-System
 
 # Active Configuration
 DEFAULTCONF=default
