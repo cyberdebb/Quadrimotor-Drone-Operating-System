@@ -1,0 +1,17 @@
+#include "sync.h"
+
+void sem_init(sem_t *s, uint8_t init_value)
+{
+    
+}
+
+void sem_wait(sem_t *s)
+{
+    
+}
+
+void sem_post(sem_t *s)
+{
+    
+}
+
