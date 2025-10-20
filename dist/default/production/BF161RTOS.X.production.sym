@@ -333,7 +333,7 @@ cstackBANK0 60 CE BANK0 60 1
 bssBIGRAM CF 2E3 BIGRAM CF 1
 intcode_body 802 1305 CODE 802 0
 %locals
-dist/default/production\BF161RTOS.X.production.o
+dist/default/production\Quadrimotor-Drone-Operating-System.X.production.o
 C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_1.s
 2221 1294 0 CODE 0
 2223 1294 0 CODE 0

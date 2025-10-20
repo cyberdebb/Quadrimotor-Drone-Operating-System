@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>BF161RTOS</name>
+            <name>Quadrimotor-Drone-Operating-System</name>
             <creation-uuid>f020da29-e07e-42c0-a702-a9dbdc2fdca7</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>

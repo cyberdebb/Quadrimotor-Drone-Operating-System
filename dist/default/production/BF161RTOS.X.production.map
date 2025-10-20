@@ -4,11 +4,11 @@ Linker command line:
 
 -W-3 \
   --edf=C:/Users/Anderson L. F. Perez/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\dat\20250117225543_en.msgs \
-  -cn -h+dist/default/production\BF161RTOS.X.production.sym \
-  --cmf=dist/default/production\BF161RTOS.X.production.cmf -z -Q18F4550 \
+  -cn -h+dist/default/production\Quadrimotor-Drone-Operating-System.X.production.sym \
+  --cmf=dist/default/production\Quadrimotor-Drone-Operating-System.X.production.cmf -z -Q18F4550 \
   -oC:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
-  -Mdist/default/production/BF161RTOS.X.production.map \
+  -Mdist/default/production/Quadrimotor-Drone-Operating-System.X.production.map \
   --md=C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_0.dat \
   -E1 -ver=XC8 Compiler -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
   -ASMALLCONST=0800h-08FFhx120 -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh \
@@ -26,7 +26,7 @@ Linker command line:
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
   C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_9.o \
-  dist/default/production\BF161RTOS.X.production.o 
+  dist/default/production\Quadrimotor-Drone-Operating-System.X.production.o 
 
 Object code version is 3.11
 
@@ -38,7 +38,7 @@ Machine type is 18F4550
 C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_9.o
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
-dist/default/production\BF161RTOS.X.production.o
+dist/default/production\Quadrimotor-Drone-Operating-System.X.production.o
                 intcode                               8        8        6        4       0
                 temp                                 30       30        1        1       1
                 smallconst                          800      800        2      400       0

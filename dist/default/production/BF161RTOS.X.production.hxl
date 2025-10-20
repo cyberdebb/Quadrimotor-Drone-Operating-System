@@ -2,8 +2,8 @@
 
 ### Command-line arguments ###
  C:\Users\ANDERS~1.PER\AppData\Local\Temp\xcAseqg.\driver_tmp_3.o
- -Odist/default/production\BF161RTOS.X.production.hex
- -logfile=dist/default/production\BF161RTOS.X.production.hxl
+ -Odist/default/production\Quadrimotor-Drone-Operating-System.X.production.hex
+ -logfile=dist/default/production\Quadrimotor-Drone-Operating-System.X.production.hxl
  -addressing=1
  -break=300000
 
