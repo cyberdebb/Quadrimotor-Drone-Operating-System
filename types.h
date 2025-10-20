@@ -10,10 +10,10 @@
 // Define o tipo tarefa
 typedef void TASK;
 
-// Define o ponteiro para a função
+// Define o ponteiro para a funï¿½ï¿½o
 typedef void (*f_ptr)(void);
 
-// Define os estados possíveis
+// Define os estados possï¿½veis
 typedef enum {READY = 0, RUNNING, WAITING} state_t;
 
 // Define a TCB 
@@ -37,10 +37,6 @@ typedef struct f_aptos {
     uint8_t readyQueueSize;
     tcb_t *taskRunning;
 } f_aptos_t;
-
-typedef struct semaphore {
-    
-} sem_t;
 
 #endif	/* TYPES_H */
 
