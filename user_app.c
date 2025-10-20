@@ -12,24 +12,30 @@ void config_app(void) {
     TRISDbits.RD5 = 1; // accelerometer
 
     asm("GLOBAL _motors_control, _sensors_reading");
+
+    mutex_init(&mutex);
 }
 
 typedef struct {
     double M1, M2, M3, M4;  
 } motors;
 
+motors motors_data = {0};
+
 TASK motors_control(void) {
-    mutex_lock(&x);
     while (1) {
-        
+        if (mutex_lock(&mutex)) {
+    
+            mutex_unlock(&mutex);
+        }
     }
-    mutex_unlock(&x);
 }
 
 TASK sensors_reading(void) {
-    mutex_lock(&x);
     while (1) {
-        
+        if (mutex_lock(&mutex)) {
+    
+            mutex_unlock(&mutex);
+        }
     }
-    mutex_unlock(&x);
 }

@@ -4,7 +4,7 @@
 #include "types.h"
 #include "mutex.h"
 
-Mutex x;
+Mutex mutex;
 
 void config_app(void);
 

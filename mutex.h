@@ -3,7 +3,8 @@
 
 #include "types.h"
 
-void mutex_lock(Mutex *m);
-void mutex_unlock(Mutex *m);
+void mutex_init(Mutex* mutex);
+int mutex_lock(Mutex* mutex);
+int mutex_unlock(Mutex* mutex);
 
 #endif	/* MUTEX_H */

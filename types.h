@@ -40,7 +40,10 @@ typedef struct f_aptos {
 
 // Mutex
 typedef struct {
-    unsigned int locked;
+    unsigned int locked; // Mutex state (0 = free, 1 = ocupied)
+    uint8_t owner; // Mutex owner task ID
+    tcb_t* waiting_tasks[MAX_TASKS_ON_READY_QUEUE]; // Waiting tasks queue
+    uint8_t waiting_count; // Waiting tasks numeber
 } Mutex;
 
 #endif	/* TYPES_H */
