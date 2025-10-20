@@ -1,25 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"42 ./types.h
-[; ;./types.h: 42: typedef struct {
-[s S3 `ui 1 ]
-[n S3 . locked ]
 [v F47 `(v ~T0 @X0 0 tf ]
-"9 kernel.c
-[; ;kernel.c: 9: f_aptos_t readyQueue;
+"7 ./user_app.h
+[; ;./user_app.h: 7: Mutex mutex;
 [c E39 0 1 2 .. ]
 [n E39 . READY RUNNING WAITING  ]
 "20 ./types.h
 [; ;./types.h: 20: typedef struct tcb {
 [s S1 `uc 1 `*F47 1 `E39 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `um -> 32 `i `uc 1 ]
 [n S1 tcb task_id task_func task_state task_priority task_time_to_waiting BSR_reg WORK_reg STATUS_reg STACK task_sp ]
+"42
+[; ;./types.h: 42: typedef struct {
+[s S3 `ui 1 `uc 1 `*S1 -> 5 `i `uc 1 ]
+[n S3 . locked owner waiting_tasks waiting_count ]
 "35
 [; ;./types.h: 35: typedef struct f_aptos {
 [s S2 `S1 -> 5 `i `uc 1 `*S1 1 ]
 [n S2 f_aptos readyQueue readyQueueSize taskRunning ]
-[v F66 `(v ~T0 @X0 0 tf ]
+[v F69 `(v ~T0 @X0 0 tf ]
 "6 ./syscall.h
 [; ;./syscall.h: 6: void os_create_task(uint8_t id, f_ptr task_f, uint8_t prior);
-[v _os_create_task `(v ~T0 @X0 0 ef3`uc`*F66`uc ]
+[v _os_create_task `(v ~T0 @X0 0 ef3`uc`*F69`uc ]
 "13 ./kernel.h
 [; ;./kernel.h: 13: void os_idle_task(void);
 [v _os_idle_task `(v ~T0 @X0 0 ef ]
@@ -100,8 +100,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2734
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 2734: extern volatile PORTDbits_t PORTDbits __attribute__((address(0xF83)));
 [v _PORTDbits `VS119 ~T0 @X0 0 e@3971 ]
-[v F3409 `(v ~T0 @X0 0 tf ]
-[v F3411 `(v ~T0 @X0 0 tf ]
+[v F3414 `(v ~T0 @X0 0 tf ]
+[v F3416 `(v ~T0 @X0 0 tf ]
 "52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 52: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -613,8 +613,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "7 ./user_app.h
-[; ;./user_app.h: 7: Mutex x;
-[v _x `S3 ~T0 @X0 1 e ]
+[; ;./user_app.h: 7: Mutex mutex;
+[v _mutex `S3 ~T0 @X0 1 e ]
 "9 kernel.c
 [; ;kernel.c: 9: f_aptos_t readyQueue;
 [v _readyQueue `S2 ~T0 @X0 1 e ]
@@ -696,14 +696,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "47
 [; ;kernel.c: 47: uint8_t os_task_pos(f_ptr task)
-[v _os_task_pos `(uc ~T0 @X0 1 ef1`*F3409 ]
+[v _os_task_pos `(uc ~T0 @X0 1 ef1`*F3414 ]
 "48
 [; ;kernel.c: 48: {
 {
 [e :U _os_task_pos ]
 "47
 [; ;kernel.c: 47: uint8_t os_task_pos(f_ptr task)
-[v _task `*F3411 ~T0 @X0 1 r1 ]
+[v _task `*F3416 ~T0 @X0 1 r1 ]
 "48
 [; ;kernel.c: 48: {
 [f ]

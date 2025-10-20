@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F3397 `(v ~T0 @X0 0 tf ]
 [v F3400 `(v ~T0 @X0 0 tf ]
+[v F3403 `(v ~T0 @X0 0 tf ]
 [v F3354 `(v ~T0 @X0 0 tf ]
 "11 syscall.c
 [; ;syscall.c: 11:     tcb_t new_task;
@@ -566,7 +566,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 0FFFh ;# ">
 "9 syscall.c
 [; ;syscall.c: 9: void os_create_task(uint8_t id, f_ptr task_f, uint8_t prior)
-[v _os_create_task `(v ~T0 @X0 1 ef3`uc`*F3397`uc ]
+[v _os_create_task `(v ~T0 @X0 1 ef3`uc`*F3400`uc ]
 "10
 [; ;syscall.c: 10: {
 {
@@ -574,7 +574,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "9
 [; ;syscall.c: 9: void os_create_task(uint8_t id, f_ptr task_f, uint8_t prior)
 [v _id `uc ~T0 @X0 1 r1 ]
-[v _task_f `*F3400 ~T0 @X0 1 r2 ]
+[v _task_f `*F3403 ~T0 @X0 1 r2 ]
 [v _prior `uc ~T0 @X0 1 r3 ]
 "10
 [; ;syscall.c: 10: {

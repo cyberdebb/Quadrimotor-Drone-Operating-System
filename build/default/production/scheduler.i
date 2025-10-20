@@ -166,6 +166,9 @@ typedef struct f_aptos {
 
 typedef struct {
     unsigned int locked;
+    uint8_t owner;
+    tcb_t* waiting_tasks[5];
+    uint8_t waiting_count;
 } Mutex;
 # 5 "./scheduler.h" 2
 
@@ -6162,7 +6165,6 @@ char *tempnam(const char *, const char *);
 
 extern f_aptos_t readyQueue;
 
-
 tcb_t *rr_scheduler()
 {
     uint8_t pos_task_running = os_task_pos(readyQueue.taskRunning->task_func);
@@ -6183,16 +6185,25 @@ tcb_t *rr_scheduler()
 
 tcb_t *priority_scheduler()
 {
-    tcb_t *next = ((void*)0);
+    uint8_t highest_priority = 0;
+    uint8_t pos_highest_priority_task = 0;
 
-    return next;
+    for (int i = 0; i < readyQueue.readyQueueSize; i++) {
+        if (readyQueue.readyQueue[i].task_priority > highest_priority &&
+            readyQueue.readyQueue[i].task_state == READY) {
+            highest_priority = readyQueue.readyQueue[i].task_priority;
+            pos_highest_priority_task = i;
+        }
+    }
+
+    return &readyQueue.readyQueue[pos_highest_priority_task];
 }
 
 void scheduler()
 {
 
-    readyQueue.taskRunning = rr_scheduler();
 
 
+    readyQueue.taskRunning = priority_scheduler();
 
 }

@@ -3,8 +3,18 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"9 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\kernel.c
+"7 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/user_app.h
+[e E3346 . `uc
+READY 0
+RUNNING 1
+WAITING 2
+]
 [e E39 . `uc
+READY 0
+RUNNING 1
+WAITING 2
+]
+[e E3346 . `uc
 READY 0
 RUNNING 1
 WAITING 2
@@ -15,7 +25,7 @@ READY 0
 RUNNING 1
 WAITING 2
 ]
-"12 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+"11 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
 [e E39 . `uc
 READY 0
 RUNNING 1
@@ -23,6 +33,12 @@ WAITING 2
 ]
 "35 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\hardware.c
 [e E3349 . `uc
+READY 0
+RUNNING 1
+WAITING 2
+]
+"6 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
+[e E3346 . `uc
 READY 0
 RUNNING 1
 WAITING 2
@@ -71,28 +87,36 @@ WAITING 2
 [v _os_task_time_decrease os_task_time_decrease `(v  1 e 1 0 ]
 "7 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\main.c
 [v _main main `(i  1 e 2 0 ]
-"4 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
-[v _mutex_lock mutex_lock `(v  1 e 1 0 ]
-"10
-[v _mutex_unlock mutex_unlock `(v  1 e 1 0 ]
+"6 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
+[v _mutex_init mutex_init `(v  1 e 1 0 ]
+"12
+[v _mutex_lock mutex_lock `(i  1 e 2 0 ]
+"28
+[v _mutex_unlock mutex_unlock `(i  1 e 2 0 ]
 "20 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/types.h
-[s S64 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E39 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
-"12 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
-[v _rr_scheduler rr_scheduler `(*.39S64  1 e 2 0 ]
-"37
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"29 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v _priority_scheduler priority_scheduler `(*.39S29  1 e 2 0 ]
+"20 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/types.h
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"29 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v i2_priority_scheduler priority_scheduler `(*.39S29  1 e 2 0 ]
+"45
 [v _scheduler scheduler `(v  1 e 1 0 ]
+[v i2_scheduler scheduler `(v  1 e 1 0 ]
 "9 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\syscall.c
 [v _os_create_task os_create_task `(v  1 e 1 0 ]
 "6 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
 [v _config_app config_app `(v  1 e 1 0 ]
-"17
-[v _motors_control motors_control `(v  1 e 1 0 ]
 "25
+[v _motors_control motors_control `(v  1 e 1 0 ]
+"34
 [v _sensors_reading sensors_reading `(v  1 e 1 0 ]
-[s S24 . 2 `ui 1 locked 2 0 ]
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
 "7 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/user_app.h
-[v _x x `S24  1 e 2 0 ]
-[s S155 . 1 `uc 1 RD0 1 0 :1:0 
+[s S40 . 14 `ui 1 locked 2 0 `uc 1 owner 1 2 `[5]*.39S29 1 waiting_tasks 10 3 `uc 1 waiting_count 1 13 ]
+[v _mutex mutex `S40  1 e 14 0 ]
+[s S180 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -102,7 +126,7 @@ WAITING 2
 `uc 1 RD7 1 0 :1:7 
 ]
 "2734 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h
-[s S235 . 1 `uc 1 SPP0 1 0 :1:0 
+[s S260 . 1 `uc 1 SPP0 1 0 :1:0 
 `uc 1 SPP1 1 0 :1:1 
 `uc 1 SPP2 1 0 :1:2 
 `uc 1 SPP3 1 0 :1:3 
@@ -111,12 +135,12 @@ WAITING 2
 `uc 1 SPP6 1 0 :1:6 
 `uc 1 SPP7 1 0 :1:7 
 ]
-[s S244 . 1 `uc 1 . 1 0 :7:0 
+[s S269 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S247 . 1 `S155 1 . 1 0 `S235 1 . 1 0 `S244 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES247  1 e 1 @3971 ]
-[s S186 . 1 `uc 1 LATD0 1 0 :1:0 
+[u S272 . 1 `S180 1 . 1 0 `S260 1 . 1 0 `S269 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES272  1 e 1 @3971 ]
+[s S211 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -126,7 +150,7 @@ WAITING 2
 `uc 1 LATD7 1 0 :1:7 
 ]
 "3288
-[s S195 . 1 `uc 1 LD0 1 0 :1:0 
+[s S220 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -135,9 +159,9 @@ WAITING 2
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S204 . 1 `S186 1 . 1 0 `S195 1 . 1 0 ]
-[v _LATDbits LATDbits `VES204  1 e 1 @3980 ]
-[s S146 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S229 . 1 `S211 1 . 1 0 `S220 1 . 1 0 ]
+[v _LATDbits LATDbits `VES229  1 e 1 @3980 ]
+[s S171 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -147,9 +171,9 @@ WAITING 2
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "4031
-[u S164 . 1 `S146 1 . 1 0 `S155 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES164  1 e 1 @3989 ]
-[s S505 . 1 `uc 1 T0PS 1 0 :3:0 
+[u S189 . 1 `S171 1 . 1 0 `S180 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES189  1 e 1 @3989 ]
+[s S556 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -157,12 +181,12 @@ WAITING 2
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "8087
-[s S512 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S563 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S516 . 1 `S505 1 . 1 0 `S512 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES516  1 e 1 @4053 ]
+[u S567 . 1 `S556 1 . 1 0 `S563 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES567  1 e 1 @4053 ]
 "8137
 [v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
 "8158
@@ -171,7 +195,7 @@ WAITING 2
 [v _BSR BSR `VEuc  1 e 1 @4064 ]
 "8348
 [v _WREG WREG `VEuc  1 e 1 @4072 ]
-[s S97 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S122 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -181,7 +205,7 @@ WAITING 2
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "8612
-[s S106 . 1 `uc 1 . 1 0 :1:0 
+[s S131 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -190,20 +214,19 @@ WAITING 2
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S115 . 1 `uc 1 . 1 0 :6:0 
+[s S140 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S119 . 1 `S97 1 . 1 0 `S106 1 . 1 0 `S115 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES119  1 e 1 @4082 ]
+[u S144 . 1 `S122 1 . 1 0 `S131 1 . 1 0 `S140 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES144  1 e 1 @4082 ]
 "8792
 [v _STKPTR STKPTR `VEuc  1 e 1 @4092 ]
 "8867
 [v _TOS TOS `VEum  1 e 3 @4093 ]
-[s S64 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E39 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
 "9 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\kernel.c
-[s S75 f_aptos 533 `[5]S64 1 readyQueue 530 0 `uc 1 readyQueueSize 1 530 `*.39S64 1 taskRunning 2 531 ]
-[v _readyQueue readyQueue `S75  1 e 533 0 ]
+[s S100 f_aptos 533 `[5]S29 1 readyQueue 530 0 `uc 1 readyQueueSize 1 530 `*.39S29 1 taskRunning 2 531 ]
+[v _readyQueue readyQueue `S100  1 e 533 0 ]
 "7 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\main.c
 [v _main main `(i  1 e 2 0 ]
 {
@@ -217,7 +240,15 @@ WAITING 2
 "6 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
 [v _config_app config_app `(v  1 e 1 0 ]
 {
-"15
+"17
+} 0
+"6 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
+[v _mutex_init mutex_init `(v  1 e 1 0 ]
+{
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+[s S40 . 14 `ui 1 locked 2 0 `uc 1 owner 1 2 `[5]*.39S29 1 waiting_tasks 10 3 `uc 1 waiting_count 1 13 ]
+[v mutex_init@mutex mutex `*.30S40  1 p 1 24 ]
+"10
 } 0
 "7 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\hardware.c
 [v _conf_timer_0 conf_timer_0 `(v  1 e 1 0 ]
@@ -238,15 +269,15 @@ WAITING 2
 [v _os_create_task os_create_task `(v  1 e 1 0 ]
 {
 [v os_create_task@id id `uc  1 p 1 wreg ]
-[s S64 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E39 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
 "11
-[v os_create_task@new_task new_task `S64  1 a 106 1 ]
+[v os_create_task@new_task new_task `S29  1 a 106 29 ]
 "9
 [v os_create_task@id id `uc  1 p 1 wreg ]
-[v os_create_task@task_f task_f `*.37(v  1 p 2 13 ]
-[v os_create_task@prior prior `uc  1 p 1 15 ]
+[v os_create_task@task_f task_f `*.37(v  1 p 2 24 ]
+[v os_create_task@prior prior `uc  1 p 1 26 ]
 "13
-[v os_create_task@id id `uc  1 p 1 0 ]
+[v os_create_task@id id `uc  1 p 1 28 ]
 "25
 } 0
 "37 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\kernel.c
@@ -254,70 +285,78 @@ WAITING 2
 {
 "45
 } 0
-"17 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
+"25 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
 [v _motors_control motors_control `(v  1 e 1 0 ]
 {
-"23
+"32
 } 0
-"10 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
-[v _mutex_unlock mutex_unlock `(v  1 e 1 0 ]
+"28 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\mutex.c
+[v _mutex_unlock mutex_unlock `(i  1 e 2 0 ]
 {
-[s S24 . 2 `ui 1 locked 2 0 ]
-[v mutex_unlock@m m `*.30S24  1 p 1 10 ]
+"44
+[v mutex_unlock@i i `i  1 a 2 27 ]
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"40
+[v mutex_unlock@task task `*.39S29  1 a 2 25 ]
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"28
+[s S40 . 14 `ui 1 locked 2 0 `uc 1 owner 1 2 `[5]*.39S29 1 waiting_tasks 10 3 `uc 1 waiting_count 1 13 ]
+[v mutex_unlock@mutex mutex `*.30S40  1 p 1 18 ]
+"50
+} 0
 "12
-} 0
-"4
-[v _mutex_lock mutex_lock `(v  1 e 1 0 ]
+[v _mutex_lock mutex_lock `(i  1 e 2 0 ]
 {
-[s S24 . 2 `ui 1 locked 2 0 ]
-[v mutex_lock@m m `*.30S24  1 p 1 10 ]
-"8
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+[s S40 . 14 `ui 1 locked 2 0 `uc 1 owner 1 2 `[5]*.39S29 1 waiting_tasks 10 3 `uc 1 waiting_count 1 13 ]
+[v mutex_lock@mutex mutex `*.30S40  1 p 1 20 ]
+"26
 } 0
-"25 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
+"45 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v _scheduler scheduler `(v  1 e 1 0 ]
+{
+"52
+} 0
+"20 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/types.h
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"29 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v _priority_scheduler priority_scheduler `(*.39S29  1 e 2 0 ]
+{
+"34
+[v priority_scheduler@i i `i  1 a 2 27 ]
+"32
+[v priority_scheduler@pos_highest_priority_task pos_highest_priority_task `uc  1 a 1 26 ]
+"31
+[v priority_scheduler@highest_priority highest_priority `uc  1 a 1 25 ]
+"43
+} 0
+"34 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\user_app.c
 [v _sensors_reading sensors_reading `(v  1 e 1 0 ]
 {
-"31
+"41
 } 0
 "25 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\hardware.c
 [v _ISR_TIMER_0 ISR_TIMER_0 `IIH(v  1 e 1 0 ]
 {
 "41
 } 0
-"37 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
-[v _scheduler scheduler `(v  1 e 1 0 ]
+"45 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v i2_scheduler scheduler `(v  1 e 1 0 ]
 {
-"44
+"52
 } 0
 "20 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System/types.h
-[s S64 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E39 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
-"12 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
-[v _rr_scheduler rr_scheduler `(*.39S64  1 e 2 0 ]
+[s S29 tcb 106 `uc 1 task_id 1 0 `*.37(v 1 task_func 2 1 `E3346 1 task_state 1 3 `uc 1 task_priority 1 4 `uc 1 task_time_to_waiting 1 5 `uc 1 BSR_reg 1 6 `uc 1 WORK_reg 1 7 `uc 1 STATUS_reg 1 8 `[32]um 1 STACK 96 9 `uc 1 task_sp 1 105 ]
+"29 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\scheduler.c
+[v i2_priority_scheduler priority_scheduler `(*.39S29  1 e 2 0 ]
 {
-"14
-[v rr_scheduler@pos_task_running pos_task_running `uc  1 a 1 11 ]
-"15
-[v rr_scheduler@idle_selected idle_selected `uc  1 a 1 10 ]
-"28
-} 0
-"47 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\kernel.c
-[v _os_task_pos os_task_pos `(uc  1 e 1 0 ]
-{
-"49
-[v os_task_pos@i i `uc  1 a 1 4 ]
-"47
-[v os_task_pos@task task `*.37(v  1 p 2 0 ]
-"54
-} 0
-"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 5 ]
-[v ___awmod@counter counter `uc  1 a 1 4 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 0 ]
-[v ___awmod@divisor divisor `i  1 p 2 2 ]
 "34
+[v i2priority_scheduler@i i `i  1 a 2 7 ]
+"32
+[v i2priority_scheduler@pos_highest_priority_task pos_highest_priority_task `uc  1 a 1 6 ]
+"31
+[v i2priority_scheduler@highest_priority highest_priority `uc  1 a 1 5 ]
+"43
 } 0
 "56 C:\Users\debor\OneDrive\Documentos\SO_Embarcados\Quadrimotor-Drone-Operating-System\kernel.c
 [v _os_task_time_decrease os_task_time_decrease `(v  1 e 1 0 ]

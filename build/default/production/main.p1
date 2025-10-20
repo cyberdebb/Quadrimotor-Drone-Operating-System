@@ -1,16 +1,25 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"42 ./types.h
+[v F3354 `(v ~T0 @X0 0 tf ]
+"7 ./user_app.h
+[; ;./user_app.h: 7: Mutex mutex;
+[c E3346 0 1 2 .. ]
+[n E3346 . READY RUNNING WAITING  ]
+"20 ./types.h
+[; ;./types.h: 20: typedef struct tcb {
+[s S391 `uc 1 `*F3354 1 `E3346 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `um -> 32 `i `uc 1 ]
+[n S391 tcb task_id task_func task_state task_priority task_time_to_waiting BSR_reg WORK_reg STATUS_reg STACK task_sp ]
+"42
 [; ;./types.h: 42: typedef struct {
-[s S393 `ui 1 ]
-[n S393 . locked ]
+[s S393 `ui 1 `uc 1 `*S391 -> 5 `i `uc 1 ]
+[n S393 . locked owner waiting_tasks waiting_count ]
 [p mainexit ]
 "11 ./kernel.h
 [; ;./kernel.h: 11: void os_config(void);
 [v _os_config `(v ~T0 @X0 0 ef ]
-[v F3373 `(v ~T0 @X0 0 tf ]
+[v F3376 `(v ~T0 @X0 0 tf ]
 "6 ./syscall.h
 [; ;./syscall.h: 6: void os_create_task(uint8_t id, f_ptr task_f, uint8_t prior);
-[v _os_create_task `(v ~T0 @X0 0 ef3`uc`*F3373`uc ]
+[v _os_create_task `(v ~T0 @X0 0 ef3`uc`*F3376`uc ]
 "11 ./user_app.h
 [; ;./user_app.h: 11: TASK motors_control(void);
 [v _motors_control `(v ~T0 @X0 0 ef ]
@@ -531,8 +540,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "7 ./user_app.h
-[; ;./user_app.h: 7: Mutex x;
-[v _x `S393 ~T0 @X0 1 e ]
+[; ;./user_app.h: 7: Mutex mutex;
+[v _mutex `S393 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "7 main.c
 [; ;main.c: 7: int main()

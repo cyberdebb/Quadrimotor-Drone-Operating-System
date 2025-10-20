@@ -5961,6 +5961,9 @@ typedef struct f_aptos {
 
 typedef struct {
     unsigned int locked;
+    uint8_t owner;
+    tcb_t* waiting_tasks[5];
+    uint8_t waiting_count;
 } Mutex;
 # 5 "./syscall.h" 2
 

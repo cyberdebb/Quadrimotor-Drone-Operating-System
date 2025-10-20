@@ -5907,7 +5907,9 @@ unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:\\Program Files\\Microchip\\xc8\\v3.00\\pic\\include/xc.h" 2 3
 # 2 "mutex.c" 2
-# 1 "./mutex.h" 1
+# 1 "./kernel.h" 1
+
+
 
 
 
@@ -5961,19 +5963,84 @@ typedef struct f_aptos {
 
 typedef struct {
     unsigned int locked;
+    uint8_t owner;
+    tcb_t* waiting_tasks[5];
+    uint8_t waiting_count;
 } Mutex;
-# 5 "./mutex.h" 2
+# 7 "./kernel.h" 2
 
-void mutex_lock(Mutex *m);
-void mutex_unlock(Mutex *m);
+
+extern f_aptos_t readyQueue;
+
+void os_config(void);
+void os_start(void);
+void os_idle_task(void);
+uint8_t os_task_pos(f_ptr task);
+void os_task_time_decrease();
 # 3 "mutex.c" 2
+# 1 "./scheduler.h" 1
 
-void mutex_lock(Mutex *m) {
-    if (m->locked == 0) {
-        m->locked = 1;
-    }
+
+
+
+
+tcb_t *rr_scheduler(void);
+tcb_t *priority_scheduler(void);
+void scheduler(void);
+# 4 "mutex.c" 2
+# 1 "./mutex.h" 1
+
+
+
+
+
+void mutex_init(Mutex* mutex);
+int mutex_lock(Mutex* mutex);
+int mutex_unlock(Mutex* mutex);
+# 5 "mutex.c" 2
+
+void mutex_init(Mutex* mutex) {
+    mutex->locked = 0;
+    mutex->owner = 0;
+    mutex->waiting_count = 0;
 }
 
-void mutex_unlock(Mutex *m) {
-    m->locked = 0;
+int mutex_lock(Mutex* mutex) {
+    if (mutex->locked) {
+
+        mutex->waiting_tasks[mutex->waiting_count++] = readyQueue.taskRunning;
+        readyQueue.taskRunning->task_state = WAITING;
+
+        scheduler();
+        return 0;
+    }
+
+
+    mutex->locked = 1;
+    mutex->owner = readyQueue.taskRunning->task_id;
+    return 1;
+}
+
+int mutex_unlock(Mutex* mutex) {
+    if (mutex->owner != readyQueue.taskRunning->task_id) {
+
+        return 0;
+    }
+
+    mutex->locked = 0;
+    mutex->owner = 0;
+
+
+    if (mutex->waiting_count > 0) {
+        mutex->waiting_count--;
+        tcb_t* task = mutex->waiting_tasks[0];
+        task->task_state = READY;
+
+
+        for(int i = 0; i < mutex->waiting_count; i++) {
+            mutex->waiting_tasks[i] = mutex->waiting_tasks[i + 1];
+        }
+    }
+
+    return 1;
 }

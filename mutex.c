@@ -1,4 +1,6 @@
 #include <xc.h>
+#include "kernel.h"
+#include "scheduler.h"
 #include "mutex.h"
 
 void mutex_init(Mutex* mutex) {

@@ -5962,6 +5962,9 @@ typedef struct f_aptos {
 
 typedef struct {
     unsigned int locked;
+    uint8_t owner;
+    tcb_t* waiting_tasks[5];
+    uint8_t waiting_count;
 } Mutex;
 # 5 "./user_app.h" 2
 # 1 "./mutex.h" 1
@@ -5970,11 +5973,12 @@ typedef struct {
 
 
 
-void mutex_lock(Mutex *m);
-void mutex_unlock(Mutex *m);
+void mutex_init(Mutex* mutex);
+int mutex_lock(Mutex* mutex);
+int mutex_unlock(Mutex* mutex);
 # 6 "./user_app.h" 2
 
-Mutex x;
+Mutex mutex;
 
 void config_app(void);
 
@@ -6002,20 +6006,30 @@ void config_app(void) {
     TRISDbits.RD5 = 1;
 
     __asm("GLOBAL _motors_control, _sensors_reading");
+
+    mutex_init(&mutex);
 }
 
-TASK motors_control(void) {
-    mutex_lock(&x);
-    while (1) {
+typedef struct {
+    double M1, M2, M3, M4;
+} motors;
 
+motors motors_data = {0};
+
+TASK motors_control(void) {
+    while (1) {
+        if (mutex_lock(&mutex)) {
+
+            mutex_unlock(&mutex);
+        }
     }
-    mutex_unlock(&x);
 }
 
 TASK sensors_reading(void) {
-    mutex_lock(&x);
     while (1) {
+        if (mutex_lock(&mutex)) {
 
+            mutex_unlock(&mutex);
+        }
     }
-    mutex_unlock(&x);
 }

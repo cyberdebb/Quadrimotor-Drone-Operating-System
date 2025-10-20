@@ -162,6 +162,9 @@ typedef struct f_aptos {
 
 typedef struct {
     unsigned int locked;
+    uint8_t owner;
+    tcb_t* waiting_tasks[5];
+    uint8_t waiting_count;
 } Mutex;
 # 2 "kernel.c" 2
 # 1 "./syscall.h" 1
@@ -6017,11 +6020,12 @@ void __attribute__((picinterrupt(("")))) ISR_TIMER_0(void);
 
 
 
-void mutex_lock(Mutex *m);
-void mutex_unlock(Mutex *m);
+void mutex_init(Mutex* mutex);
+int mutex_lock(Mutex* mutex);
+int mutex_unlock(Mutex* mutex);
 # 6 "./user_app.h" 2
 
-Mutex x;
+Mutex mutex;
 
 void config_app(void);
 

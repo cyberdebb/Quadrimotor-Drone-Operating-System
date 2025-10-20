@@ -1,8 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"42 ./types.h
+[v F3354 `(v ~T0 @X0 0 tf ]
+"7 ./user_app.h
+[; ;./user_app.h: 7: Mutex mutex;
+[c E3346 0 1 2 .. ]
+[n E3346 . READY RUNNING WAITING  ]
+"20 ./types.h
+[; ;./types.h: 20: typedef struct tcb {
+[s S391 `uc 1 `*F3354 1 `E3346 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `um -> 32 `i `uc 1 ]
+[n S391 tcb task_id task_func task_state task_priority task_time_to_waiting BSR_reg WORK_reg STATUS_reg STACK task_sp ]
+"42
 [; ;./types.h: 42: typedef struct {
-[s S393 `ui 1 ]
-[n S393 . locked ]
+[s S393 `ui 1 `uc 1 `*S391 -> 5 `i `uc 1 ]
+[n S393 . locked owner waiting_tasks waiting_count ]
 "4010 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 4010:     struct {
 [s S160 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -19,11 +28,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 4031: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF95)));
 [v _TRISDbits `VS159 ~T0 @X0 0 e@3989 ]
 "6 ./mutex.h
-[; ;./mutex.h: 6: void mutex_lock(Mutex *m);
-[v _mutex_lock `(v ~T0 @X0 0 ef1`*S393 ]
-"7
-[; ;./mutex.h: 7: void mutex_unlock(Mutex *m);
-[v _mutex_unlock `(v ~T0 @X0 0 ef1`*S393 ]
+[; ;./mutex.h: 6: void mutex_init(Mutex* mutex);
+[v _mutex_init `(v ~T0 @X0 0 ef1`*S393 ]
+"19 user_app.c
+[; ;user_app.c: 19: typedef struct {
+[s S395 `d 1 `d 1 `d 1 `d 1 ]
+[n S395 . M1 M2 M3 M4 ]
+"7 ./mutex.h
+[; ;./mutex.h: 7: int mutex_lock(Mutex* mutex);
+[v _mutex_lock `(i ~T0 @X0 0 ef1`*S393 ]
+"8
+[; ;./mutex.h: 8: int mutex_unlock(Mutex* mutex);
+[v _mutex_unlock `(i ~T0 @X0 0 ef1`*S393 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 52: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -535,8 +551,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8\pic\include\proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "7 ./user_app.h
-[; ;./user_app.h: 7: Mutex x;
-[v _x `S393 ~T0 @X0 1 e ]
+[; ;./user_app.h: 7: Mutex mutex;
+[v _mutex `S393 ~T0 @X0 1 e ]
 "6 user_app.c
 [; ;user_app.c: 6: void config_app(void) {
 [v _config_app `(v ~T0 @X0 1 ef ]
@@ -564,59 +580,82 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14
 [; ;user_app.c: 14:     __asm("GLOBAL _motors_control, _sensors_reading");
 [; <" GLOBAL _motors_control, _sensors_reading ;# ">
-"15
-[; ;user_app.c: 15: }
+"16
+[; ;user_app.c: 16:     mutex_init(&mutex);
+[e ( _mutex_init (1 &U _mutex ]
+"17
+[; ;user_app.c: 17: }
 [e :UE 394 ]
 }
-"17
-[; ;user_app.c: 17: TASK motors_control(void) {
+"23
+[; ;user_app.c: 23: motors motors_data = {0};
+[v _motors_data `S395 ~T0 @X0 1 e ]
+[i _motors_data
+:U ..
+:U ..
+-> -> 0 `i `d
+..
+..
+]
+"25
+[; ;user_app.c: 25: TASK motors_control(void) {
 [v _motors_control `(v ~T0 @X0 1 ef ]
 {
 [e :U _motors_control ]
 [f ]
-"18
-[; ;user_app.c: 18:     mutex_lock(&x);
-[e ( _mutex_lock (1 &U _x ]
-"19
-[; ;user_app.c: 19:     while (1) {
-[e :U 397 ]
-{
-"21
-[; ;user_app.c: 21:     }
-}
-[e :U 396 ]
-[e $U 397  ]
+"26
+[; ;user_app.c: 26:     while (1) {
 [e :U 398 ]
-"22
-[; ;user_app.c: 22:     mutex_unlock(&x);
-[e ( _mutex_unlock (1 &U _x ]
-"23
-[; ;user_app.c: 23: }
-[e :UE 395 ]
+{
+"27
+[; ;user_app.c: 27:         if (mutex_lock(&mutex)) {
+[e $ ! != ( _mutex_lock (1 &U _mutex -> 0 `i 400  ]
+{
+"29
+[; ;user_app.c: 29:             mutex_unlock(&mutex);
+[e ( _mutex_unlock (1 &U _mutex ]
+"30
+[; ;user_app.c: 30:         }
 }
-"25
-[; ;user_app.c: 25: TASK sensors_reading(void) {
+[e :U 400 ]
+"31
+[; ;user_app.c: 31:     }
+}
+[e :U 397 ]
+[e $U 398  ]
+[e :U 399 ]
+"32
+[; ;user_app.c: 32: }
+[e :UE 396 ]
+}
+"34
+[; ;user_app.c: 34: TASK sensors_reading(void) {
 [v _sensors_reading `(v ~T0 @X0 1 ef ]
 {
 [e :U _sensors_reading ]
 [f ]
-"26
-[; ;user_app.c: 26:     mutex_lock(&x);
-[e ( _mutex_lock (1 &U _x ]
-"27
-[; ;user_app.c: 27:     while (1) {
-[e :U 401 ]
+"35
+[; ;user_app.c: 35:     while (1) {
+[e :U 403 ]
 {
-"29
-[; ;user_app.c: 29:     }
+"36
+[; ;user_app.c: 36:         if (mutex_lock(&mutex)) {
+[e $ ! != ( _mutex_lock (1 &U _mutex -> 0 `i 405  ]
+{
+"38
+[; ;user_app.c: 38:             mutex_unlock(&mutex);
+[e ( _mutex_unlock (1 &U _mutex ]
+"39
+[; ;user_app.c: 39:         }
 }
-[e :U 400 ]
-[e $U 401  ]
+[e :U 405 ]
+"40
+[; ;user_app.c: 40:     }
+}
 [e :U 402 ]
-"30
-[; ;user_app.c: 30:     mutex_unlock(&x);
-[e ( _mutex_unlock (1 &U _x ]
-"31
-[; ;user_app.c: 31: }
-[e :UE 399 ]
+[e $U 403  ]
+[e :U 404 ]
+"41
+[; ;user_app.c: 41: }
+[e :UE 401 ]
 }
