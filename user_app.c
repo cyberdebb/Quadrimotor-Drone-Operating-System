@@ -80,7 +80,6 @@ uint8_t convert_to_duty_cycle(double motor_value) {
     return (uint8_t)(motor_value * PWM_MAX_DUTY);
 }
 
-
 // Controls the velocities of each motor
 TASK motors_control(void) {
     while (1) {
