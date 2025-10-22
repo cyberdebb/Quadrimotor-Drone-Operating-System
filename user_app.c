@@ -11,7 +11,7 @@
 // Exemplo 1
 
 //sem_t semaforo_teste;
-pipe_t canal;
+pipe_t *canal;
 
 void config_app(void)
 {
@@ -20,7 +20,7 @@ void config_app(void)
     TRISCbits.RC0 = TRISCbits.RC1                 = 0;             
     
     //sem_init(&semaforo_teste, 0);
-    create_pipe(&canal);
+    canal = pipe_create(PIPE_MAX_SIZE);
     
     asm("GLOBAL _tarefa_1, _tarefa_2, _tarefa_3");
 }
@@ -36,7 +36,7 @@ TASK tarefa_1(void)
     while (1) {
         LATDbits.LD0 = ~PORTDbits.RD0;
         //sem_wait(&semaforo_teste);
-        write_pipe(&canal, dados[index]);
+    write_pipe(canal, dados[index]);
         index = (index + 1) % 3;
         os_delay(50);
     }
@@ -51,7 +51,7 @@ TASK tarefa_2(void)
     while (1) {
         LATDbits.LD1 = ~PORTDbits.RD1;
         //os_delay(200);
-        read_pipe(&canal, &dado);
+    read_pipe(canal, &dado);
         if (dado == 'a') {
             LATCbits.LATC0 = 1;
         }
