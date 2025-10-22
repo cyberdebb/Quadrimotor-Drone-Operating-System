@@ -3,6 +3,7 @@
 #include "kernel.h"
 #include "hardware.h"
 #include "user_app.h"
+#include "mem.h"
 #include <xc.h>
 
 // Declaração da fila de aptos
@@ -23,6 +24,11 @@ void os_start(void)
 {
     // Configurar o timer
     conf_interrupts();
+    
+    // Configuração de memória
+    #if DYNAMIC_MEM_ALLOC == YES
+    SRAMInitHeap();
+    #endif    
 
     // Configurações de usuário
     config_app();
