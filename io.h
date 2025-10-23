@@ -1,6 +1,8 @@
 #ifndef IO_H
 #define	IO_H
 
+#include <stdint.h>
+
 typedef enum {CHANNEL_0     = 0b0000, 
               CHANNEL_1     = 0b0001,
               CHANNEL_2     = 0b0010,
@@ -48,11 +50,47 @@ typedef enum {FRC1      = 0b111,
               FOSC8     = 0b001,
               FOSC2     = 0b000} conversion_clock_t;              
 
+typedef enum {PWM_PRESCALE_1  = 0b00,
+              PWM_PRESCALE_4  = 0b01,
+              PWM_PRESCALE_16 = 0b10} pwm_prescaler_t;
+
+typedef enum {EXT_INT0 = 0,
+              EXT_INT1,
+              EXT_INT2} ext_int_t;
+
+typedef enum {INT_EDGE_FALLING = 0,
+              INT_EDGE_RISING  = 1} ext_int_edge_t;
+
+
 void set_channel(channel_t channel);
 void set_port(port_conf_t port);
 void config_adc(tad_t tad, conversion_clock_t cclk);
 void adc_go(int go_done);
 int adc_read();
+
+// Configura Timer2/CCP1 para gerar PWM
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler);
+
+// Define ciclo ativo do PWM
+void pwm_set_duty(uint16_t duty);
+
+// Inicia a geração de PWM
+void pwm_start(void);
+
+// Para a geração de PWM
+void pwm_stop(void);
+
+// Define borda de sensoriamento de interrupção externa
+void ext_int_config(ext_int_t source, ext_int_edge_t edge);
+
+// Habilita uma interrupção externa
+void ext_int_enable(ext_int_t source);
+
+// Desabilita uma interrupção externa
+void ext_int_disable(ext_int_t source);
+
+// Limpa a flag pendente da interrupção externa
+void ext_int_clear_flag(ext_int_t source);
         
 
 

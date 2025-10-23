@@ -3,15 +3,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;user_app.c: 80:     set_channel(CHANNEL_0);
 [c E3434 0 1 2 3 4 5 6 7 8 9 10 11 12 .. ]
 [n E3434 . CHANNEL_0 CHANNEL_1 CHANNEL_2 CHANNEL_3 CHANNEL_4 CHANNEL_5 CHANNEL_6 CHANNEL_7 CHANNEL_8 CHANNEL_9 CHANNEL_10 CHANNEL_11 CHANNEL_12  ]
-"51 ./io.h
-[; ;./io.h: 51: void set_channel(channel_t channel);
+"65 ./io.h
+[; ;./io.h: 65: void set_channel(channel_t channel);
 [v _set_channel `(v ~T0 @X0 0 ef1`E3434 ]
 "81 user_app.c
 [; ;user_app.c: 81:     set_port(AN00);
 [c E3449 0 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E3449 . AN12 AN11 AN10 AN09 AN08 AN07 AN06 AN05 AN04 AN03 AN02 AN01 AN00 DISABLE  ]
-"52 ./io.h
-[; ;./io.h: 52: void set_port(port_conf_t port);
+"68 ./io.h
+[; ;./io.h: 68: void set_port(port_conf_t port);
 [v _set_port `(v ~T0 @X0 0 ef1`E3449 ]
 "82 user_app.c
 [; ;user_app.c: 82:     config_adc(TAD12, FOSC4);
@@ -19,8 +19,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n E3465 . TAD20 TAD16 TAD12 TAD8 TAD6 TAD4 TAD2 TAD0  ]
 [c E3475 7 6 5 4 3 2 1 0 .. ]
 [n E3475 . FRC1 FOSC64 FOSC16 FOSC4 FRC2 FOSC32 FOSC8 FOSC2  ]
-"53 ./io.h
-[; ;./io.h: 53: void config_adc(tad_t tad, conversion_clock_t cclk);
+"71 ./io.h
+[; ;./io.h: 71: void config_adc(tad_t tad, conversion_clock_t cclk);
 [v _config_adc `(v ~T0 @X0 0 ef2`E3465`E3475 ]
 "3856 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 3856:     struct {
@@ -52,8 +52,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4031
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 4031: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF95)));
 [v _TRISDbits `VS159 ~T0 @X0 0 e@3989 ]
-"54 ./io.h
-[; ;./io.h: 54: void adc_go(int go_done);
+"74 ./io.h
+[; ;./io.h: 74: void adc_go(int go_done);
 [v _adc_go `(v ~T0 @X0 0 ef1`i ]
 "3267 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 3267:     struct {
@@ -89,8 +89,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2734
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 2734: extern volatile PORTDbits_t PORTDbits __attribute__((address(0xF83)));
 [v _PORTDbits `VS116 ~T0 @X0 0 e@3971 ]
-"55 ./io.h
-[; ;./io.h: 55: int adc_read();
+"77 ./io.h
+[; ;./io.h: 77: int adc_read();
 [v _adc_read `(i ~T0 @X0 0 e? ]
 "3189 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 3189:     struct {

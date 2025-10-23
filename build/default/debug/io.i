@@ -5647,6 +5647,113 @@ extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
 
 
 
+# 1 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 1 3
+
+
+
+# 1 "/Applications/microchip/xc8/v3.00/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 2 3
+# 26 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 1 3
+# 133 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned __int24 uintptr_t;
+# 148 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 intptr_t;
+# 164 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 3
+typedef signed char int8_t;
+
+
+
+
+typedef short int16_t;
+
+
+
+
+typedef __int24 int24_t;
+
+
+
+
+typedef long int32_t;
+
+
+
+
+
+typedef long long int64_t;
+# 194 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 3
+typedef long long intmax_t;
+
+
+
+
+
+typedef unsigned char uint8_t;
+
+
+
+
+typedef unsigned short uint16_t;
+
+
+
+
+typedef __uint24 uint24_t;
+
+
+
+
+typedef unsigned long uint32_t;
+
+
+
+
+
+typedef unsigned long long uint64_t;
+# 235 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned long long uintmax_t;
+# 27 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 2 3
+
+typedef int8_t int_fast8_t;
+
+typedef int64_t int_fast64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+
+typedef int24_t int_least24_t;
+typedef int24_t int_fast24_t;
+
+typedef int32_t int_least32_t;
+
+typedef int64_t int_least64_t;
+
+
+typedef uint8_t uint_fast8_t;
+
+typedef uint64_t uint_fast64_t;
+
+
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+
+typedef uint24_t uint_least24_t;
+typedef uint24_t uint_fast24_t;
+
+typedef uint32_t uint_least32_t;
+
+typedef uint64_t uint_least64_t;
+# 148 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 3
+# 1 "/Applications/microchip/xc8/v3.00/pic/include/c99/bits/stdint.h" 1 3
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+# 149 "/Applications/microchip/xc8/v3.00/pic/include/c99/stdint.h" 2 3
+# 5 "./io.h" 2
+
 typedef enum {CHANNEL_0 = 0b0000,
               CHANNEL_1 = 0b0001,
               CHANNEL_2 = 0b0010,
@@ -5694,12 +5801,57 @@ typedef enum {FRC1 = 0b111,
               FOSC8 = 0b001,
               FOSC2 = 0b000} conversion_clock_t;
 
+typedef enum {PWM_PRESCALE_1 = 0b00,
+              PWM_PRESCALE_4 = 0b01,
+              PWM_PRESCALE_16 = 0b10} pwm_prescaler_t;
+
+typedef enum {EXT_INT0 = 0,
+              EXT_INT1,
+              EXT_INT2} ext_int_t;
+
+typedef enum {INT_EDGE_FALLING = 0,
+              INT_EDGE_RISING = 1} ext_int_edge_t;
+
+
 void set_channel(channel_t channel);
+
+
 void set_port(port_conf_t port);
+
+
 void config_adc(tad_t tad, conversion_clock_t cclk);
+
+
 void adc_go(int go_done);
+
+
 int adc_read();
+
+
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler);
+
+
+void pwm_set_duty(uint16_t duty);
+
+
+void pwm_start(void);
+
+
+void pwm_stop(void);
+
+
+void ext_int_config(ext_int_t source, ext_int_edge_t edge);
+
+
+void ext_int_enable(ext_int_t source);
+
+
+void ext_int_disable(ext_int_t source);
+
+
+void ext_int_clear_flag(ext_int_t source);
 # 4 "io.c" 2
+
 
 
 void set_channel(channel_t channel)
@@ -5707,10 +5859,12 @@ void set_channel(channel_t channel)
     ADCON0bits.CHS = channel;
 }
 
+
 void set_port(port_conf_t port)
 {
     ADCON1bits.PCFG = port;
 }
+
 
 void config_adc(tad_t tad, conversion_clock_t cclk)
 {
@@ -5719,14 +5873,131 @@ void config_adc(tad_t tad, conversion_clock_t cclk)
     ADCON2bits.ADFM = 1;
 }
 
+
 void adc_go(int go_done)
 {
     ADCON0bits.ADON = go_done;
 }
+
 
 int adc_read()
 {
     ADCON0bits.GO = 1;
     while (ADCON0bits.GODONE);
     return ADRES;
+}
+
+
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
+{
+    T2CONbits.TMR2ON = 0;
+    T2CONbits.T2CKPS = prescaler;
+    T2CONbits.TOUTPS = 0;
+    PR2 = period;
+    TMR2 = 0;
+
+    TRISCbits.TRISC2 = 0;
+    CCP1CONbits.CCP1M = 0b1100;
+    pwm_set_duty(0);
+}
+
+
+void pwm_set_duty(uint16_t duty)
+{
+    if (duty > 1023) {
+        duty = 1023;
+    }
+
+    CCPR1L = (uint8_t)(duty >> 2);
+    CCP1CONbits.DC1B = (uint8_t)(duty & 0x03);
+}
+
+
+void pwm_start(void)
+{
+    T2CONbits.TMR2ON = 1;
+}
+
+
+void pwm_stop(void)
+{
+    T2CONbits.TMR2ON = 0;
+}
+
+
+void ext_int_config(ext_int_t source, ext_int_edge_t edge)
+{
+    switch (source) {
+        case EXT_INT0:
+            TRISBbits.TRISB0 = 1;
+            INTCON2bits.INTEDG0 = edge;
+            break;
+        case EXT_INT1:
+            TRISBbits.TRISB1 = 1;
+            INTCON2bits.INTEDG1 = edge;
+            break;
+        case EXT_INT2:
+            TRISBbits.TRISB2 = 1;
+            INTCON2bits.INTEDG2 = edge;
+            break;
+        default:
+            break;
+    }
+}
+
+
+void ext_int_enable(ext_int_t source)
+{
+    switch (source) {
+        case EXT_INT0:
+            INTCONbits.INT0IF = 0;
+            INTCONbits.INT0IE = 1;
+            break;
+        case EXT_INT1:
+            INTCON3bits.INT1IF = 0;
+            INTCON3bits.INT1IE = 1;
+            break;
+        case EXT_INT2:
+            INTCON3bits.INT2IF = 0;
+            INTCON3bits.INT2IE = 1;
+            break;
+        default:
+            break;
+    }
+}
+
+
+void ext_int_disable(ext_int_t source)
+{
+    switch (source) {
+        case EXT_INT0:
+            INTCONbits.INT0IE = 0;
+            break;
+        case EXT_INT1:
+            INTCON3bits.INT1IE = 0;
+            break;
+        case EXT_INT2:
+            INTCON3bits.INT2IE = 0;
+            break;
+        default:
+            break;
+    }
+}
+
+
+void ext_int_clear_flag(ext_int_t source)
+{
+    switch (source) {
+        case EXT_INT0:
+            INTCONbits.INT0IF = 0;
+            break;
+        case EXT_INT1:
+            INTCON3bits.INT1IF = 0;
+            break;
+        case EXT_INT2:
+            INTCON3bits.INT2IF = 0;
+            break;
+        default:
+            break;
+    }
 }

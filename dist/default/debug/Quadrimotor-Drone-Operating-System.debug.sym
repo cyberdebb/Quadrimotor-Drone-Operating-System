@@ -1,4 +1,5 @@
-__S0 FB8 0 ABS 0
+_PR2 FCB 0 ABS 0
+__S0 FBC 0 ABS 0
 __S1 4E0 0 ABS 0
 __S4 0 0 ABS 0
 __S5 0 0 ABS 0
@@ -8,11 +9,12 @@ __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
 config_adc@tad 8 0 COMRAM 1
 _TMR0 FD6 0 ABS 0
+_TMR2 FCC 0 ABS 0
 _WREG FE8 0 ABS 0
-_main ECE 0 CODE 0
+_main EF0 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 1A 0 COMRAM 1
-_adc_read F48 0 CODE 0
+_adc_read F4C 0 CODE 0
 start E 0 CODE 0
 __end_of_rr_scheduler B6A 0 CODE 0
 os_create_task@new_task 61 0 BANK0 1
@@ -27,7 +29,7 @@ ttemp7 22 0 COMRAM 1
 wtemp8 1B 0 COMRAM 1
 __Hconfig 0 0 ABS 0
 __Lconfig 0 0 ABS 0
-_set_channel F62 0 CODE 0
+_set_channel F66 0 CODE 0
 ?___awmod 1 0 COMRAM 1
 ___inthi_stack_hi 0 0 STACK 2
 __Hbigram 0 0 ABS 0
@@ -57,6 +59,7 @@ _LATCbits F8B 0 ABS 0
 _LATDbits F8C 0 ABS 0
 __Hintsave_regs 0 0 BIGRAM 1
 __Lintsave_regs 0 0 BIGRAM 1
+_CCPR1L FBE 0 ABS 0
 __Hbigbss 0 0 BIGRAM 1
 __Lbigbss 0 0 BIGRAM 1
 __Hintret 0 0 ABS 0
@@ -75,19 +78,19 @@ __Hintcode E 0 CODE 0
 __Lintcode 8 0 CODE 0
 __Hfardata 0 0 FARRAM 0
 __Lfardata 0 0 FARRAM 0
-__end_of_set_channel F78 0 CODE 0
+__end_of_set_channel F7C 0 CODE 0
 __pintcode 8 0 CODE 0
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
 _os_create_task E08 0 CODE 0
 os_create_task@prior 8 0 COMRAM 1
-_os_start F78 0 CODE 0
+_os_start F7C 0 CODE 0
 isa$xinst 0 0 ABS 0
 _STKPTR FFC 0 ABS 0
 __HnvFARRAM 0 0 FARRAM 0
 __LnvFARRAM 0 0 FARRAM 0
 _STATUS FD8 0 ABS 0
-_set_port F8C 0 CODE 0
+_set_port F90 0 CODE 0
 ___heap_hi 0 0 ABS 0
 _os_config E84 0 CODE 0
 __Hsivt_hi 0 0 CODE 0
@@ -101,7 +104,7 @@ isa$std 1 0 ABS 0
 stackhi 0 0 ABS 0
 __Hheap 0 0 HEAP 7
 __Lheap 0 0 HEAP 7
-_adc_go FA8 0 CODE 0
+_adc_go FAC 0 CODE 0
 __HcstackBANK0 0 0 ABS 0
 __LcstackBANK0 0 0 ABS 0
 __pcstackBANK0 60 0 BANK0 1
@@ -116,23 +119,25 @@ __Linit E 0 CODE 0
 __Hintcodelo 18 0 CODE 0
 __Lintcodelo 18 0 CODE 0
 __Hrbss 0 0 COMRAM 1
-__end_of_main EF0 0 CODE 0
+__end_of_main F12 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 ___heap_lo 0 0 ABS 0
 tarefa_1@pot 4 0 COMRAM 1
-end_of_initialization F04 0 CODE 0
+end_of_initialization EE2 0 CODE 0
 _os_task_time_decrease CCC 0 CODE 0
 __Hsivt_lo 18 0 CODE 0
 __Lsivt_lo 18 0 CODE 0
-__end_of_scheduler FA8 0 CODE 0
-_scheduler F9A 0 CODE 0
+__end_of_scheduler FAC 0 CODE 0
+_scheduler F9E 0 CODE 0
 os_create_task@id 60 0 BANK0 1
+_TRISBbits F93 0 ABS 0
 _TRISCbits F94 0 ABS 0
 _TRISDbits F95 0 ABS 0
 _PORTDbits F83 0 ABS 0
 _T0CONbits FD5 0 ABS 0
+_T2CONbits FCA 0 ABS 0
 __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
 os_task_pos@task 1 0 COMRAM 1
@@ -164,48 +169,51 @@ __Htext0 0 0 ABS 0
 __Ltext0 0 0 ABS 0
 __Htext1 0 0 ABS 0
 __Ltext1 0 0 ABS 0
-__ptext0 ECE 0 CODE 0
+__ptext0 EF0 0 CODE 0
+_INTCON2bits FF1 0 ABS 0
 __Htext2 0 0 ABS 0
 __Ltext2 0 0 ABS 0
-__ptext1 F78 0 CODE 0
+__ptext1 F7C 0 CODE 0
+_INTCON3bits FF0 0 ABS 0
 __Htext3 0 0 ABS 0
 __Ltext3 0 0 ABS 0
-__ptext2 F0E 0 CODE 0
+__ptext2 F12 0 CODE 0
 __end_of_os_config EAA 0 CODE 0
 __Htext4 0 0 ABS 0
 __Ltext4 0 0 ABS 0
-__ptext3 F8C 0 CODE 0
+__ptext3 F90 0 CODE 0
 ___stack_hi 0 0 STACK 2
 __Htext5 0 0 ABS 0
 __Ltext5 0 0 ABS 0
-__ptext4 F62 0 CODE 0
+__ptext4 F66 0 CODE 0
 __Htext6 0 0 ABS 0
 __Ltext6 0 0 ABS 0
 __ptext5 EAA 0 CODE 0
 __Htext7 0 0 ABS 0
 __Ltext7 0 0 ABS 0
-__ptext6 F2C 0 CODE 0
+__ptext6 F30 0 CODE 0
 __Htext8 0 0 ABS 0
 __Ltext8 0 0 ABS 0
-__ptext7 FB4 0 CODE 0
+__ptext7 FB8 0 CODE 0
 __Htext9 0 0 ABS 0
 __Ltext9 0 0 ABS 0
 __ptext8 D54 0 CODE 0
-__end_of_os_start F8C 0 CODE 0
+__end_of_os_start F90 0 CODE 0
 os_task_time_decrease@i 2 0 COMRAM 1
 __ptext9 E84 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-__end_of__initialization F04 0 CODE 0
+__end_of__initialization EE2 0 CODE 0
+_CCP1CONbits FBD 0 ABS 0
 ___rparam_used 1 0 ABS 0
-__end_of_set_port F9A 0 CODE 0
+__end_of_set_port F9E 0 CODE 0
 __H__absolute__ 0 0 ABS 0
 __L__absolute__ 0 0 ABS 0
 _os_idle_task E56 0 CODE 0
 _readyQueue CB 0 BIGRAM 1
 __Hidata 0 0 CODE 0
 __Lidata 0 0 CODE 0
-__end_of_conf_timer_0 F48 0 CODE 0
+__end_of_conf_timer_0 F4C 0 CODE 0
 __end_of_os_task_time_decrease D54 0 CODE 0
 __Hrdata 0 0 COMRAM 1
 __Lrdata 0 0 COMRAM 1
@@ -217,7 +225,7 @@ int_func 802 0 CODE 0
 ___awmod C1E 0 CODE 0
 __Hparam 0 0 COMRAM 1
 __Lparam 0 0 COMRAM 1
-__Hspace_0 FB8 0 ABS 0
+__Hspace_0 FBC 0 ABS 0
 __HcstackCOMRAM 0 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __LcstackCOMRAM 0 0 ABS 0
@@ -226,7 +234,7 @@ __Hspace_1 4E0 0 ABS 0
 __Lspace_1 0 0 ABS 0
 __Hsmallconst 802 0 SMALLCONST 0
 __Lsmallconst 800 0 SMALLCONST 0
-__end_of_adc_go FB4 0 CODE 0
+__end_of_adc_go FB8 0 CODE 0
 __psmallconst 800 0 SMALLCONST 0
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
@@ -235,7 +243,7 @@ __Lnvbit 0 0 COMRAM 1
 __Hcinit 0 0 ABS 0
 __Lcinit 0 0 ABS 0
 os_task_pos@i 5 0 COMRAM 1
-__pcinit EF0 0 CODE 0
+__pcinit ECE 0 CODE 0
 __ramtop 800 0 RAM 0
 __mediumconst 800 0 SMALLCONST 0
 __Hconst 0 0 CONST 0
@@ -246,7 +254,7 @@ ___stack_lo 0 0 STACK 2
 _os_task_pos DB8 0 CODE 0
 ?_rr_scheduler 7 0 COMRAM 1
 config_adc@cclk 6 0 COMRAM 1
-_config_app F0E 0 CODE 0
+_config_app F12 0 CODE 0
 __end_of_os_task_pos E08 0 CODE 0
 __uDynamicHeap 2E0 0 BIGRAM 1
 __Htext10 0 0 ABS 0
@@ -265,17 +273,17 @@ __Ltext12 0 0 ABS 0
 __ptext12 B6A 0 CODE 0
 __Htext13 0 0 ABS 0
 __Ltext13 0 0 ABS 0
-__ptext13 F48 0 CODE 0
+__ptext13 F4C 0 CODE 0
 _ADCON0bits FC2 0 ABS 0
 __Htext14 0 0 ABS 0
 __Ltext14 0 0 ABS 0
 _ADCON1bits FC1 0 ABS 0
 _ADCON2bits FC0 0 ABS 0
-__ptext14 FA8 0 CODE 0
+__ptext14 FAC 0 CODE 0
 ___inthi_sp 0 0 STACK 2
 __Htext16 0 0 ABS 0
 __Ltext16 0 0 ABS 0
-__ptext16 F9A 0 CODE 0
+__ptext16 F9E 0 CODE 0
 __Htext17 0 0 ABS 0
 __Ltext17 0 0 ABS 0
 __ptext17 A8C 0 CODE 0
@@ -289,8 +297,8 @@ __ptext19 C1E 0 CODE 0
 ___intlo_sp 0 0 STACK 2
 __end_of_os_idle_task E84 0 CODE 0
 _INTCONbits FF2 0 ABS 0
-__end_of_conf_interrupts FB8 0 CODE 0
-__end_of_adc_read F62 0 CODE 0
+__end_of_conf_interrupts FBC 0 CODE 0
+__end_of_adc_read F66 0 CODE 0
 set_channel@channel 7 0 COMRAM 1
 _ISR_TIMER_0 8 0 CODE 0
 _tarefa_1 B6A 0 CODE 0
@@ -311,18 +319,18 @@ rr_scheduler@idle_selected B 0 COMRAM 1
 adc_go@go_done 1 0 COMRAM 1
 __end_of_config_adc ECE 0 CODE 0
 ___inthi_stack_lo 0 0 STACK 2
-__end_of_config_app F2C 0 CODE 0
+__end_of_config_app F30 0 CODE 0
 __end_of_ISR_TIMER_0 A8C 0 CODE 0
-start_initialization EF0 0 CODE 0
+start_initialization ECE 0 CODE 0
 _SRAMInitHeap D54 0 CODE 0
 ___intlo_stack_lo 0 0 STACK 2
-_conf_timer_0 F2C 0 CODE 0
-__initialization EF0 0 CODE 0
+_conf_timer_0 F30 0 CODE 0
+__initialization ECE 0 CODE 0
 ___awmod@dividend 1 0 COMRAM 1
-__activetblptr 0 0 ABS 0
+__activetblptr 2 0 ABS 0
 ___awmod@counter 5 0 COMRAM 1
 SRAMInitHeap@pHeap 6 0 COMRAM 1
-_conf_interrupts FB4 0 CODE 0
+_conf_interrupts FB8 0 CODE 0
 os_create_task@task_f 6 0 COMRAM 1
 %segments
 reset_vec 0 3 CODE 0 0
@@ -331,77 +339,79 @@ smallconst 800 801 SMALLCONST 800 0
 cstackCOMRAM 1 1A COMRAM 1 1
 cstackBANK0 60 CA BANK0 60 1
 bssBIGRAM CB 4DF BIGRAM CB 1
-intcode_body 802 FB7 CODE 802 0
+intcode_body 802 FBB CODE 802 0
 %locals
 dist/default/debug/Quadrimotor-Drone-Operating-System.debug.o
-/tmp/xcBBSNeHV/driver_tmp_1.s
-3588 EF0 0 CODE 0
-3590 EF0 0 CODE 0
-3593 EF0 0 CODE 0
-3608 EF0 0 CODE 0
-3609 EF4 0 CODE 0
-3610 EF8 0 CODE 0
-3611 EF8 0 CODE 0
-3612 EFA 0 CODE 0
-3613 EFC 0 CODE 0
-3614 EFE 0 CODE 0
-3615 F00 0 CODE 0
-3616 F02 0 CODE 0
-3622 F04 0 CODE 0
-3624 F04 0 CODE 0
-3625 F06 0 CODE 0
-3626 F08 0 CODE 0
-3627 F0A 0 CODE 0
+/tmp/xcuNyvtZ1/driver_tmp_1.s
+3604 ECE 0 CODE 0
+3606 ECE 0 CODE 0
+3609 ECE 0 CODE 0
+3624 ECE 0 CODE 0
+3625 ED2 0 CODE 0
+3626 ED6 0 CODE 0
+3627 ED6 0 CODE 0
+3628 ED8 0 CODE 0
+3629 EDA 0 CODE 0
+3630 EDC 0 CODE 0
+3631 EDE 0 CODE 0
+3632 EE0 0 CODE 0
+3638 EE2 0 CODE 0
+3640 EE2 0 CODE 0
+3641 EE4 0 CODE 0
+3643 EE6 0 CODE 0
+3644 EE8 0 CODE 0
+3645 EEA 0 CODE 0
+3646 EEC 0 CODE 0
 main.c
-7 ECE 0 CODE 0
-17 ECE 0 CODE 0
-20 ED2 0 CODE 0
-24 EE4 0 CODE 0
-26 EE8 0 CODE 0
+7 EF0 0 CODE 0
+17 EF0 0 CODE 0
+20 EF4 0 CODE 0
+24 F06 0 CODE 0
+26 F0A 0 CODE 0
 kernel.c
-23 F78 0 CODE 0
-26 F78 0 CODE 0
-30 F7C 0 CODE 0
-34 F80 0 CODE 0
-36 F84 0 CODE 0
-39 F88 0 CODE 0
-40 F8A 0 CODE 0
+23 F7C 0 CODE 0
+26 F7C 0 CODE 0
+30 F80 0 CODE 0
+34 F84 0 CODE 0
+36 F88 0 CODE 0
+39 F8C 0 CODE 0
+40 F8E 0 CODE 0
 user_app.c
-78 F0E 0 CODE 0
-80 F0E 0 CODE 0
-81 F14 0 CODE 0
-82 F1A 0 CODE 0
-84 F24 0 CODE 0
-85 F28 0 CODE 0
-88 F2A 0 CODE 0
+78 F12 0 CODE 0
+80 F12 0 CODE 0
+81 F18 0 CODE 0
+82 F1E 0 CODE 0
+84 F28 0 CODE 0
+85 F2C 0 CODE 0
+88 F2E 0 CODE 0
 io.c
-11 F8C 0 CODE 0
-13 F8E 0 CODE 0
-14 F98 0 CODE 0
+13 F90 0 CODE 0
+15 F92 0 CODE 0
+16 F9C 0 CODE 0
 io.c
-6 F62 0 CODE 0
-8 F64 0 CODE 0
-9 F76 0 CODE 0
+7 F66 0 CODE 0
+9 F68 0 CODE 0
+10 F7A 0 CODE 0
 io.c
-16 EAA 0 CODE 0
-18 EAC 0 CODE 0
-19 EC0 0 CODE 0
-20 ECA 0 CODE 0
-21 ECC 0 CODE 0
+19 EAA 0 CODE 0
+21 EAC 0 CODE 0
+22 EC0 0 CODE 0
+23 ECA 0 CODE 0
+24 ECC 0 CODE 0
 hardware.c
-7 F2C 0 CODE 0
-10 F2C 0 CODE 0
-11 F2E 0 CODE 0
-12 F30 0 CODE 0
-13 F38 0 CODE 0
-14 F40 0 CODE 0
-15 F42 0 CODE 0
-16 F44 0 CODE 0
-17 F46 0 CODE 0
+7 F30 0 CODE 0
+10 F30 0 CODE 0
+11 F32 0 CODE 0
+12 F34 0 CODE 0
+13 F3C 0 CODE 0
+14 F44 0 CODE 0
+15 F46 0 CODE 0
+16 F48 0 CODE 0
+17 F4A 0 CODE 0
 hardware.c
-19 FB4 0 CODE 0
-21 FB4 0 CODE 0
-22 FB6 0 CODE 0
+19 FB8 0 CODE 0
+21 FB8 0 CODE 0
+22 FBA 0 CODE 0
 mem.c
 276 D54 0 CODE 0
 281 D54 0 CODE 0
@@ -450,17 +460,17 @@ user_app.c
 106 C14 0 CODE 0
 107 C16 0 CODE 0
 io.c
-28 F48 0 CODE 0
-30 F48 0 CODE 0
-31 F4A 0 CODE 0
-32 F58 0 CODE 0
-33 F60 0 CODE 0
+33 F4C 0 CODE 0
+35 F4C 0 CODE 0
+36 F4E 0 CODE 0
+37 F5C 0 CODE 0
+38 F64 0 CODE 0
 io.c
-23 FA8 0 CODE 0
-25 FA8 0 CODE 0
-26 FB2 0 CODE 0
-/tmp/xcBBSNeHV/driver_tmp_1.s
-5707 8 0 CODE 0
+27 FAC 0 CODE 0
+29 FAC 0 CODE 0
+30 FB6 0 CODE 0
+/tmp/xcuNyvtZ1/driver_tmp_1.s
+5726 8 0 CODE 0
 hardware.c
 25 8 0 CODE 0
 hardware.c
@@ -475,9 +485,9 @@ hardware.c
 40 A6E 0 CODE 0
 41 A70 0 CODE 0
 scheduler.c
-37 F9A 0 CODE 0
-40 F9A 0 CODE 0
-44 FA6 0 CODE 0
+37 F9E 0 CODE 0
+40 F9E 0 CODE 0
+44 FAA 0 CODE 0
 scheduler.c
 12 A8C 0 CODE 0
 14 A8C 0 CODE 0

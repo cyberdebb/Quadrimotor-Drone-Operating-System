@@ -6043,6 +6043,8 @@ void SRAMInitHeap(void);
 
 
 
+
+
 typedef enum {CHANNEL_0 = 0b0000,
               CHANNEL_1 = 0b0001,
               CHANNEL_2 = 0b0010,
@@ -6090,11 +6092,55 @@ typedef enum {FRC1 = 0b111,
               FOSC8 = 0b001,
               FOSC2 = 0b000} conversion_clock_t;
 
+typedef enum {PWM_PRESCALE_1 = 0b00,
+              PWM_PRESCALE_4 = 0b01,
+              PWM_PRESCALE_16 = 0b10} pwm_prescaler_t;
+
+typedef enum {EXT_INT0 = 0,
+              EXT_INT1,
+              EXT_INT2} ext_int_t;
+
+typedef enum {INT_EDGE_FALLING = 0,
+              INT_EDGE_RISING = 1} ext_int_edge_t;
+
+
 void set_channel(channel_t channel);
+
+
 void set_port(port_conf_t port);
+
+
 void config_adc(tad_t tad, conversion_clock_t cclk);
+
+
 void adc_go(int go_done);
+
+
 int adc_read();
+
+
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler);
+
+
+void pwm_set_duty(uint16_t duty);
+
+
+void pwm_start(void);
+
+
+void pwm_stop(void);
+
+
+void ext_int_config(ext_int_t source, ext_int_edge_t edge);
+
+
+void ext_int_enable(ext_int_t source);
+
+
+void ext_int_disable(ext_int_t source);
+
+
+void ext_int_clear_flag(ext_int_t source);
 # 9 "user_app.c" 2
 # 78 "user_app.c"
 void config_app(void)

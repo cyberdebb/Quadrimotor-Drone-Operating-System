@@ -6,10 +6,10 @@ Linker command line:
   --edf=/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/dat/20250117225543_en.msgs \
   -cn -h+dist/default/debug/Quadrimotor-Drone-Operating-System.debug.sym \
   --cmf=dist/default/debug/Quadrimotor-Drone-Operating-System.debug.cmf -z \
-  -Q18F4550 -o/tmp/xcBBSNeHV/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
+  -Q18F4550 -o/tmp/xcuNyvtZ1/driver_tmp_3.o --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error \
   -Mdist/default/debug/Quadrimotor-Drone-Operating-System.debug.map \
-  --md=/tmp/xcBBSNeHV/driver_tmp_0.dat -E1 -ver=XC8 Compiler \
+  --md=/tmp/xcuNyvtZ1/driver_tmp_0.dat -E1 -ver=XC8 Compiler \
   -ACODE=00h-07FFFh -ACONST=00h-07FFFh -ASMALLCONST=0800h-08FFhx120 \
   -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-07FFh \
   -ABIGRAM=01h-07FFh -ARAM=060h-0FFh,0100h-01FFhx7 -ABANK0=060h-0FFh \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcBBSNeHV/driver_tmp_9.o \
+  /tmp/xcuNyvtZ1/driver_tmp_9.o \
   dist/default/debug/Quadrimotor-Drone-Operating-System.debug.o 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Machine type is 18F4550
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcBBSNeHV/driver_tmp_9.o
+/tmp/xcuNyvtZ1/driver_tmp_9.o
                 init                                  E        E        4        4       0
                 reset_vec                             0        0        4        0       0
 dist/default/debug/Quadrimotor-Drone-Operating-System.debug.o
@@ -46,27 +46,27 @@ dist/default/debug/Quadrimotor-Drone-Operating-System.debug.o
                 text19                              C1E      C1E       AE      401       0
                 text18                              DB8      DB8       50      401       0
                 text17                              A8C      A8C       DE      401       0
-                text16                              F9A      F9A        E      401       0
+                text16                              F9E      F9E        E      401       0
                 intcode_body                        802      802      28A      401       0
-                text14                              FA8      FA8        C      401       0
-                text13                              F48      F48       1A      401       0
+                text14                              FAC      FAC        C      401       0
+                text13                              F4C      F4C       1A      401       0
                 text12                              B6A      B6A       B4      401       0
                 text11                              E56      E56       2E      401       0
                 text10                              E08      E08       4E      401       0
                 text9                               E84      E84       26      401       0
                 text8                               D54      D54       64      401       0
-                text7                               FB4      FB4        4      401       0
-                text6                               F2C      F2C       1C      401       0
+                text7                               FB8      FB8        4      401       0
+                text6                               F30      F30       1C      401       0
                 text5                               EAA      EAA       24      401       0
-                text4                               F62      F62       16      401       0
-                text3                               F8C      F8C        E      401       0
-                text2                               F0E      F0E       1E      401       0
-                text1                               F78      F78       14      401       0
-                text0                               ECE      ECE       22      401       0
+                text4                               F66      F66       16      401       0
+                text3                               F90      F90        E      401       0
+                text2                               F12      F12       1E      401       0
+                text1                               F7C      F7C       14      401       0
+                text0                               EF0      EF0       22      401       0
                 cstackCOMRAM                          1        1       19        1       1
                 cstackBANK0                          60       60       6B       60       1
                 bssBIGRAM                            CB       CB      415       CB       1
-                cinit                               EF0      EF0       1E      401       0
+                cinit                               ECE      ECE       22      401       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
@@ -77,24 +77,24 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text19                              C1E      C1E       AE         0
                 text18                              DB8      DB8       50         0
                 text17                              A8C      A8C       DE         0
-                text16                              F9A      F9A        E         0
+                text16                              F9E      F9E        E         0
                 intcode_body                        802      802      28A         0
-                text14                              FA8      FA8        C         0
-                text13                              F48      F48       1A         0
+                text14                              FAC      FAC        C         0
+                text13                              F4C      F4C       1A         0
                 text12                              B6A      B6A       B4         0
                 text11                              E56      E56       2E         0
                 text10                              E08      E08       4E         0
                 text9                               E84      E84       26         0
                 text8                               D54      D54       64         0
-                text7                               FB4      FB4        4         0
-                text6                               F2C      F2C       1C         0
+                text7                               FB8      FB8        4         0
+                text6                               F30      F30       1C         0
                 text5                               EAA      EAA       24         0
-                text4                               F62      F62       16         0
-                text3                               F8C      F8C        E         0
-                text2                               F0E      F0E       1E         0
-                text1                               F78      F78       14         0
-                text0                               ECE      ECE       22         0
-                cinit                               EF0      EF0       1E         0
+                text4                               F66      F66       16         0
+                text3                               F90      F90        E         0
+                text2                               F12      F12       1E         0
+                text1                               F7C      F7C       14         0
+                text0                               EF0      EF0       22         0
+                cinit                               ECE      ECE       22         0
 
         CLASS   CONST          
 
@@ -151,7 +151,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
-                intcode_body                   000802  0007B6  000FB8       401       0  CODE    
+                intcode_body                   000802  0007BA  000FBC       401       0  CODE    
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 bssBIGRAM                      0000CB  000415  0004E0        CB       1  BIGRAM  
                 cstackCOMRAM                   000001  00001A  00001B         1       1  COMRAM  
@@ -172,18 +172,18 @@ UNUSED ADDRESS RANGES
         BIGSFR           F60-FFF            A0
         CODE             004-007             4
                          012-7FF           7EE
-                         FB8-7FFF          7048
+                         FBC-7FFF          7044
         COMRAM           01B-05F            45
         CONFIG           300000-30000D             E
         CONST            004-007             4
                          012-7FF           7EE
-                         FB8-7FFF          7048
+                         FBC-7FFF          7044
         EEDATA           F00000-F000FF           100
         IDLOC            200000-200007             8
-        MEDIUMCONST      FB8-7FFF          7048
+        MEDIUMCONST      FBC-7FFF          7044
         RAM              4E0-7FF           100
         SFR              F60-FFF            A0
-        SMALLCONST       FB8-7FFF           100
+        SMALLCONST       FBC-7FFF           100
 
                                   Symbol Table
 
@@ -197,17 +197,25 @@ _ADCON1bits                    (abs)        FC1
 _ADCON2bits                    (abs)        FC0
 _ADRES                         (abs)        FC3
 _BSR                           (abs)        FE0
+_CCP1CONbits                   (abs)        FBD
+_CCPR1L                        (abs)        FBE
+_INTCON2bits                   (abs)        FF1
+_INTCON3bits                   (abs)        FF0
 _INTCONbits                    (abs)        FF2
 _ISR_TIMER_0                   intcode      008
 _LATCbits                      (abs)        F8B
 _LATDbits                      (abs)        F8C
 _PORTDbits                     (abs)        F83
+_PR2                           (abs)        FCB
 _SRAMInitHeap                  text8        D54
 _STATUS                        (abs)        FD8
 _STKPTR                        (abs)        FFC
 _T0CONbits                     (abs)        FD5
+_T2CONbits                     (abs)        FCA
 _TMR0                          (abs)        FD6
+_TMR2                          (abs)        FCC
 _TOS                           (abs)        FFD
+_TRISBbits                     (abs)        F93
 _TRISCbits                     (abs)        F94
 _TRISDbits                     (abs)        F95
 _WREG                          (abs)        FE8
@@ -269,7 +277,7 @@ __Hsfr                         sfr          000
 __Hsivt_hi                     sivt_hi      000
 __Hsivt_lo                     sivt_lo      018
 __Hsmallconst                  smallconst   802
-__Hspace_0                     (abs)        FB8
+__Hspace_0                     (abs)        FBC
 __Hspace_1                     (abs)        4E0
 __Hspace_2                     (abs)        000
 __Hspace_4                     (abs)        000
@@ -383,7 +391,7 @@ __Ltext6                       text6        000
 __Ltext7                       text7        000
 __Ltext8                       text8        000
 __Ltext9                       text9        000
-__S0                           (abs)        FB8
+__S0                           (abs)        FBC
 __S1                           (abs)        4E0
 __S4                           (abs)        000
 __S5                           (abs)        000
@@ -406,85 +414,85 @@ ___sp                          stack        000
 ___stack_hi                    stack        000
 ___stack_lo                    stack        000
 __accesstop                    (abs)        060
-__activetblptr                 (abs)        000
+__activetblptr                 (abs)        002
 __end_of_ISR_TIMER_0           intcode_body A8C
 __end_of_SRAMInitHeap          text8        DB8
 __end_of___awmod               text19       CCC
-__end_of__initialization       cinit        F04
-__end_of_adc_go                text14       FB4
-__end_of_adc_read              text13       F62
-__end_of_conf_interrupts       text7        FB8
-__end_of_conf_timer_0          text6        F48
+__end_of__initialization       cinit        EE2
+__end_of_adc_go                text14       FB8
+__end_of_adc_read              text13       F66
+__end_of_conf_interrupts       text7        FBC
+__end_of_conf_timer_0          text6        F4C
 __end_of_config_adc            text5        ECE
-__end_of_config_app            text2        F2C
-__end_of_main                  text0        EF0
+__end_of_config_app            text2        F30
+__end_of_main                  text0        F12
 __end_of_os_config             text9        EAA
 __end_of_os_create_task        text10       E56
 __end_of_os_idle_task          text11       E84
-__end_of_os_start              text1        F8C
+__end_of_os_start              text1        F90
 __end_of_os_task_pos           text18       E08
 __end_of_os_task_time_decrease text20       D54
 __end_of_rr_scheduler          text17       B6A
-__end_of_scheduler             text16       FA8
-__end_of_set_channel           text4        F78
-__end_of_set_port              text3        F9A
+__end_of_scheduler             text16       FAC
+__end_of_set_channel           text4        F7C
+__end_of_set_port              text3        F9E
 __end_of_tarefa_1              text12       C1E
-__initialization               cinit        EF0
+__initialization               cinit        ECE
 __mediumconst                  smallconst   800
 __pbssBIGRAM                   bssBIGRAM    0CB
-__pcinit                       cinit        EF0
+__pcinit                       cinit        ECE
 __pcstackBANK0                 cstackBANK0  060
 __pcstackCOMRAM                cstackCOMRAM 001
 __pintcode                     intcode      008
 __pintcode_body                intcode_body 802
 __psmallconst                  smallconst   800
-__ptext0                       text0        ECE
-__ptext1                       text1        F78
+__ptext0                       text0        EF0
+__ptext1                       text1        F7C
 __ptext10                      text10       E08
 __ptext11                      text11       E56
 __ptext12                      text12       B6A
-__ptext13                      text13       F48
-__ptext14                      text14       FA8
-__ptext16                      text16       F9A
+__ptext13                      text13       F4C
+__ptext14                      text14       FAC
+__ptext16                      text16       F9E
 __ptext17                      text17       A8C
 __ptext18                      text18       DB8
 __ptext19                      text19       C1E
-__ptext2                       text2        F0E
+__ptext2                       text2        F12
 __ptext20                      text20       CCC
-__ptext3                       text3        F8C
-__ptext4                       text4        F62
+__ptext3                       text3        F90
+__ptext4                       text4        F66
 __ptext5                       text5        EAA
-__ptext6                       text6        F2C
-__ptext7                       text7        FB4
+__ptext6                       text6        F30
+__ptext7                       text7        FB8
 __ptext8                       text8        D54
 __ptext9                       text9        E84
 __ramtop                       ramtop       800
 __smallconst                   smallconst   800
 __uDynamicHeap                 bssBIGRAM    2E0
-_adc_go                        text14       FA8
-_adc_read                      text13       F48
-_conf_interrupts               text7        FB4
-_conf_timer_0                  text6        F2C
+_adc_go                        text14       FAC
+_adc_read                      text13       F4C
+_conf_interrupts               text7        FB8
+_conf_timer_0                  text6        F30
 _config_adc                    text5        EAA
-_config_app                    text2        F0E
-_main                          text0        ECE
+_config_app                    text2        F12
+_main                          text0        EF0
 _os_config                     text9        E84
 _os_create_task                text10       E08
 _os_idle_task                  text11       E56
-_os_start                      text1        F78
+_os_start                      text1        F7C
 _os_task_pos                   text18       DB8
 _os_task_time_decrease         text20       CCC
 _readyQueue                    bssBIGRAM    0CB
 _rr_scheduler                  text17       A8C
-_scheduler                     text16       F9A
-_set_channel                   text4        F62
-_set_port                      text3        F8C
+_scheduler                     text16       F9E
+_set_channel                   text4        F66
+_set_port                      text3        F90
 _tarefa_1                      text12       B6A
 adc_go@go_done                 cstackCOMRAM 001
 btemp                          temp         01A
 config_adc@cclk                cstackCOMRAM 006
 config_adc@tad                 cstackCOMRAM 008
-end_of_initialization          cinit        F04
+end_of_initialization          cinit        EE2
 int$flags                      temp         01A
 int_func                       intcode_body 802
 intlevel0                      text         000
@@ -507,7 +515,7 @@ set_port@port                  cstackCOMRAM 006
 stackhi                        (abs)        000
 stacklo                        (abs)        000
 start                          init         00E
-start_initialization           cinit        EF0
+start_initialization           cinit        ECE
 tarefa_1@pot                   cstackCOMRAM 004
 ttemp5                         temp         01B
 ttemp6                         temp         01E
@@ -519,10 +527,10 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 io.c
-		_set_channel   		CODE           	0F62	0000	22
-		_set_port      		CODE           	0F8C	0000	14
-		_adc_go        		CODE           	0FA8	0000	12
-		_adc_read      		CODE           	0F48	0000	26
+		_set_channel   		CODE           	0F66	0000	22
+		_set_port      		CODE           	0F90	0000	14
+		_adc_go        		CODE           	0FAC	0000	12
+		_adc_read      		CODE           	0F4C	0000	26
 		_config_adc    		CODE           	0EAA	0000	36
 
 io.c estimated size: 110
@@ -534,7 +542,7 @@ io.c estimated size: 110
 
 kernel.c
 		_os_config     		CODE           	0E84	0000	38
-		_os_start      		CODE           	0F78	0000	20
+		_os_start      		CODE           	0F7C	0000	20
 		_os_task_time_decrease		CODE           	0CCC	0000	136
 		_os_task_pos   		CODE           	0DB8	0000	80
 		_os_idle_task  		CODE           	0E56	0000	46
@@ -547,25 +555,25 @@ mem.c
 mem.c estimated size: 100
 
 shared
-		__initialization		CODE           	0EF0	0000	20
+		__initialization		CODE           	0ECE	0000	20
 
 shared estimated size: 20
 
 hardware.c
-		_conf_timer_0  		CODE           	0F2C	0000	28
-		_conf_interrupts		CODE           	0FB4	0000	4
+		_conf_timer_0  		CODE           	0F30	0000	28
+		_conf_interrupts		CODE           	0FB8	0000	4
 		_ISR_TIMER_0   		CODE           	0008	0000	656
 
 hardware.c estimated size: 688
 
 scheduler.c
 		_rr_scheduler  		CODE           	0A8C	0000	222
-		_scheduler     		CODE           	0F9A	0000	14
+		_scheduler     		CODE           	0F9E	0000	14
 
 scheduler.c estimated size: 236
 
 main.c
-		_main          		CODE           	0ECE	0000	34
+		_main          		CODE           	0EF0	0000	34
 
 main.c estimated size: 34
 
@@ -576,7 +584,7 @@ syscall.c estimated size: 78
 
 user_app.c
 		_tarefa_1      		CODE           	0B6A	0000	180
-		_config_app    		CODE           	0F0E	0000	30
+		_config_app    		CODE           	0F12	0000	30
 
 user_app.c estimated size: 210
 
