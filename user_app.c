@@ -123,6 +123,7 @@ static Mutex g_motor_mutex;
 static uint8_t g_motor_duty[4]; // última velocidade aplicada a cada motor
 static pipe_t *g_sensor_pipe;    // fila básica para mensagens dos sensores
 static uint8_t g_sensor_amostras[3]; // guarda última leitura (pitch, roll, accel)
+static uint8_t g_bateria_baixa;  // sinalização de carga insuficiente
 
 static void aplicar_comando_motor(const uint8_t *payload);
 
@@ -150,6 +151,7 @@ void config_app(void)
     }
 
     g_sensor_pipe = pipe_create(3); // 3 bytes: pitch, roll e aceleração
+    g_bateria_baixa = 0;
 
     asm("GLOBAL _tarefa_controle_central, _tarefa_controle_motores, _tarefa_monitor_bateria, _tarefa_sensores_inerciais");
 }
@@ -179,6 +181,10 @@ TASK tarefa_controle_central(void)
 
                 // Ajuste simples usando pitch (amostras[0]) para ilustrar feedback
                 velocidade += (uint8_t)(g_sensor_amostras[0] / 16);
+
+                if (g_bateria_baixa) {
+                    velocidade /= 2; // reduz potência para retorno à base
+                }
 
                 g_motor_mailbox.payload[indice]     = motor + 1;
                 g_motor_mailbox.payload[indice + 1] = velocidade;
@@ -223,9 +229,22 @@ TASK tarefa_controle_motores(void)
 // Placeholder para monitor de bateria (será refinado nas demais tarefas)
 TASK tarefa_monitor_bateria(void)
 {
+    uint8_t leitura = 100; // valor fictício representando 100%
+
     while (1) {
-        // Comentário: aqui faria a leitura do ADC da bateria e registraria alarmes
-        os_delay(100);
+        // Comentário: leitura simulada via ADC (queda gradual)
+        if (leitura > 0) {
+            leitura--;
+        }
+
+        if (leitura < 30) {
+            g_bateria_baixa = 1; // sinaliza para controle central reduzir potência
+        }
+        else if (leitura > 35) {
+            g_bateria_baixa = 0;
+        }
+
+        os_delay(40);
     }
 }
 
