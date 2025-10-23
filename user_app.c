@@ -132,10 +132,10 @@ static void aplicar_comando_motor(const uint8_t *payload);
 void config_app(void)
 {
     // Configura pinos imaginários dos motores como saída
-    TRISCbits.TRISC0 = 0;
-    TRISCbits.TRISC1 = 0;
-    TRISCbits.TRISC2 = 0;
-    TRISCbits.TRISC3 = 0;
+    TRISDbits.TRISD0 = 0;
+    TRISDbits.TRISD1 = 0;
+    TRISDbits.TRISD2 = 0;
+    TRISDbits.TRISD3 = 0;
 
     mutex_init(&g_motor_mutex);
     g_motor_mailbox.nova_mensagem = 0;
