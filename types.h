@@ -62,7 +62,7 @@ typedef struct mutex {
     uint8_t locked;
     uint8_t owner;
     uint8_t waiting_count;
-    tcb_t *waiting_tasks[MAX_TASKS_ON_READY_QUEUE];
+    tcb_t *waiting_tasks[MAX_TASKS_ON_READY_QUEUE]; // lista simples das tarefas aguardando o mutex
 } Mutex;
 
 /*********************************************************************

@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [v F3355 `(v ~T0 @X0 0 tf ]
-"6 mutex.c
-[; ;mutex.c: 6: void mutex_init(Mutex* mutex) {
+"7 mutex.c
+[; ;mutex.c: 7: void mutex_init(Mutex *mutex)
 [c E3346 0 1 2 3 .. ]
 [n E3346 . READY RUNNING WAITING WAITING_SEM  ]
 "20 ./types.h
@@ -12,13 +12,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./types.h: 61: typedef struct mutex {
 [s S395 `uc 1 `uc 1 `uc 1 `*S391 -> 5 `i ]
 [n S395 mutex locked owner waiting_count waiting_tasks ]
-"35
+"8586 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8586:     struct {
+[s S360 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S360 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"8596
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8596:     struct {
+[s S361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S361 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"8606
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8606:     struct {
+[s S362 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S362 . . GIEL GIEH ]
+"8585
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8585: typedef union {
+[u S359 `S360 1 `S361 1 `S362 1 ]
+[n S359 . . . . ]
+"8612
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8612: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS359 ~T0 @X0 0 e@4082 ]
+"35 ./types.h
 [; ;./types.h: 35: typedef struct f_aptos {
 [s S392 `S391 -> 5 `i `uc 1 `*S391 1 ]
 [n S392 f_aptos readyQueue readyQueueSize taskRunning ]
 "9 ./kernel.h
 [; ;./kernel.h: 9: extern f_aptos_t readyQueue;
 [v _readyQueue `S392 ~T0 @X0 0 e ]
+"8285 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8285: extern volatile unsigned char BSR __attribute__((address(0xFE0)));
+[v _BSR `Vuc ~T0 @X0 0 e@4064 ]
+"8158
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8158: extern volatile unsigned char STATUS __attribute__((address(0xFD8)));
+[v _STATUS `Vuc ~T0 @X0 0 e@4056 ]
+"8348
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8348: extern volatile unsigned char WREG __attribute__((address(0xFE8)));
+[v _WREG `Vuc ~T0 @X0 0 e@4072 ]
+"8867
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8867: extern volatile __uint24 TOS __attribute__((address(0xFFD)));
+[v _TOS `Vum ~T0 @X0 0 e@4093 ]
+"8792
+[; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8792: extern volatile unsigned char STKPTR __attribute__((address(0xFFC)));
+[v _STKPTR `Vuc ~T0 @X0 0 e@4092 ]
 "15 ./scheduler.h
 [; ;./scheduler.h: 15: void scheduler(void);
 [v _scheduler `(v ~T0 @X0 0 ef ]
@@ -532,135 +566,322 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8891
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"6 mutex.c
-[; ;mutex.c: 6: void mutex_init(Mutex* mutex) {
+"7 mutex.c
+[; ;mutex.c: 7: void mutex_init(Mutex *mutex)
 [v _mutex_init `(v ~T0 @X0 1 ef1`*S395 ]
+"8
+[; ;mutex.c: 8: {
 {
 [e :U _mutex_init ]
-[v _mutex `*S395 ~T0 @X0 1 r1 ]
-[f ]
 "7
-[; ;mutex.c: 7:     mutex->locked = 0;
-[e = . *U _mutex 0 -> -> 0 `i `uc ]
+[; ;mutex.c: 7: void mutex_init(Mutex *mutex)
+[v _mutex `*S395 ~T0 @X0 1 r1 ]
 "8
-[; ;mutex.c: 8:     mutex->owner = 0;
-[e = . *U _mutex 1 -> -> 0 `i `uc ]
+[; ;mutex.c: 8: {
+[f ]
 "9
-[; ;mutex.c: 9:     mutex->waiting_count = 0;
-[e = . *U _mutex 2 -> -> 0 `i `uc ]
+[; ;mutex.c: 9:     mutex->locked = 0;
+[e = . *U _mutex 0 -> -> 0 `i `uc ]
 "10
-[; ;mutex.c: 10: }
+[; ;mutex.c: 10:     mutex->owner = 0;
+[e = . *U _mutex 1 -> -> 0 `i `uc ]
+"11
+[; ;mutex.c: 11:     mutex->waiting_count = 0;
+[e = . *U _mutex 2 -> -> 0 `i `uc ]
+"13
+[; ;mutex.c: 13:     for (uint8_t i = 0; i < 5; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 399  ]
+[e $U 400  ]
+[e :U 399 ]
+{
+"14
+[; ;mutex.c: 14:         mutex->waiting_tasks[i] = 0;
+[e = *U + &U . *U _mutex 3 * -> _i `ux -> -> # *U &U . *U _mutex 3 `ui `ux -> -> 0 `i `*S391 ]
+"15
+[; ;mutex.c: 15:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 399  ]
+[e :U 400 ]
+}
+"16
+[; ;mutex.c: 16: }
 [e :UE 398 ]
 }
-"12
-[; ;mutex.c: 12: int mutex_lock(Mutex* mutex) {
+"19
+[; ;mutex.c: 19: int mutex_lock(Mutex *mutex)
 [v _mutex_lock `(i ~T0 @X0 1 ef1`*S395 ]
+"20
+[; ;mutex.c: 20: {
 {
 [e :U _mutex_lock ]
-[v _mutex `*S395 ~T0 @X0 1 r1 ]
-[f ]
-"13
-[; ;mutex.c: 13:     if (mutex->locked) {
-[e $ ! != -> . *U _mutex 0 `i -> 0 `i 400  ]
-{
-"15
-[; ;mutex.c: 15:         mutex->waiting_tasks[mutex->waiting_count++] = readyQueue.taskRunning;
-[e = *U + &U . *U _mutex 3 * -> ++ . *U _mutex 2 -> -> 1 `i `uc `ux -> -> # *U &U . *U _mutex 3 `ui `ux . _readyQueue 2 ]
-"16
-[; ;mutex.c: 16:         readyQueue.taskRunning->task_state = WAITING;
-[e = . *U . _readyQueue 2 2 . `E3346 2 ]
-"18
-[; ;mutex.c: 18:         scheduler();
-[e ( _scheduler ..  ]
 "19
-[; ;mutex.c: 19:         return 0;
-[e ) -> 0 `i ]
-[e $UE 399  ]
-"20
-[; ;mutex.c: 20:     }
-}
-[e :U 400 ]
-"23
-[; ;mutex.c: 23:     mutex->locked = 1;
-[e = . *U _mutex 0 -> -> 1 `i `uc ]
-"24
-[; ;mutex.c: 24:     mutex->owner = readyQueue.taskRunning->task_id;
-[e = . *U _mutex 1 . *U . _readyQueue 2 0 ]
-"25
-[; ;mutex.c: 25:     return 1;
-[e ) -> 1 `i ]
-[e $UE 399  ]
-"26
-[; ;mutex.c: 26: }
-[e :UE 399 ]
-}
-"28
-[; ;mutex.c: 28: int mutex_unlock(Mutex* mutex) {
-[v _mutex_unlock `(i ~T0 @X0 1 ef1`*S395 ]
-{
-[e :U _mutex_unlock ]
+[; ;mutex.c: 19: int mutex_lock(Mutex *mutex)
 [v _mutex `*S395 ~T0 @X0 1 r1 ]
+"20
+[; ;mutex.c: 20: {
 [f ]
-"29
-[; ;mutex.c: 29:     if (mutex->owner != readyQueue.taskRunning->task_id) {
-[e $ ! != -> . *U _mutex 1 `i -> . *U . _readyQueue 2 0 `i 402  ]
-{
-"31
-[; ;mutex.c: 31:         return 0;
-[e ) -> 0 `i ]
-[e $UE 401  ]
-"32
-[; ;mutex.c: 32:     }
-}
-[e :U 402 ]
-"34
-[; ;mutex.c: 34:     mutex->locked = 0;
-[e = . *U _mutex 0 -> -> 0 `i `uc ]
-"35
-[; ;mutex.c: 35:     mutex->owner = 0;
-[e = . *U _mutex 1 -> -> 0 `i `uc ]
-"38
-[; ;mutex.c: 38:     if (mutex->waiting_count > 0) {
-[e $ ! > -> . *U _mutex 2 `i -> 0 `i 403  ]
-{
-"39
-[; ;mutex.c: 39:         mutex->waiting_count--;
-[e -- . *U _mutex 2 -> -> 1 `i `uc ]
-"40
-[; ;mutex.c: 40:         tcb_t* task = mutex->waiting_tasks[0];
-[v _task `*S391 ~T0 @X0 1 a ]
-[e = _task *U + &U . *U _mutex 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux ]
-"41
-[; ;mutex.c: 41:         task->task_state = READY;
-[e = . *U _task 2 . `E3346 0 ]
-"44
-[; ;mutex.c: 44:         for(int i = 0; i < mutex->waiting_count; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 407  ]
+"21
+[; ;mutex.c: 21:     (INTCONbits.GIE = 0);
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+"23
+[; ;mutex.c: 23:     while (1) {
 [e :U 404 ]
 {
-"45
-[; ;mutex.c: 45:             mutex->waiting_tasks[i] = mutex->waiting_tasks[i + 1];
-[e = *U + &U . *U _mutex 3 * -> -> _i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux *U + &U . *U _mutex 3 * -> -> + _i -> 1 `i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux ]
-"46
-[; ;mutex.c: 46:         }
+"24
+[; ;mutex.c: 24:         if (mutex->locked == 0) {
+[e $ ! == -> . *U _mutex 0 `i -> 0 `i 406  ]
+{
+"25
+[; ;mutex.c: 25:             mutex->locked = 1;
+[e = . *U _mutex 0 -> -> 1 `i `uc ]
+"26
+[; ;mutex.c: 26:             mutex->owner = readyQueue.taskRunning->task_id;
+[e = . *U _mutex 1 . *U . _readyQueue 2 0 ]
+"27
+[; ;mutex.c: 27:             (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"28
+[; ;mutex.c: 28:             return 1;
+[e ) -> 1 `i ]
+[e $UE 402  ]
+"29
+[; ;mutex.c: 29:         }
 }
-[e ++ _i -> 1 `i ]
+[e :U 406 ]
+"31
+[; ;mutex.c: 31:         if (mutex->owner == readyQueue.taskRunning->task_id) {
+[e $ ! == -> . *U _mutex 1 `i -> . *U . _readyQueue 2 0 `i 407  ]
+{
+"32
+[; ;mutex.c: 32:             (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"33
+[; ;mutex.c: 33:             return 1;
+[e ) -> 1 `i ]
+[e $UE 402  ]
+"34
+[; ;mutex.c: 34:         }
+}
 [e :U 407 ]
-[e $ < _i -> . *U _mutex 2 `i 404  ]
-[e :U 405 ]
+"36
+[; ;mutex.c: 36:         if (mutex->waiting_count >= 5) {
+[e $ ! >= -> . *U _mutex 2 `i -> 5 `i 408  ]
+{
+"37
+[; ;mutex.c: 37:             (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"38
+[; ;mutex.c: 38:             return 0;
+[e ) -> 0 `i ]
+[e $UE 402  ]
+"39
+[; ;mutex.c: 39:         }
 }
+[e :U 408 ]
+"41
+[; ;mutex.c: 41:         mutex->waiting_tasks[mutex->waiting_count] = readyQueue.taskRunning;
+[e = *U + &U . *U _mutex 3 * -> . *U _mutex 2 `ux -> -> # *U &U . *U _mutex 3 `ui `ux . _readyQueue 2 ]
+"42
+[; ;mutex.c: 42:         mutex->waiting_count++;
+[e ++ . *U _mutex 2 -> -> 1 `i `uc ]
+"44
+[; ;mutex.c: 44:         readyQueue.taskRunning->task_state = WAITING_SEM;
+[e = . *U . _readyQueue 2 2 . `E3346 3 ]
+"45
+[; ;mutex.c: 45:         do { if (readyQueue.taskRunning->task_state == RUNNING) { readyQueue.taskRunning->BSR_reg = BSR; readyQueue.taskRunning->STATUS_reg = STATUS; readyQueue.taskRunning->WORK_reg = WREG; readyQueue.taskRunning->task_sp = 0; while (STKPTR) { readyQueue.taskRunning->STACK[readyQueue.taskRunning->task_sp] = TOS; readyQueue.taskRunning->task_sp++; __asm("POP"); } readyQueue.taskRunning->task_state = WAITING_SEM; } } while (0);;
+[e :U 411 ]
+{
+[e $ ! == -> . *U . _readyQueue 2 2 `ui -> . `E3346 1 `ui 412  ]
+{
+[e = . *U . _readyQueue 2 5 _BSR ]
+[e = . *U . _readyQueue 2 7 _STATUS ]
+[e = . *U . _readyQueue 2 6 _WREG ]
+[e = . *U . _readyQueue 2 9 -> -> 0 `i `uc ]
+[e $U 413  ]
+[e :U 414 ]
+{
+[e = *U + &U . *U . _readyQueue 2 8 * -> . *U . _readyQueue 2 9 `ux -> -> # *U &U . *U . _readyQueue 2 8 `ui `ux _TOS ]
+[e ++ . *U . _readyQueue 2 9 -> -> 1 `i `uc ]
+[; <" POP ;# ">
+}
+[e :U 413 ]
+[e $ != -> _STKPTR `i -> 0 `i 414  ]
+[e :U 415 ]
+[e = . *U . _readyQueue 2 2 . `E3346 3 ]
+}
+[e :U 412 ]
+}
+[e :U 410 ]
+"46
+[; ;mutex.c: 46:         scheduler();
+[e ( _scheduler ..  ]
 "47
-[; ;mutex.c: 47:     }
+[; ;mutex.c: 47:         do { if (readyQueue.taskRunning->task_state == READY) { BSR = readyQueue.taskRunning->BSR_reg; STATUS = readyQueue.taskRunning->STATUS_reg; WREG = readyQueue.taskRunning->WORK_reg; STKPTR = 0; if (readyQueue.taskRunning->task_sp == 0) { __asm("PUSH"); TOS = (uint24_t)readyQueue.taskRunning->task_func; } else { do { __asm("PUSH"); readyQueue.taskRunning->task_sp--; TOS = readyQueue.taskRunning->STACK[readyQueue.taskRunning->task_sp]; } while (readyQueue.taskRunning->task_sp != 0); } readyQueue.taskRunning->task_state = RUNNING; } } while (0);;
+[e :U 418 ]
+{
+[e $ ! == -> . *U . _readyQueue 2 2 `ui -> . `E3346 0 `ui 419  ]
+{
+[e = _BSR . *U . _readyQueue 2 5 ]
+[e = _STATUS . *U . _readyQueue 2 7 ]
+[e = _WREG . *U . _readyQueue 2 6 ]
+[e = _STKPTR -> -> 0 `i `uc ]
+[e $ ! == -> . *U . _readyQueue 2 9 `i -> 0 `i 420  ]
+{
+[; <" PUSH ;# ">
+[e = _TOS -> . *U . _readyQueue 2 1 `um ]
+}
+[e $U 421  ]
+[e :U 420 ]
+{
+[e :U 424 ]
+{
+[; <" PUSH ;# ">
+[e -- . *U . _readyQueue 2 9 -> -> 1 `i `uc ]
+[e = _TOS *U + &U . *U . _readyQueue 2 8 * -> . *U . _readyQueue 2 9 `ux -> -> # *U &U . *U . _readyQueue 2 8 `ui `ux ]
+}
+[e $ != -> . *U . _readyQueue 2 9 `i -> 0 `i 424  ]
+[e :U 423 ]
+}
+[e :U 421 ]
+[e = . *U . _readyQueue 2 2 . `E3346 1 ]
+}
+[e :U 419 ]
+}
+[e :U 417 ]
+"48
+[; ;mutex.c: 48:     }
 }
 [e :U 403 ]
+[e $U 404  ]
+[e :U 405 ]
 "49
-[; ;mutex.c: 49:     return 1;
+[; ;mutex.c: 49: }
+[e :UE 402 ]
+}
+"52
+[; ;mutex.c: 52: int mutex_unlock(Mutex *mutex)
+[v _mutex_unlock `(i ~T0 @X0 1 ef1`*S395 ]
+"53
+[; ;mutex.c: 53: {
+{
+[e :U _mutex_unlock ]
+"52
+[; ;mutex.c: 52: int mutex_unlock(Mutex *mutex)
+[v _mutex `*S395 ~T0 @X0 1 r1 ]
+"53
+[; ;mutex.c: 53: {
+[f ]
+"54
+[; ;mutex.c: 54:     (INTCONbits.GIE = 0);
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+"56
+[; ;mutex.c: 56:     if (mutex->locked == 0 || mutex->owner != readyQueue.taskRunning->task_id) {
+[e $ ! || == -> . *U _mutex 0 `i -> 0 `i != -> . *U _mutex 1 `i -> . *U . _readyQueue 2 0 `i 426  ]
+{
+"57
+[; ;mutex.c: 57:         (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"58
+[; ;mutex.c: 58:         return 0;
+[e ) -> 0 `i ]
+[e $UE 425  ]
+"59
+[; ;mutex.c: 59:     }
+}
+[e :U 426 ]
+"61
+[; ;mutex.c: 61:     if (mutex->waiting_count == 0) {
+[e $ ! == -> . *U _mutex 2 `i -> 0 `i 427  ]
+{
+"62
+[; ;mutex.c: 62:         mutex->locked = 0;
+[e = . *U _mutex 0 -> -> 0 `i `uc ]
+"63
+[; ;mutex.c: 63:         mutex->owner = 0;
+[e = . *U _mutex 1 -> -> 0 `i `uc ]
+"64
+[; ;mutex.c: 64:         (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"65
+[; ;mutex.c: 65:         return 1;
 [e ) -> 1 `i ]
-[e $UE 401  ]
-"50
-[; ;mutex.c: 50: }
-[e :UE 401 ]
+[e $UE 425  ]
+"66
+[; ;mutex.c: 66:     }
+}
+[e :U 427 ]
+"68
+[; ;mutex.c: 68:     tcb_t *task = mutex->waiting_tasks[0];
+[v _task `*S391 ~T0 @X0 1 a ]
+[e = _task *U + &U . *U _mutex 3 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux ]
+"70
+[; ;mutex.c: 70:     for (uint8_t i = 0; i < (mutex->waiting_count - 1); i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 431  ]
+[e :U 428 ]
+{
+"71
+[; ;mutex.c: 71:         mutex->waiting_tasks[i] = mutex->waiting_tasks[i + 1];
+[e = *U + &U . *U _mutex 3 * -> _i `ux -> -> # *U &U . *U _mutex 3 `ui `ux *U + &U . *U _mutex 3 * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux ]
+"72
+[; ;mutex.c: 72:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 431 ]
+[e $ < -> _i `i - -> . *U _mutex 2 `i -> 1 `i 428  ]
+[e :U 429 ]
+}
+"73
+[; ;mutex.c: 73:     mutex->waiting_tasks[mutex->waiting_count - 1] = 0;
+[e = *U + &U . *U _mutex 3 * -> -> - -> . *U _mutex 2 `i -> 1 `i `ui `ux -> -> # *U &U . *U _mutex 3 `ui `ux -> -> 0 `i `*S391 ]
+"74
+[; ;mutex.c: 74:     mutex->waiting_count--;
+[e -- . *U _mutex 2 -> -> 1 `i `uc ]
+"76
+[; ;mutex.c: 76:     if (task != 0) {
+[e $ ! != _task -> -> 0 `i `*S391 432  ]
+{
+"77
+[; ;mutex.c: 77:         mutex->owner = task->task_id;
+[e = . *U _mutex 1 . *U _task 0 ]
+"78
+[; ;mutex.c: 78:         mutex->locked = 1;
+[e = . *U _mutex 0 -> -> 1 `i `uc ]
+"79
+[; ;mutex.c: 79:         task->task_state = READY;
+[e = . *U _task 2 . `E3346 0 ]
+"80
+[; ;mutex.c: 80:     }
+}
+[e $U 433  ]
+"81
+[; ;mutex.c: 81:     else {
+[e :U 432 ]
+{
+"82
+[; ;mutex.c: 82:         mutex->locked = 0;
+[e = . *U _mutex 0 -> -> 0 `i `uc ]
+"83
+[; ;mutex.c: 83:         mutex->owner = 0;
+[e = . *U _mutex 1 -> -> 0 `i `uc ]
+"84
+[; ;mutex.c: 84:     }
+}
+[e :U 433 ]
+"86
+[; ;mutex.c: 86:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"87
+[; ;mutex.c: 87:     return 1;
+[e ) -> 1 `i ]
+[e $UE 425  ]
+"88
+[; ;mutex.c: 88: }
+[e :UE 425 ]
 }

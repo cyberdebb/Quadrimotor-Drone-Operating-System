@@ -6105,17 +6105,9 @@ typedef enum {INT_EDGE_FALLING = 0,
 
 
 void set_channel(channel_t channel);
-
-
 void set_port(port_conf_t port);
-
-
 void config_adc(tad_t tad, conversion_clock_t cclk);
-
-
 void adc_go(int go_done);
-
-
 int adc_read();
 
 

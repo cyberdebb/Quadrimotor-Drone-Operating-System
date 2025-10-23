@@ -85,7 +85,7 @@ RUNNING 1
 WAITING 2
 WAITING_SEM 3
 ]
-"6 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/mutex.c
+"7 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/mutex.c
 [e E3346 . `uc
 READY 0
 RUNNING 1
@@ -106,7 +106,7 @@ RUNNING 1
 WAITING 2
 WAITING_SEM 3
 ]
-"7 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
+"6 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
 [e E3151 . `uc
 CHANNEL_0 0
 CHANNEL_1 1
@@ -122,7 +122,7 @@ CHANNEL_10 10
 CHANNEL_11 11
 CHANNEL_12 12
 ]
-"13
+"11
 [e E3166 . `uc
 AN12 0
 AN11 3
@@ -139,7 +139,7 @@ AN01 13
 AN00 14
 DISABLE 15
 ]
-"19
+"16
 [e E3182 . `uc
 TAD20 7
 TAD16 6
@@ -160,13 +160,13 @@ FOSC32 2
 FOSC8 1
 FOSC2 0
 ]
-"41
+"36
 [e E3202 . `uc
 PWM_PRESCALE_1 0
 PWM_PRESCALE_4 1
 PWM_PRESCALE_16 2
 ]
-"78
+"73
 [e E3207 . `uc
 EXT_INT0 0
 EXT_INT1 1
@@ -208,17 +208,17 @@ INT_EDGE_RISING 1
 [v _conf_interrupts conf_interrupts `(v  1 e 1 0 ]
 "25
 [v _ISR_TIMER_0 ISR_TIMER_0 `IIH(v  1 e 1 0 ]
-"7 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
+"6 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
 [v _set_channel set_channel `(v  1 e 1 0 ]
-"13
+"11
 [v _set_port set_port `(v  1 e 1 0 ]
-"19
+"16
 [v _config_adc config_adc `(v  1 e 1 0 ]
-"27
+"23
 [v _adc_go adc_go `(v  1 e 1 0 ]
-"33
+"28
 [v _adc_read adc_read `(i  1 e 2 0 ]
-"55
+"50
 [v _pwm_set_duty pwm_set_duty `(v  1 e 1 0 ]
 "12 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/kernel.c
 [v _os_config os_config `(v  1 e 1 0 ]
@@ -320,7 +320,7 @@ INT_EDGE_RISING 1
 ]
 [u S199 . 1 `S181 1 . 1 0 `S190 1 . 1 0 ]
 [v _LATDbits LATDbits `VES199  1 e 1 @3980 ]
-[s S1414 . 1 `uc 1 TRISB0 1 0 :1:0 
+[s S1447 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -330,7 +330,7 @@ INT_EDGE_RISING 1
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "3655
-[s S1423 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1456 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -339,8 +339,8 @@ INT_EDGE_RISING 1
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-[u S1432 . 1 `S1414 1 . 1 0 `S1423 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES1432  1 e 1 @3987 ]
+[u S1465 . 1 `S1447 1 . 1 0 `S1456 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES1465  1 e 1 @3987 ]
 [s S388 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
@@ -370,12 +370,12 @@ INT_EDGE_RISING 1
 "4031
 [u S159 . 1 `S141 1 . 1 0 `S150 1 . 1 0 ]
 [v _TRISDbits TRISDbits `VES159  1 e 1 @3989 ]
-[s S1371 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S1404 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 `uc 1 P1M 1 0 :2:6 
 ]
 "6352
-[s S1375 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S1408 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
@@ -384,83 +384,83 @@ INT_EDGE_RISING 1
 `uc 1 P1M0 1 0 :1:6 
 `uc 1 P1M1 1 0 :1:7 
 ]
-[u S1384 . 1 `S1371 1 . 1 0 `S1375 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES1384  1 e 1 @4029 ]
+[u S1417 . 1 `S1404 1 . 1 0 `S1408 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES1417  1 e 1 @4029 ]
 "6494
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @4030 ]
-[s S1277 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1310 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "6529
-[s S1282 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1315 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
 `uc 1 ACQT1 1 0 :1:4 
 `uc 1 ACQT2 1 0 :1:5 
 ]
-[u S1289 . 1 `S1277 1 . 1 0 `S1282 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES1289  1 e 1 @4032 ]
-[s S1224 . 1 `uc 1 PCFG 1 0 :4:0 
+[u S1322 . 1 `S1310 1 . 1 0 `S1315 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES1322  1 e 1 @4032 ]
+[s S1257 . 1 `uc 1 PCFG 1 0 :4:0 
 `uc 1 VCFG 1 0 :2:4 
 ]
 "6604
-[s S1227 . 1 `uc 1 PCFG0 1 0 :1:0 
+[s S1260 . 1 `uc 1 PCFG0 1 0 :1:0 
 `uc 1 PCFG1 1 0 :1:1 
 `uc 1 PCFG2 1 0 :1:2 
 `uc 1 PCFG3 1 0 :1:3 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 ]
-[s S1234 . 1 `uc 1 . 1 0 :3:0 
+[s S1267 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
-[u S1239 . 1 `S1224 1 . 1 0 `S1227 1 . 1 0 `S1234 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES1239  1 e 1 @4033 ]
-[s S1141 . 1 `uc 1 . 1 0 :1:0 
+[u S1272 . 1 `S1257 1 . 1 0 `S1260 1 . 1 0 `S1267 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES1272  1 e 1 @4033 ]
+[s S1174 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "6708
-[s S1144 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1177 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S1148 . 1 `uc 1 . 1 0 :1:0 
+[s S1181 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S1155 . 1 `uc 1 . 1 0 :1:0 
+[s S1188 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S1158 . 1 `uc 1 . 1 0 :1:0 
+[s S1191 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S1161 . 1 `uc 1 . 1 0 :1:0 
+[s S1194 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S1164 . 1 `uc 1 . 1 0 :1:0 
+[s S1197 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S1167 . 1 `uc 1 . 1 0 :1:0 
+[s S1200 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S1170 . 1 `S1141 1 . 1 0 `S1144 1 . 1 0 `S1148 1 . 1 0 `S1155 1 . 1 0 `S1158 1 . 1 0 `S1161 1 . 1 0 `S1164 1 . 1 0 `S1167 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES1170  1 e 1 @4034 ]
+[u S1203 . 1 `S1174 1 . 1 0 `S1177 1 . 1 0 `S1181 1 . 1 0 `S1188 1 . 1 0 `S1191 1 . 1 0 `S1194 1 . 1 0 `S1197 1 . 1 0 `S1200 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1203  1 e 1 @4034 ]
 "6783
 [v _ADRES ADRES `VEus  1 e 2 @4035 ]
-[s S1310 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S1343 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 TOUTPS 1 0 :4:3 
 ]
 "7226
-[s S1314 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S1347 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -468,14 +468,14 @@ INT_EDGE_RISING 1
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[s S1322 . 1 `uc 1 . 1 0 :3:0 
+[s S1355 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 TOUTPS0 1 0 :1:3 
 `uc 1 TOUTPS1 1 0 :1:4 
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S1328 . 1 `S1310 1 . 1 0 `S1314 1 . 1 0 `S1322 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES1328  1 e 1 @4042 ]
+[u S1361 . 1 `S1343 1 . 1 0 `S1347 1 . 1 0 `S1355 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES1361  1 e 1 @4042 ]
 "7296
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
 "7406
@@ -502,7 +502,7 @@ INT_EDGE_RISING 1
 [v _BSR BSR `VEuc  1 e 1 @4064 ]
 "8348
 [v _WREG WREG `VEuc  1 e 1 @4072 ]
-[s S1520 . 1 `uc 1 INT1IF 1 0 :1:0 
+[s S1553 . 1 `uc 1 INT1IF 1 0 :1:0 
 `uc 1 INT2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1IE 1 0 :1:3 
@@ -512,7 +512,7 @@ INT_EDGE_RISING 1
 `uc 1 INT2IP 1 0 :1:7 
 ]
 "8438
-[s S1529 . 1 `uc 1 INT1F 1 0 :1:0 
+[s S1562 . 1 `uc 1 INT1F 1 0 :1:0 
 `uc 1 INT2F 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 INT1E 1 0 :1:3 
@@ -521,13 +521,13 @@ INT_EDGE_RISING 1
 `uc 1 INT1P 1 0 :1:6 
 `uc 1 INT2P 1 0 :1:7 
 ]
-[u S1538 . 1 `S1520 1 . 1 0 `S1529 1 . 1 0 ]
-[v _INTCON3bits INTCON3bits `VES1538  1 e 1 @4080 ]
-[s S1454 . 1 `uc 1 . 1 0 :7:0 
+[u S1571 . 1 `S1553 1 . 1 0 `S1562 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES1571  1 e 1 @4080 ]
+[s S1487 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "8530
-[s S1457 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S1490 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -536,13 +536,13 @@ INT_EDGE_RISING 1
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S1466 . 1 `uc 1 . 1 0 :2:0 
+[s S1499 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IP 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S1471 . 1 `S1454 1 . 1 0 `S1457 1 . 1 0 `S1466 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES1471  1 e 1 @4081 ]
+[u S1504 . 1 `S1487 1 . 1 0 `S1490 1 . 1 0 `S1499 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES1504  1 e 1 @4081 ]
 [s S92 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -593,33 +593,33 @@ INT_EDGE_RISING 1
 {
 "88
 } 0
-"13 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
+"11 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
 [v _set_port set_port `(v  1 e 1 0 ]
 {
 [v set_port@port port `E3166  1 p 1 wreg ]
 [v set_port@port port `E3166  1 p 1 wreg ]
-"15
+"13
 [v set_port@port port `E3166  1 p 1 5 ]
-"16
+"14
 } 0
-"7
+"6
 [v _set_channel set_channel `(v  1 e 1 0 ]
 {
 [v set_channel@channel channel `E3151  1 p 1 wreg ]
 [v set_channel@channel channel `E3151  1 p 1 wreg ]
-"9
+"8
 [v set_channel@channel channel `E3151  1 p 1 6 ]
-"10
+"9
 } 0
-"19
+"16
 [v _config_adc config_adc `(v  1 e 1 0 ]
 {
 [v config_adc@tad tad `E3182  1 p 1 wreg ]
 [v config_adc@tad tad `E3182  1 p 1 wreg ]
 [v config_adc@cclk cclk `E3192  1 p 1 5 ]
-"21
+"18
 [v config_adc@tad tad `E3182  1 p 1 7 ]
-"24
+"21
 } 0
 "7 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/hardware.c
 [v _conf_timer_0 conf_timer_0 `(v  1 e 1 0 ]
@@ -672,16 +672,16 @@ INT_EDGE_RISING 1
 [v tarefa_1@pot pot `i  1 a 2 3 ]
 "110
 } 0
-"33 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
+"28 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/io.c
 [v _adc_read adc_read `(i  1 e 2 0 ]
 {
-"38
+"33
 } 0
-"27
+"23
 [v _adc_go adc_go `(v  1 e 1 0 ]
 {
 [v adc_go@go_done go_done `i  1 p 2 0 ]
-"30
+"26
 } 0
 "25 /Users/augustodaleffe/Quadrimotor-Drone-Operating-System/hardware.c
 [v _ISR_TIMER_0 ISR_TIMER_0 `IIH(v  1 e 1 0 ]

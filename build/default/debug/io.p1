@@ -1,6 +1,6 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"7 io.c
-[; ;io.c: 7: void set_channel(channel_t channel)
+"6 io.c
+[; ;io.c: 6: void set_channel(channel_t channel)
 [c E3151 0 1 2 3 4 5 6 7 8 9 10 11 12 .. ]
 [n E3151 . CHANNEL_0 CHANNEL_1 CHANNEL_2 CHANNEL_3 CHANNEL_4 CHANNEL_5 CHANNEL_6 CHANNEL_7 CHANNEL_8 CHANNEL_9 CHANNEL_10 CHANNEL_11 CHANNEL_12  ]
 "6670 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
@@ -42,8 +42,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6708
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 6708: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0xFC2)));
 [v _ADCON0bits `VS267 ~T0 @X0 0 e@4034 ]
-"13 io.c
-[; ;io.c: 13: void set_port(port_conf_t port)
+"11 io.c
+[; ;io.c: 11: void set_port(port_conf_t port)
 [c E3166 0 3 4 5 6 7 8 9 10 11 12 13 14 15 .. ]
 [n E3166 . AN12 AN11 AN10 AN09 AN08 AN07 AN06 AN05 AN04 AN03 AN02 AN01 AN00 DISABLE  ]
 "6585 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
@@ -65,8 +65,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6604
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 6604: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0xFC1)));
 [v _ADCON1bits `VS263 ~T0 @X0 0 e@4033 ]
-"19 io.c
-[; ;io.c: 19: void config_adc(tad_t tad, conversion_clock_t cclk)
+"16 io.c
+[; ;io.c: 16: void config_adc(tad_t tad, conversion_clock_t cclk)
 [c E3182 7 6 5 4 3 2 1 0 .. ]
 [n E3182 . TAD20 TAD16 TAD12 TAD8 TAD6 TAD4 TAD2 TAD0  ]
 [c E3192 7 6 5 4 3 2 1 0 .. ]
@@ -89,8 +89,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6783
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 6783: extern volatile unsigned short ADRES __attribute__((address(0xFC3)));
 [v _ADRES `Vus ~T0 @X0 0 e@4035 ]
-"41 io.c
-[; ;io.c: 41: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
+"36 io.c
+[; ;io.c: 36: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
 [c E3202 0 1 2 .. ]
 [n E3202 . PWM_PRESCALE_1 PWM_PRESCALE_4 PWM_PRESCALE_16  ]
 "7204 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
@@ -148,14 +148,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6352
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 6352: extern volatile CCP1CONbits_t CCP1CONbits __attribute__((address(0xFBD)));
 [v _CCP1CONbits `VS254 ~T0 @X0 0 e@4029 ]
-"83 ./io.h
-[; ;./io.h: 83: void pwm_set_duty(uint16_t duty);
+"75 ./io.h
+[; ;./io.h: 75: void pwm_set_duty(uint16_t duty);
 [v _pwm_set_duty `(v ~T0 @X0 0 ef1`us ]
 "6494 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 6494: extern volatile unsigned char CCPR1L __attribute__((address(0xFBE)));
 [v _CCPR1L `Vuc ~T0 @X0 0 e@4030 ]
-"78 io.c
-[; ;io.c: 78: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
+"73 io.c
+[; ;io.c: 73: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
 [c E3207 0 1 2 .. ]
 [n E3207 . EXT_INT0 EXT_INT1 EXT_INT2  ]
 [c E3212 0 1 .. ]
@@ -738,287 +738,287 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8891
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 8891: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"7 io.c
-[; ;io.c: 7: void set_channel(channel_t channel)
+"6 io.c
+[; ;io.c: 6: void set_channel(channel_t channel)
 [v _set_channel `(v ~T0 @X0 1 ef1`E3151 ]
-"8
-[; ;io.c: 8: {
+"7
+[; ;io.c: 7: {
 {
 [e :U _set_channel ]
-"7
-[; ;io.c: 7: void set_channel(channel_t channel)
+"6
+[; ;io.c: 6: void set_channel(channel_t channel)
 [v _channel `E3151 ~T0 @X0 1 r1 ]
-"8
-[; ;io.c: 8: {
+"7
+[; ;io.c: 7: {
 [f ]
-"9
-[; ;io.c: 9:     ADCON0bits.CHS = channel;
+"8
+[; ;io.c: 8:     ADCON0bits.CHS = channel;
 [e = . . _ADCON0bits 1 2 -> _channel `uc ]
-"10
-[; ;io.c: 10: }
+"9
+[; ;io.c: 9: }
 [e :UE 386 ]
 }
-"13
-[; ;io.c: 13: void set_port(port_conf_t port)
+"11
+[; ;io.c: 11: void set_port(port_conf_t port)
 [v _set_port `(v ~T0 @X0 1 ef1`E3166 ]
-"14
-[; ;io.c: 14: {
+"12
+[; ;io.c: 12: {
 {
 [e :U _set_port ]
-"13
-[; ;io.c: 13: void set_port(port_conf_t port)
+"11
+[; ;io.c: 11: void set_port(port_conf_t port)
 [v _port `E3166 ~T0 @X0 1 r1 ]
-"14
-[; ;io.c: 14: {
+"12
+[; ;io.c: 12: {
 [f ]
-"15
-[; ;io.c: 15:     ADCON1bits.PCFG = port;
+"13
+[; ;io.c: 13:     ADCON1bits.PCFG = port;
 [e = . . _ADCON1bits 0 0 -> _port `uc ]
-"16
-[; ;io.c: 16: }
+"14
+[; ;io.c: 14: }
 [e :UE 387 ]
 }
-"19
-[; ;io.c: 19: void config_adc(tad_t tad, conversion_clock_t cclk)
+"16
+[; ;io.c: 16: void config_adc(tad_t tad, conversion_clock_t cclk)
 [v _config_adc `(v ~T0 @X0 1 ef2`E3182`E3192 ]
-"20
-[; ;io.c: 20: {
+"17
+[; ;io.c: 17: {
 {
 [e :U _config_adc ]
-"19
-[; ;io.c: 19: void config_adc(tad_t tad, conversion_clock_t cclk)
+"16
+[; ;io.c: 16: void config_adc(tad_t tad, conversion_clock_t cclk)
 [v _tad `E3182 ~T0 @X0 1 r1 ]
 [v _cclk `E3192 ~T0 @X0 1 r2 ]
-"20
-[; ;io.c: 20: {
+"17
+[; ;io.c: 17: {
 [f ]
-"21
-[; ;io.c: 21:     ADCON2bits.ACQT = tad;
+"18
+[; ;io.c: 18:     ADCON2bits.ACQT = tad;
 [e = . . _ADCON2bits 0 1 -> _tad `uc ]
-"22
-[; ;io.c: 22:     ADCON2bits.ADCS = cclk;
+"19
+[; ;io.c: 19:     ADCON2bits.ADCS = cclk;
 [e = . . _ADCON2bits 0 0 -> _cclk `uc ]
-"23
-[; ;io.c: 23:     ADCON2bits.ADFM = 1;
+"20
+[; ;io.c: 20:     ADCON2bits.ADFM = 1;
 [e = . . _ADCON2bits 0 3 -> -> 1 `i `uc ]
-"24
-[; ;io.c: 24: }
+"21
+[; ;io.c: 21: }
 [e :UE 388 ]
 }
-"27
-[; ;io.c: 27: void adc_go(int go_done)
+"23
+[; ;io.c: 23: void adc_go(int go_done)
 [v _adc_go `(v ~T0 @X0 1 ef1`i ]
-"28
-[; ;io.c: 28: {
+"24
+[; ;io.c: 24: {
 {
 [e :U _adc_go ]
-"27
-[; ;io.c: 27: void adc_go(int go_done)
+"23
+[; ;io.c: 23: void adc_go(int go_done)
 [v _go_done `i ~T0 @X0 1 r1 ]
-"28
-[; ;io.c: 28: {
+"24
+[; ;io.c: 24: {
 [f ]
-"29
-[; ;io.c: 29:     ADCON0bits.ADON = go_done;
+"25
+[; ;io.c: 25:     ADCON0bits.ADON = go_done;
 [e = . . _ADCON0bits 1 0 -> _go_done `uc ]
-"30
-[; ;io.c: 30: }
+"26
+[; ;io.c: 26: }
 [e :UE 389 ]
 }
-"33
-[; ;io.c: 33: int adc_read()
+"28
+[; ;io.c: 28: int adc_read()
 [v _adc_read `(i ~T0 @X0 1 ef ]
-"34
-[; ;io.c: 34: {
+"29
+[; ;io.c: 29: {
 {
 [e :U _adc_read ]
 [f ]
-"35
-[; ;io.c: 35:     ADCON0bits.GO = 1;
+"30
+[; ;io.c: 30:     ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
-"36
-[; ;io.c: 36:     while (ADCON0bits.GODONE);
+"31
+[; ;io.c: 31:     while (ADCON0bits.GODONE);
 [e $U 391  ]
 [e :U 392 ]
 [e :U 391 ]
 [e $ != -> . . _ADCON0bits 7 1 `i -> 0 `i 392  ]
 [e :U 393 ]
-"37
-[; ;io.c: 37:     return ADRES;
+"32
+[; ;io.c: 32:     return ADRES;
 [e ) -> _ADRES `i ]
 [e $UE 390  ]
-"38
-[; ;io.c: 38: }
+"33
+[; ;io.c: 33: }
 [e :UE 390 ]
 }
-"41
-[; ;io.c: 41: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
+"36
+[; ;io.c: 36: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
 [v _pwm_init `(v ~T0 @X0 1 ef2`uc`E3202 ]
-"42
-[; ;io.c: 42: {
+"37
+[; ;io.c: 37: {
 {
 [e :U _pwm_init ]
-"41
-[; ;io.c: 41: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
+"36
+[; ;io.c: 36: void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
 [v _period `uc ~T0 @X0 1 r1 ]
 [v _prescaler `E3202 ~T0 @X0 1 r2 ]
-"42
-[; ;io.c: 42: {
+"37
+[; ;io.c: 37: {
 [f ]
-"43
-[; ;io.c: 43:     T2CONbits.TMR2ON = 0;
+"38
+[; ;io.c: 38:     T2CONbits.TMR2ON = 0;
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-"44
-[; ;io.c: 44:     T2CONbits.T2CKPS = prescaler;
+"39
+[; ;io.c: 39:     T2CONbits.T2CKPS = prescaler;
 [e = . . _T2CONbits 0 0 -> _prescaler `uc ]
-"45
-[; ;io.c: 45:     T2CONbits.TOUTPS = 0;
+"40
+[; ;io.c: 40:     T2CONbits.TOUTPS = 0;
 [e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-"46
-[; ;io.c: 46:     PR2 = period;
+"41
+[; ;io.c: 41:     PR2 = period;
 [e = _PR2 _period ]
-"47
-[; ;io.c: 47:     TMR2 = 0;
+"42
+[; ;io.c: 42:     TMR2 = 0;
 [e = _TMR2 -> -> 0 `i `uc ]
-"49
-[; ;io.c: 49:     TRISCbits.TRISC2 = 0;
+"44
+[; ;io.c: 44:     TRISCbits.TRISC2 = 0;
 [e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-"50
-[; ;io.c: 50:     CCP1CONbits.CCP1M = 0b1100;
+"45
+[; ;io.c: 45:     CCP1CONbits.CCP1M = 0b1100;
 [e = . . _CCP1CONbits 0 0 -> -> 12 `i `uc ]
-"51
-[; ;io.c: 51:     pwm_set_duty(0);
+"46
+[; ;io.c: 46:     pwm_set_duty(0);
 [e ( _pwm_set_duty (1 -> -> 0 `i `us ]
-"52
-[; ;io.c: 52: }
+"47
+[; ;io.c: 47: }
 [e :UE 394 ]
 }
-"55
-[; ;io.c: 55: void pwm_set_duty(uint16_t duty)
+"50
+[; ;io.c: 50: void pwm_set_duty(uint16_t duty)
 [v _pwm_set_duty `(v ~T0 @X0 1 ef1`us ]
-"56
-[; ;io.c: 56: {
+"51
+[; ;io.c: 51: {
 {
 [e :U _pwm_set_duty ]
-"55
-[; ;io.c: 55: void pwm_set_duty(uint16_t duty)
+"50
+[; ;io.c: 50: void pwm_set_duty(uint16_t duty)
 [v _duty `us ~T0 @X0 1 r1 ]
-"56
-[; ;io.c: 56: {
+"51
+[; ;io.c: 51: {
 [f ]
-"57
-[; ;io.c: 57:     if (duty > 1023) {
+"52
+[; ;io.c: 52:     if (duty > 1023) {
 [e $ ! > -> _duty `ui -> -> 1023 `i `ui 396  ]
 {
-"58
-[; ;io.c: 58:         duty = 1023;
+"53
+[; ;io.c: 53:         duty = 1023;
 [e = _duty -> -> 1023 `i `us ]
-"59
-[; ;io.c: 59:     }
+"54
+[; ;io.c: 54:     }
 }
 [e :U 396 ]
-"61
-[; ;io.c: 61:     CCPR1L = (uint8_t)(duty >> 2);
+"56
+[; ;io.c: 56:     CCPR1L = (uint8_t)(duty >> 2);
 [e = _CCPR1L -> >> -> _duty `ui -> 2 `i `uc ]
-"62
-[; ;io.c: 62:     CCP1CONbits.DC1B = (uint8_t)(duty & 0x03);
+"57
+[; ;io.c: 57:     CCP1CONbits.DC1B = (uint8_t)(duty & 0x03);
 [e = . . _CCP1CONbits 0 1 -> & -> _duty `ui -> -> 3 `i `ui `uc ]
-"63
-[; ;io.c: 63: }
+"58
+[; ;io.c: 58: }
 [e :UE 395 ]
 }
-"66
-[; ;io.c: 66: void pwm_start(void)
+"61
+[; ;io.c: 61: void pwm_start(void)
 [v _pwm_start `(v ~T0 @X0 1 ef ]
-"67
-[; ;io.c: 67: {
+"62
+[; ;io.c: 62: {
 {
 [e :U _pwm_start ]
 [f ]
-"68
-[; ;io.c: 68:     T2CONbits.TMR2ON = 1;
+"63
+[; ;io.c: 63:     T2CONbits.TMR2ON = 1;
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"69
-[; ;io.c: 69: }
+"64
+[; ;io.c: 64: }
 [e :UE 397 ]
 }
-"72
-[; ;io.c: 72: void pwm_stop(void)
+"67
+[; ;io.c: 67: void pwm_stop(void)
 [v _pwm_stop `(v ~T0 @X0 1 ef ]
-"73
-[; ;io.c: 73: {
+"68
+[; ;io.c: 68: {
 {
 [e :U _pwm_stop ]
 [f ]
-"74
-[; ;io.c: 74:     T2CONbits.TMR2ON = 0;
+"69
+[; ;io.c: 69:     T2CONbits.TMR2ON = 0;
 [e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
-"75
-[; ;io.c: 75: }
+"70
+[; ;io.c: 70: }
 [e :UE 398 ]
 }
-"78
-[; ;io.c: 78: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
+"73
+[; ;io.c: 73: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
 [v _ext_int_config `(v ~T0 @X0 1 ef2`E3207`E3212 ]
-"79
-[; ;io.c: 79: {
+"74
+[; ;io.c: 74: {
 {
 [e :U _ext_int_config ]
-"78
-[; ;io.c: 78: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
+"73
+[; ;io.c: 73: void ext_int_config(ext_int_t source, ext_int_edge_t edge)
 [v _source `E3207 ~T0 @X0 1 r1 ]
 [v _edge `E3212 ~T0 @X0 1 r2 ]
-"79
-[; ;io.c: 79: {
+"74
+[; ;io.c: 74: {
 [f ]
-"80
-[; ;io.c: 80:     switch (source) {
+"75
+[; ;io.c: 75:     switch (source) {
 [e $U 401  ]
 {
-"81
-[; ;io.c: 81:         case EXT_INT0:
+"76
+[; ;io.c: 76:         case EXT_INT0:
 [e :U 402 ]
-"82
-[; ;io.c: 82:             TRISBbits.TRISB0 = 1;
+"77
+[; ;io.c: 77:             TRISBbits.TRISB0 = 1;
 [e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
-"83
-[; ;io.c: 83:             INTCON2bits.INTEDG0 = edge;
+"78
+[; ;io.c: 78:             INTCON2bits.INTEDG0 = edge;
 [e = . . _INTCON2bits 1 6 -> _edge `uc ]
-"84
-[; ;io.c: 84:             break;
+"79
+[; ;io.c: 79:             break;
 [e $U 400  ]
-"85
-[; ;io.c: 85:         case EXT_INT1:
+"80
+[; ;io.c: 80:         case EXT_INT1:
 [e :U 403 ]
-"86
-[; ;io.c: 86:             TRISBbits.TRISB1 = 1;
+"81
+[; ;io.c: 81:             TRISBbits.TRISB1 = 1;
 [e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
-"87
-[; ;io.c: 87:             INTCON2bits.INTEDG1 = edge;
+"82
+[; ;io.c: 82:             INTCON2bits.INTEDG1 = edge;
 [e = . . _INTCON2bits 1 5 -> _edge `uc ]
-"88
-[; ;io.c: 88:             break;
+"83
+[; ;io.c: 83:             break;
 [e $U 400  ]
-"89
-[; ;io.c: 89:         case EXT_INT2:
+"84
+[; ;io.c: 84:         case EXT_INT2:
 [e :U 404 ]
-"90
-[; ;io.c: 90:             TRISBbits.TRISB2 = 1;
+"85
+[; ;io.c: 85:             TRISBbits.TRISB2 = 1;
 [e = . . _TRISBbits 0 2 -> -> 1 `i `uc ]
-"91
-[; ;io.c: 91:             INTCON2bits.INTEDG2 = edge;
+"86
+[; ;io.c: 86:             INTCON2bits.INTEDG2 = edge;
 [e = . . _INTCON2bits 1 4 -> _edge `uc ]
-"92
-[; ;io.c: 92:             break;
+"87
+[; ;io.c: 87:             break;
 [e $U 400  ]
-"93
-[; ;io.c: 93:         default:
+"88
+[; ;io.c: 88:         default:
 [e :U 405 ]
-"94
-[; ;io.c: 94:             break;
+"89
+[; ;io.c: 89:             break;
 [e $U 400  ]
-"95
-[; ;io.c: 95:     }
+"90
+[; ;io.c: 90:     }
 }
 [e $U 400  ]
 [e :U 401 ]
@@ -1027,71 +1027,71 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E3207 2 `ui 404
  405 ]
 [e :U 400 ]
-"96
-[; ;io.c: 96: }
+"91
+[; ;io.c: 91: }
 [e :UE 399 ]
 }
-"99
-[; ;io.c: 99: void ext_int_enable(ext_int_t source)
+"94
+[; ;io.c: 94: void ext_int_enable(ext_int_t source)
 [v _ext_int_enable `(v ~T0 @X0 1 ef1`E3207 ]
-"100
-[; ;io.c: 100: {
+"95
+[; ;io.c: 95: {
 {
 [e :U _ext_int_enable ]
-"99
-[; ;io.c: 99: void ext_int_enable(ext_int_t source)
+"94
+[; ;io.c: 94: void ext_int_enable(ext_int_t source)
 [v _source `E3207 ~T0 @X0 1 r1 ]
-"100
-[; ;io.c: 100: {
+"95
+[; ;io.c: 95: {
 [f ]
-"101
-[; ;io.c: 101:     switch (source) {
+"96
+[; ;io.c: 96:     switch (source) {
 [e $U 408  ]
 {
-"102
-[; ;io.c: 102:         case EXT_INT0:
+"97
+[; ;io.c: 97:         case EXT_INT0:
 [e :U 409 ]
-"103
-[; ;io.c: 103:             INTCONbits.INT0IF = 0;
+"98
+[; ;io.c: 98:             INTCONbits.INT0IF = 0;
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"104
-[; ;io.c: 104:             INTCONbits.INT0IE = 1;
+"99
+[; ;io.c: 99:             INTCONbits.INT0IE = 1;
 [e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
-"105
-[; ;io.c: 105:             break;
+"100
+[; ;io.c: 100:             break;
 [e $U 407  ]
-"106
-[; ;io.c: 106:         case EXT_INT1:
+"101
+[; ;io.c: 101:         case EXT_INT1:
 [e :U 410 ]
-"107
-[; ;io.c: 107:             INTCON3bits.INT1IF = 0;
+"102
+[; ;io.c: 102:             INTCON3bits.INT1IF = 0;
 [e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
-"108
-[; ;io.c: 108:             INTCON3bits.INT1IE = 1;
+"103
+[; ;io.c: 103:             INTCON3bits.INT1IE = 1;
 [e = . . _INTCON3bits 0 3 -> -> 1 `i `uc ]
-"109
-[; ;io.c: 109:             break;
+"104
+[; ;io.c: 104:             break;
 [e $U 407  ]
-"110
-[; ;io.c: 110:         case EXT_INT2:
+"105
+[; ;io.c: 105:         case EXT_INT2:
 [e :U 411 ]
-"111
-[; ;io.c: 111:             INTCON3bits.INT2IF = 0;
+"106
+[; ;io.c: 106:             INTCON3bits.INT2IF = 0;
 [e = . . _INTCON3bits 0 1 -> -> 0 `i `uc ]
-"112
-[; ;io.c: 112:             INTCON3bits.INT2IE = 1;
+"107
+[; ;io.c: 107:             INTCON3bits.INT2IE = 1;
 [e = . . _INTCON3bits 0 4 -> -> 1 `i `uc ]
-"113
-[; ;io.c: 113:             break;
+"108
+[; ;io.c: 108:             break;
 [e $U 407  ]
-"114
-[; ;io.c: 114:         default:
+"109
+[; ;io.c: 109:         default:
 [e :U 412 ]
-"115
-[; ;io.c: 115:             break;
+"110
+[; ;io.c: 110:             break;
 [e $U 407  ]
-"116
-[; ;io.c: 116:     }
+"111
+[; ;io.c: 111:     }
 }
 [e $U 407  ]
 [e :U 408 ]
@@ -1100,62 +1100,62 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E3207 2 `ui 411
  412 ]
 [e :U 407 ]
-"117
-[; ;io.c: 117: }
+"112
+[; ;io.c: 112: }
 [e :UE 406 ]
 }
-"120
-[; ;io.c: 120: void ext_int_disable(ext_int_t source)
+"115
+[; ;io.c: 115: void ext_int_disable(ext_int_t source)
 [v _ext_int_disable `(v ~T0 @X0 1 ef1`E3207 ]
-"121
-[; ;io.c: 121: {
+"116
+[; ;io.c: 116: {
 {
 [e :U _ext_int_disable ]
-"120
-[; ;io.c: 120: void ext_int_disable(ext_int_t source)
+"115
+[; ;io.c: 115: void ext_int_disable(ext_int_t source)
 [v _source `E3207 ~T0 @X0 1 r1 ]
-"121
-[; ;io.c: 121: {
+"116
+[; ;io.c: 116: {
 [f ]
-"122
-[; ;io.c: 122:     switch (source) {
+"117
+[; ;io.c: 117:     switch (source) {
 [e $U 415  ]
 {
-"123
-[; ;io.c: 123:         case EXT_INT0:
+"118
+[; ;io.c: 118:         case EXT_INT0:
 [e :U 416 ]
-"124
-[; ;io.c: 124:             INTCONbits.INT0IE = 0;
+"119
+[; ;io.c: 119:             INTCONbits.INT0IE = 0;
 [e = . . _INTCONbits 0 4 -> -> 0 `i `uc ]
-"125
-[; ;io.c: 125:             break;
+"120
+[; ;io.c: 120:             break;
 [e $U 414  ]
-"126
-[; ;io.c: 126:         case EXT_INT1:
+"121
+[; ;io.c: 121:         case EXT_INT1:
 [e :U 417 ]
-"127
-[; ;io.c: 127:             INTCON3bits.INT1IE = 0;
+"122
+[; ;io.c: 122:             INTCON3bits.INT1IE = 0;
 [e = . . _INTCON3bits 0 3 -> -> 0 `i `uc ]
+"123
+[; ;io.c: 123:             break;
+[e $U 414  ]
+"124
+[; ;io.c: 124:         case EXT_INT2:
+[e :U 418 ]
+"125
+[; ;io.c: 125:             INTCON3bits.INT2IE = 0;
+[e = . . _INTCON3bits 0 4 -> -> 0 `i `uc ]
+"126
+[; ;io.c: 126:             break;
+[e $U 414  ]
+"127
+[; ;io.c: 127:         default:
+[e :U 419 ]
 "128
 [; ;io.c: 128:             break;
 [e $U 414  ]
 "129
-[; ;io.c: 129:         case EXT_INT2:
-[e :U 418 ]
-"130
-[; ;io.c: 130:             INTCON3bits.INT2IE = 0;
-[e = . . _INTCON3bits 0 4 -> -> 0 `i `uc ]
-"131
-[; ;io.c: 131:             break;
-[e $U 414  ]
-"132
-[; ;io.c: 132:         default:
-[e :U 419 ]
-"133
-[; ;io.c: 133:             break;
-[e $U 414  ]
-"134
-[; ;io.c: 134:     }
+[; ;io.c: 129:     }
 }
 [e $U 414  ]
 [e :U 415 ]
@@ -1164,62 +1164,62 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E3207 2 `ui 418
  419 ]
 [e :U 414 ]
-"135
-[; ;io.c: 135: }
+"130
+[; ;io.c: 130: }
 [e :UE 413 ]
 }
-"138
-[; ;io.c: 138: void ext_int_clear_flag(ext_int_t source)
+"133
+[; ;io.c: 133: void ext_int_clear_flag(ext_int_t source)
 [v _ext_int_clear_flag `(v ~T0 @X0 1 ef1`E3207 ]
-"139
-[; ;io.c: 139: {
+"134
+[; ;io.c: 134: {
 {
 [e :U _ext_int_clear_flag ]
-"138
-[; ;io.c: 138: void ext_int_clear_flag(ext_int_t source)
+"133
+[; ;io.c: 133: void ext_int_clear_flag(ext_int_t source)
 [v _source `E3207 ~T0 @X0 1 r1 ]
-"139
-[; ;io.c: 139: {
+"134
+[; ;io.c: 134: {
 [f ]
-"140
-[; ;io.c: 140:     switch (source) {
+"135
+[; ;io.c: 135:     switch (source) {
 [e $U 422  ]
 {
-"141
-[; ;io.c: 141:         case EXT_INT0:
+"136
+[; ;io.c: 136:         case EXT_INT0:
 [e :U 423 ]
-"142
-[; ;io.c: 142:             INTCONbits.INT0IF = 0;
+"137
+[; ;io.c: 137:             INTCONbits.INT0IF = 0;
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"143
-[; ;io.c: 143:             break;
+"138
+[; ;io.c: 138:             break;
 [e $U 421  ]
-"144
-[; ;io.c: 144:         case EXT_INT1:
+"139
+[; ;io.c: 139:         case EXT_INT1:
 [e :U 424 ]
-"145
-[; ;io.c: 145:             INTCON3bits.INT1IF = 0;
+"140
+[; ;io.c: 140:             INTCON3bits.INT1IF = 0;
 [e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
+"141
+[; ;io.c: 141:             break;
+[e $U 421  ]
+"142
+[; ;io.c: 142:         case EXT_INT2:
+[e :U 425 ]
+"143
+[; ;io.c: 143:             INTCON3bits.INT2IF = 0;
+[e = . . _INTCON3bits 0 1 -> -> 0 `i `uc ]
+"144
+[; ;io.c: 144:             break;
+[e $U 421  ]
+"145
+[; ;io.c: 145:         default:
+[e :U 426 ]
 "146
 [; ;io.c: 146:             break;
 [e $U 421  ]
 "147
-[; ;io.c: 147:         case EXT_INT2:
-[e :U 425 ]
-"148
-[; ;io.c: 148:             INTCON3bits.INT2IF = 0;
-[e = . . _INTCON3bits 0 1 -> -> 0 `i `uc ]
-"149
-[; ;io.c: 149:             break;
-[e $U 421  ]
-"150
-[; ;io.c: 150:         default:
-[e :U 426 ]
-"151
-[; ;io.c: 151:             break;
-[e $U 421  ]
-"152
-[; ;io.c: 152:     }
+[; ;io.c: 147:     }
 }
 [e $U 421  ]
 [e :U 422 ]
@@ -1228,7 +1228,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E3207 2 `ui 425
  426 ]
 [e :U 421 ]
-"153
-[; ;io.c: 153: }
+"148
+[; ;io.c: 148: }
 [e :UE 420 ]
 }

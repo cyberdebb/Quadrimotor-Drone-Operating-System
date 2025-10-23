@@ -6017,53 +6017,96 @@ void scheduler(void);
 
 
 
-void mutex_init(Mutex* mutex);
-int mutex_lock(Mutex* mutex);
-int mutex_unlock(Mutex* mutex);
+
+void mutex_init(Mutex *mutex);
+
+
+int mutex_lock(Mutex *mutex);
+
+
+int mutex_unlock(Mutex *mutex);
 # 5 "mutex.c" 2
 
-void mutex_init(Mutex* mutex) {
+
+void mutex_init(Mutex *mutex)
+{
     mutex->locked = 0;
     mutex->owner = 0;
     mutex->waiting_count = 0;
+
+    for (uint8_t i = 0; i < 5; i++) {
+        mutex->waiting_tasks[i] = 0;
+    }
 }
 
-int mutex_lock(Mutex* mutex) {
-    if (mutex->locked) {
 
-        mutex->waiting_tasks[mutex->waiting_count++] = readyQueue.taskRunning;
-        readyQueue.taskRunning->task_state = WAITING;
+int mutex_lock(Mutex *mutex)
+{
+    (INTCONbits.GIE = 0);
 
-        scheduler();
-        return 0;
-    }
-
-
-    mutex->locked = 1;
-    mutex->owner = readyQueue.taskRunning->task_id;
-    return 1;
-}
-
-int mutex_unlock(Mutex* mutex) {
-    if (mutex->owner != readyQueue.taskRunning->task_id) {
-
-        return 0;
-    }
-
-    mutex->locked = 0;
-    mutex->owner = 0;
-
-
-    if (mutex->waiting_count > 0) {
-        mutex->waiting_count--;
-        tcb_t* task = mutex->waiting_tasks[0];
-        task->task_state = READY;
-
-
-        for(int i = 0; i < mutex->waiting_count; i++) {
-            mutex->waiting_tasks[i] = mutex->waiting_tasks[i + 1];
+    while (1) {
+        if (mutex->locked == 0) {
+            mutex->locked = 1;
+            mutex->owner = readyQueue.taskRunning->task_id;
+            (INTCONbits.GIE = 1);
+            return 1;
         }
+
+        if (mutex->owner == readyQueue.taskRunning->task_id) {
+            (INTCONbits.GIE = 1);
+            return 1;
+        }
+
+        if (mutex->waiting_count >= 5) {
+            (INTCONbits.GIE = 1);
+            return 0;
+        }
+
+        mutex->waiting_tasks[mutex->waiting_count] = readyQueue.taskRunning;
+        mutex->waiting_count++;
+
+        readyQueue.taskRunning->task_state = WAITING_SEM;
+        do { if (readyQueue.taskRunning->task_state == RUNNING) { readyQueue.taskRunning->BSR_reg = BSR; readyQueue.taskRunning->STATUS_reg = STATUS; readyQueue.taskRunning->WORK_reg = WREG; readyQueue.taskRunning->task_sp = 0; while (STKPTR) { readyQueue.taskRunning->STACK[readyQueue.taskRunning->task_sp] = TOS; readyQueue.taskRunning->task_sp++; __asm("POP"); } readyQueue.taskRunning->task_state = WAITING_SEM; } } while (0);;
+        scheduler();
+        do { if (readyQueue.taskRunning->task_state == READY) { BSR = readyQueue.taskRunning->BSR_reg; STATUS = readyQueue.taskRunning->STATUS_reg; WREG = readyQueue.taskRunning->WORK_reg; STKPTR = 0; if (readyQueue.taskRunning->task_sp == 0) { __asm("PUSH"); TOS = (uint24_t)readyQueue.taskRunning->task_func; } else { do { __asm("PUSH"); readyQueue.taskRunning->task_sp--; TOS = readyQueue.taskRunning->STACK[readyQueue.taskRunning->task_sp]; } while (readyQueue.taskRunning->task_sp != 0); } readyQueue.taskRunning->task_state = RUNNING; } } while (0);;
+    }
+}
+
+
+int mutex_unlock(Mutex *mutex)
+{
+    (INTCONbits.GIE = 0);
+
+    if (mutex->locked == 0 || mutex->owner != readyQueue.taskRunning->task_id) {
+        (INTCONbits.GIE = 1);
+        return 0;
     }
 
+    if (mutex->waiting_count == 0) {
+        mutex->locked = 0;
+        mutex->owner = 0;
+        (INTCONbits.GIE = 1);
+        return 1;
+    }
+
+    tcb_t *task = mutex->waiting_tasks[0];
+
+    for (uint8_t i = 0; i < (mutex->waiting_count - 1); i++) {
+        mutex->waiting_tasks[i] = mutex->waiting_tasks[i + 1];
+    }
+    mutex->waiting_tasks[mutex->waiting_count - 1] = 0;
+    mutex->waiting_count--;
+
+    if (task != 0) {
+        mutex->owner = task->task_id;
+        mutex->locked = 1;
+        task->task_state = READY;
+    }
+    else {
+        mutex->locked = 0;
+        mutex->owner = 0;
+    }
+
+    (INTCONbits.GIE = 1);
     return 1;
 }

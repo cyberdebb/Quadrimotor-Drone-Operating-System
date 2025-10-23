@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V3.00 build 20241204225717 
-                                                                                               Wed Oct 22 21:05:43 2025
+                                                                                               Wed Oct 22 21:29:39 2025
 
 Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1 
      1                           	processor	18F4550
@@ -2179,7 +2179,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2165                           
   2166 ;; *************** function _set_port *****************
   2167 ;; Defined at:
-  2168 ;;		line 13 in file "io.c"
+  2168 ;;		line 11 in file "io.c"
   2169 ;; Parameters:    Size  Location     Type
   2170 ;;  port            1    wreg     enum E3166
   2171 ;; Auto vars:     Size  Location     Type
@@ -2217,7 +2217,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2203                           ;set_port@port stored from wreg
   2204   000F90  6E06               	movwf	set_port@port^0,c
   2205   000F92                     
-  2206                           ;io.c: 13: void set_port(port_conf_t port);io.c: 14: {;io.c: 15:     ADCON1bits.PCFG = p
+  2206                           ;io.c: 11: void set_port(port_conf_t port);io.c: 12: {;io.c: 13:     ADCON1bits.PCFG = p
       +                          ort;
   2207   000F92  50C1               	movf	193,w,c	;volatile
   2208   000F94  1806               	xorwf	set_port@port^0,w,c
@@ -2230,7 +2230,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2215                           
   2216 ;; *************** function _set_channel *****************
   2217 ;; Defined at:
-  2218 ;;		line 7 in file "io.c"
+  2218 ;;		line 6 in file "io.c"
   2219 ;; Parameters:    Size  Location     Type
   2220 ;;  channel         1    wreg     enum E3151
   2221 ;; Auto vars:     Size  Location     Type
@@ -2268,7 +2268,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2253                           ;set_channel@channel stored from wreg
   2254   000F66  6E07               	movwf	set_channel@channel^0,c
   2255   000F68                     
-  2256                           ;io.c: 7: void set_channel(channel_t channel);io.c: 8: {;io.c: 9:     ADCON0bits.CHS = c
+  2256                           ;io.c: 6: void set_channel(channel_t channel);io.c: 7: {;io.c: 8:     ADCON0bits.CHS = c
       +                          hannel;
   2257   000F68  C007  F006         	movff	set_channel@channel,??_set_channel
   2258   000F6C  4606               	rlncf	??_set_channel^0,f,c
@@ -2284,7 +2284,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2268                           
   2269 ;; *************** function _config_adc *****************
   2270 ;; Defined at:
-  2271 ;;		line 19 in file "io.c"
+  2271 ;;		line 16 in file "io.c"
   2272 ;; Parameters:    Size  Location     Type
   2273 ;;  tad             1    wreg     enum E3182
   2274 ;;  cclk            1    5[COMRAM] enum E3192
@@ -2323,7 +2323,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2307                           ;config_adc@tad stored from wreg
   2308   000EAA  6E08               	movwf	config_adc@tad^0,c
   2309   000EAC                     
-  2310                           ;io.c: 19: void config_adc(tad_t tad, conversion_clock_t cclk);io.c: 20: {;io.c: 21:    
+  2310                           ;io.c: 16: void config_adc(tad_t tad, conversion_clock_t cclk);io.c: 17: {;io.c: 18:    
       +                           ADCON2bits.ACQT = tad;
   2311   000EAC  C008  F007         	movff	config_adc@tad,??_config_adc
   2312   000EB0  4607               	rlncf	??_config_adc^0,f,c
@@ -2335,14 +2335,14 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2318   000EBC  1807               	xorwf	??_config_adc^0,w,c
   2319   000EBE  6EC0               	movwf	192,c	;volatile
   2320                           
-  2321                           ;io.c: 22:     ADCON2bits.ADCS = cclk;
+  2321                           ;io.c: 19:     ADCON2bits.ADCS = cclk;
   2322   000EC0  50C0               	movf	192,w,c	;volatile
   2323   000EC2  1806               	xorwf	config_adc@cclk^0,w,c
   2324   000EC4  0BF8               	andlw	-8
   2325   000EC6  1806               	xorwf	config_adc@cclk^0,w,c
   2326   000EC8  6EC0               	movwf	192,c	;volatile
   2327   000ECA                     
-  2328                           ;io.c: 23:     ADCON2bits.ADFM = 1;
+  2328                           ;io.c: 20:     ADCON2bits.ADFM = 1;
   2329   000ECA  8EC0               	bsf	192,7,c	;volatile
   2330   000ECC  0012               	return		;funcret
   2331   000ECE                     __end_of_config_adc:
@@ -2505,7 +2505,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2487   000D5C  0E01               	movlw	1
   2488   000D5E  6E09               	movwf	(SRAMInitHeap@count+1)^0,c
   2489   000D60  6808               	setf	SRAMInitHeap@count^0,c
-  2490   000D62                     l1222:
+  2490   000D62                     l1258:
   2491                           
   2492                           ;mem.c: 285:  {;mem.c: 286:   if (count > 0x7F)
   2493   000D62  5009               	movf	(SRAMInitHeap@count+1)^0,w,c
@@ -2516,7 +2516,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2498   000D6C  EFBA  F006         	goto	u101
   2499   000D70  EFBC  F006         	goto	u100
   2500   000D74                     u101:
-  2501   000D74  EFCE  F006         	goto	l1230
+  2501   000D74  EFCE  F006         	goto	l1266
   2502   000D78                     u100:
   2503   000D78                     
   2504                           ;mem.c: 287:   {;mem.c: 288:    *pHeap = 0x7F;
@@ -2540,8 +2540,8 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2522   000D96  6E09               	movwf	(SRAMInitHeap@count+1)^0,c
   2523                           
   2524                           ;mem.c: 291:   }
-  2525   000D98  EFB1  F006         	goto	l1222
-  2526   000D9C                     l1230:
+  2525   000D98  EFB1  F006         	goto	l1258
+  2526   000D9C                     l1266:
   2527                           
   2528                           ;mem.c: 293:   {;mem.c: 294:    *pHeap = count;
   2529   000D9C  C006  FFD9         	movff	SRAMInitHeap@pHeap,fsr2l
@@ -2709,10 +2709,10 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2690   000E3C  20F4               	addwfc	prodh,w,c
   2691   000E3E  6EE2               	movwf	fsr1h,c
   2692   000E40  0E69               	movlw	105
-  2693   000E42                     u881:
+  2693   000E42                     u981:
   2694   000E42  CFDB FFE3          	movff	plusw2,plusw1
   2695   000E46  06E8               	decf	wreg,f,c
-  2696   000E48  E2FC               	bc	u881
+  2696   000E48  E2FC               	bc	u981
   2697   000E4A                     
   2698                           ; BSR set to: 0
   2699   000E4A  C2DD  FFE8         	movff	_readyQueue+530,wreg
@@ -2763,7 +2763,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2744   000E56                     
   2745                           ;kernel.c: 45:     TRISDbits.RD3 = 0;
   2746   000E56  9695               	bcf	149,3,c	;volatile
-  2747   000E58                     l1372:
+  2747   000E58                     l1408:
   2748                           
   2749                           ;kernel.c: 49:         LATDbits.LD3 = ~PORTDbits.RD3;
   2750   000E58  B683               	btfsc	131,3,c	;volatile
@@ -2785,7 +2785,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2766   000E78  0BF7               	andlw	-9
   2767   000E7A  1801               	xorwf	??_os_idle_task^0,w,c
   2768   000E7C  6E8C               	movwf	140,c	;volatile
-  2769   000E7E  EF2C  F007         	goto	l1372
+  2769   000E7E  EF2C  F007         	goto	l1408
   2770   000E82  0012               	return		;funcret
   2771   000E84                     __end_of_os_idle_task:
   2772                           	callstack 0
@@ -2833,18 +2833,18 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2814   000B6E  0E01               	movlw	1
   2815   000B70  6E01               	movwf	adc_go@go_done^0,c
   2816   000B72  ECD6  F007         	call	_adc_go	;wreg free
-  2817   000B76                     l2014:
+  2817   000B76                     l2126:
   2818                           
   2819                           ;user_app.c: 97:         LATDbits.LD0 = ~PORTDbits.RD0;
   2820   000B76  B083               	btfsc	131,0,c	;volatile
-  2821   000B78  EFC0  F005         	goto	u102_21
-  2822   000B7C  EFC3  F005         	goto	u102_20
-  2823   000B80                     u102_21:
+  2821   000B78  EFC0  F005         	goto	u112_21
+  2822   000B7C  EFC3  F005         	goto	u112_20
+  2823   000B80                     u112_21:
   2824   000B80  0E01               	movlw	1
-  2825   000B82  EFC4  F005         	goto	u102_26
-  2826   000B86                     u102_20:
+  2825   000B82  EFC4  F005         	goto	u112_26
+  2826   000B86                     u112_20:
   2827   000B86  0E00               	movlw	0
-  2828   000B88                     u102_26:
+  2828   000B88                     u112_26:
   2829   000B88  0AFF               	xorlw	255
   2830   000B8A  6E03               	movwf	??_tarefa_1^0,c
   2831   000B8C  508C               	movf	140,w,c	;volatile
@@ -2860,28 +2860,28 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2841                           
   2842                           ;user_app.c: 101:         if (pot > 0 && pot < 500) {
   2843   000BA2  BE05               	btfsc	(tarefa_1@pot+1)^0,7,c
-  2844   000BA4  EFDC  F005         	goto	u103_21
+  2844   000BA4  EFDC  F005         	goto	u113_21
   2845   000BA8  5005               	movf	(tarefa_1@pot+1)^0,w,c
-  2846   000BAA  E108               	bnz	u103_20
+  2846   000BAA  E108               	bnz	u113_20
   2847   000BAC  0404               	decf	tarefa_1@pot^0,w,c
   2848   000BAE  A0D8               	btfss	status,0,c
-  2849   000BB0  EFDC  F005         	goto	u103_21
-  2850   000BB4  EFDE  F005         	goto	u103_20
-  2851   000BB8                     u103_21:
-  2852   000BB8  EFF0  F005         	goto	l2022
-  2853   000BBC                     u103_20:
+  2849   000BB0  EFDC  F005         	goto	u113_21
+  2850   000BB4  EFDE  F005         	goto	u113_20
+  2851   000BB8                     u113_21:
+  2852   000BB8  EFF0  F005         	goto	l2134
+  2853   000BBC                     u113_20:
   2854   000BBC  BE05               	btfsc	(tarefa_1@pot+1)^0,7,c
-  2855   000BBE  EFEC  F005         	goto	u104_20
+  2855   000BBE  EFEC  F005         	goto	u114_20
   2856   000BC2  0EF4               	movlw	244
   2857   000BC4  5C04               	subwf	tarefa_1@pot^0,w,c
   2858   000BC6  0E01               	movlw	1
   2859   000BC8  5805               	subwfb	(tarefa_1@pot+1)^0,w,c
   2860   000BCA  B0D8               	btfsc	status,0,c
-  2861   000BCC  EFEA  F005         	goto	u104_21
-  2862   000BD0  EFEC  F005         	goto	u104_20
-  2863   000BD4                     u104_21:
-  2864   000BD4  EFF0  F005         	goto	l2022
-  2865   000BD8                     u104_20:
+  2861   000BCC  EFEA  F005         	goto	u114_21
+  2862   000BD0  EFEC  F005         	goto	u114_20
+  2863   000BD4                     u114_21:
+  2864   000BD4  EFF0  F005         	goto	l2134
+  2865   000BD8                     u114_20:
   2866   000BD8                     
   2867                           ;user_app.c: 102:             LATCbits.LATC0 = 1;
   2868   000BD8  808B               	bsf	139,0,c	;volatile
@@ -2890,44 +2890,44 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2871   000BDA  928B               	bcf	139,1,c	;volatile
   2872                           
   2873                           ;user_app.c: 104:         }
-  2874   000BDC  EFBB  F005         	goto	l2014
-  2875   000BE0                     l2022:
+  2874   000BDC  EFBB  F005         	goto	l2126
+  2875   000BE0                     l2134:
   2876   000BE0  BE05               	btfsc	(tarefa_1@pot+1)^0,7,c
-  2877   000BE2  EFFC  F005         	goto	u105_21
+  2877   000BE2  EFFC  F005         	goto	u115_21
   2878   000BE6  0EF4               	movlw	244
   2879   000BE8  5C04               	subwf	tarefa_1@pot^0,w,c
   2880   000BEA  0E01               	movlw	1
   2881   000BEC  5805               	subwfb	(tarefa_1@pot+1)^0,w,c
   2882   000BEE  A0D8               	btfss	status,0,c
-  2883   000BF0  EFFC  F005         	goto	u105_21
-  2884   000BF4  EFFE  F005         	goto	u105_20
-  2885   000BF8                     u105_21:
-  2886   000BF8  EFBB  F005         	goto	l2014
-  2887   000BFC                     u105_20:
+  2883   000BF0  EFFC  F005         	goto	u115_21
+  2884   000BF4  EFFE  F005         	goto	u115_20
+  2885   000BF8                     u115_21:
+  2886   000BF8  EFBB  F005         	goto	l2126
+  2887   000BFC                     u115_20:
   2888   000BFC  BE05               	btfsc	(tarefa_1@pot+1)^0,7,c
-  2889   000BFE  EF0A  F006         	goto	u106_20
+  2889   000BFE  EF0A  F006         	goto	u116_20
   2890   000C02  0E04               	movlw	4
   2891   000C04  5C05               	subwf	(tarefa_1@pot+1)^0,w,c
   2892   000C06  B0D8               	btfsc	status,0,c
-  2893   000C08  EF08  F006         	goto	u106_21
-  2894   000C0C  EF0A  F006         	goto	u106_20
-  2895   000C10                     u106_21:
-  2896   000C10  EFBB  F005         	goto	l2014
-  2897   000C14                     u106_20:
+  2893   000C08  EF08  F006         	goto	u116_21
+  2894   000C0C  EF0A  F006         	goto	u116_20
+  2895   000C10                     u116_21:
+  2896   000C10  EFBB  F005         	goto	l2126
+  2897   000C14                     u116_20:
   2898   000C14                     
   2899                           ;user_app.c: 106:             LATCbits.LATC1 = 1;
   2900   000C14  828B               	bsf	139,1,c	;volatile
   2901                           
   2902                           ;user_app.c: 107:             LATCbits.LATC0 = 0;
   2903   000C16  908B               	bcf	139,0,c	;volatile
-  2904   000C18  EFBB  F005         	goto	l2014
+  2904   000C18  EFBB  F005         	goto	l2126
   2905   000C1C  0012               	return		;funcret
   2906   000C1E                     __end_of_tarefa_1:
   2907                           	callstack 0
   2908                           
   2909 ;; *************** function _adc_read *****************
   2910 ;; Defined at:
-  2911 ;;		line 33 in file "io.c"
+  2911 ;;		line 28 in file "io.c"
   2912 ;; Parameters:    Size  Location     Type
   2913 ;;		None
   2914 ;; Auto vars:     Size  Location     Type
@@ -2961,17 +2961,17 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2942   000F4C                     _adc_read:
   2943                           	callstack 22
   2944   000F4C                     
-  2945                           ;io.c: 35:     ADCON0bits.GO = 1;
+  2945                           ;io.c: 30:     ADCON0bits.GO = 1;
   2946   000F4C  82C2               	bsf	194,1,c	;volatile
-  2947   000F4E                     i1l368:
+  2947   000F4E                     i1l404:
   2948   000F4E  B2C2               	btfsc	194,1,c	;volatile
-  2949   000F50  EFAC  F007         	goto	i1u94_21
-  2950   000F54  EFAE  F007         	goto	i1u94_20
-  2951   000F58                     i1u94_21:
-  2952   000F58  EFA7  F007         	goto	i1l368
-  2953   000F5C                     i1u94_20:
+  2949   000F50  EFAC  F007         	goto	i1u104_21
+  2950   000F54  EFAE  F007         	goto	i1u104_20
+  2951   000F58                     i1u104_21:
+  2952   000F58  EFA7  F007         	goto	i1l404
+  2953   000F5C                     i1u104_20:
   2954   000F5C                     
-  2955                           ;io.c: 37:     return ADRES;
+  2955                           ;io.c: 32:     return ADRES;
   2956   000F5C  CFC3 F001          	movff	4035,?_adc_read	;volatile
   2957   000F60  CFC4 F002          	movff	4036,?_adc_read+1	;volatile
   2958   000F64  0012               	return		;funcret
@@ -2980,7 +2980,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2961                           
   2962 ;; *************** function _adc_go *****************
   2963 ;; Defined at:
-  2964 ;;		line 27 in file "io.c"
+  2964 ;;		line 23 in file "io.c"
   2965 ;; Parameters:    Size  Location     Type
   2966 ;;  go_done         2    0[COMRAM] int 
   2967 ;; Auto vars:     Size  Location     Type
@@ -3014,14 +3014,14 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   2995   000FAC                     _adc_go:
   2996                           	callstack 22
   2997   000FAC                     
-  2998                           ;io.c: 27: void adc_go(int go_done);io.c: 28: {;io.c: 29:     ADCON0bits.ADON = go_done;
+  2998                           ;io.c: 23: void adc_go(int go_done);io.c: 24: {;io.c: 25:     ADCON0bits.ADON = go_done;
   2999   000FAC  B001               	btfsc	adc_go@go_done^0,0,c
-  3000   000FAE  D002               	bra	i1u93_25
+  3000   000FAE  D002               	bra	i1u103_25
   3001   000FB0  90C2               	bcf	194,0,c	;volatile
-  3002   000FB2  D001               	bra	i1u93_26
-  3003   000FB4                     i1u93_25:
+  3002   000FB2  D001               	bra	i1u103_26
+  3003   000FB4                     i1u103_25:
   3004   000FB4  80C2               	bsf	194,0,c	;volatile
-  3005   000FB6                     i1u93_26:
+  3005   000FB6                     i1u103_26:
   3006   000FB6  0012               	return		;funcret
   3007   000FB8                     __end_of_adc_go:
   3008                           	callstack 0
@@ -3085,11 +3085,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3066                           
   3067                           ;hardware.c: 29:     if (INTCONbits.TMR0IF == 1) {
   3068   00081E  A4F2               	btfss	242,2,c	;volatile
-  3069   000820  EF14  F004         	goto	i2u122_41
-  3070   000824  EF16  F004         	goto	i2u122_40
-  3071   000828                     i2u122_41:
-  3072   000828  EF37  F005         	goto	i2l2174
-  3073   00082C                     i2u122_40:
+  3069   000820  EF14  F004         	goto	i2u132_41
+  3070   000824  EF16  F004         	goto	i2u132_40
+  3071   000828                     i2u132_41:
+  3072   000828  EF37  F005         	goto	i2l2286
+  3073   00082C                     i2u132_40:
   3074   00082C                     
   3075                           ;hardware.c: 30:         INTCONbits.TMR0IF = 0;
   3076   00082C  94F2               	bcf	242,2,c	;volatile
@@ -3104,11 +3104,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3085   000840  22E2               	addwfc	fsr1h,f,c
   3086   000842  04E6               	decf	postinc1,w,c
   3087   000844  A4D8               	btfss	status,2,c
-  3088   000846  EF27  F004         	goto	i2u123_41
-  3089   00084A  EF29  F004         	goto	i2u123_40
-  3090   00084E                     i2u123_41:
-  3091   00084E  EF95  F004         	goto	i2l2154
-  3092   000852                     i2u123_40:
+  3088   000846  EF27  F004         	goto	i2u133_41
+  3089   00084A  EF29  F004         	goto	i2u133_40
+  3090   00084E                     i2u133_41:
+  3091   00084E  EF95  F004         	goto	i2l2266
+  3092   000852                     i2u133_40:
   3093   000852  EE22  F0DE         	lfsr	2,_readyQueue+531
   3094   000856  EE10 F006          	lfsr	1,6
   3095   00085A  50DE               	movf	postinc2,w,c
@@ -3137,8 +3137,8 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3118   00089A  50DD               	movf	postdec2,w,c
   3119   00089C  22E2               	addwfc	fsr1h,f,c
   3120   00089E  6AE7               	clrf	indf1,c
-  3121   0008A0  EF84  F004         	goto	i2l2150
-  3122   0008A4                     i2l2146:
+  3121   0008A0  EF84  F004         	goto	i2l2262
+  3122   0008A4                     i2l2258:
   3123   0008A4  EE22  F0DE         	lfsr	2,_readyQueue+531
   3124   0008A8  EE10 F069          	lfsr	1,105
   3125   0008AC  50DE               	movf	postinc2,w,c
@@ -3177,14 +3177,14 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3158   000902  22E2               	addwfc	fsr1h,f,c
   3159   000904  2AE7               	incf	indf1,f,c
   3160   000906  0006               	pop		;# 
-  3161   000908                     i2l2150:
+  3161   000908                     i2l2262:
   3162   000908  50FC               	movf	252,w,c	;volatile
   3163   00090A  A4D8               	btfss	status,2,c
-  3164   00090C  EF8A  F004         	goto	i2u124_41
-  3165   000910  EF8C  F004         	goto	i2u124_40
-  3166   000914                     i2u124_41:
-  3167   000914  EF52  F004         	goto	i2l2146
-  3168   000918                     i2u124_40:
+  3164   00090C  EF8A  F004         	goto	i2u134_41
+  3165   000910  EF8C  F004         	goto	i2u134_40
+  3166   000914                     i2u134_41:
+  3167   000914  EF52  F004         	goto	i2l2258
+  3168   000918                     i2u134_40:
   3169   000918  EE22  F0DE         	lfsr	2,_readyQueue+531
   3170   00091C  EE10 F003          	lfsr	1,3
   3171   000920  50DE               	movf	postinc2,w,c
@@ -3192,7 +3192,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3173   000924  50DD               	movf	postdec2,w,c
   3174   000926  22E2               	addwfc	fsr1h,f,c
   3175   000928  6AE7               	clrf	indf1,c
-  3176   00092A                     i2l2154:
+  3176   00092A                     i2l2266:
   3177                           
   3178                           ;hardware.c: 36:         scheduler();
   3179   00092A  ECCF  F007         	call	_scheduler	;wreg free
@@ -3204,11 +3204,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3185   00093C  22E2               	addwfc	fsr1h,f,c
   3186   00093E  50E7               	movf	indf1,w,c
   3187   000940  A4D8               	btfss	status,2,c
-  3188   000942  EFA5  F004         	goto	i2u125_41
-  3189   000946  EFA7  F004         	goto	i2u125_40
-  3190   00094A                     i2u125_41:
-  3191   00094A  EF37  F005         	goto	i2l2174
-  3192   00094E                     i2u125_40:
+  3188   000942  EFA5  F004         	goto	i2u135_41
+  3189   000946  EFA7  F004         	goto	i2u135_40
+  3190   00094A                     i2u135_41:
+  3191   00094A  EF37  F005         	goto	i2l2286
+  3192   00094E                     i2u135_40:
   3193   00094E  EE22  F0DE         	lfsr	2,_readyQueue+531
   3194   000952  EE10 F006          	lfsr	1,6
   3195   000956  50DE               	movf	postinc2,w,c
@@ -3243,11 +3243,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3224   00099C  22E2               	addwfc	fsr1h,f,c
   3225   00099E  50E7               	movf	indf1,w,c
   3226   0009A0  A4D8               	btfss	status,2,c
-  3227   0009A2  EFD5  F004         	goto	i2u126_41
-  3228   0009A6  EFD7  F004         	goto	i2u126_40
-  3229   0009AA                     i2u126_41:
+  3227   0009A2  EFD5  F004         	goto	i2u136_41
+  3228   0009A6  EFD7  F004         	goto	i2u136_40
+  3229   0009AA                     i2u136_41:
   3230   0009AA  EFEB  F004         	goto	i2l227
-  3231   0009AE                     i2u126_40:
+  3231   0009AE                     i2u136_40:
   3232   0009AE  0005               	push		;# 
   3233   0009B0  EE22  F0DE         	lfsr	2,_readyQueue+531
   3234   0009B4  EE10 F001          	lfsr	1,1
@@ -3260,7 +3260,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3241   0009C8  C00D  FFFD         	movff	??_ISR_TIMER_0,tosl	;volatile
   3242   0009CC  C00E  FFFE         	movff	??_ISR_TIMER_0+1,tosh	;volatile
   3243   0009D0  6AFF               	clrf	255,c	;volatile
-  3244   0009D2  EF2D  F005         	goto	i2l2172
+  3244   0009D2  EF2D  F005         	goto	i2l2284
   3245   0009D6                     i2l227:
   3246   0009D6  0005               	push		;# 
   3247   0009D8  EE22  F0DE         	lfsr	2,_readyQueue+531
@@ -3308,12 +3308,12 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3289   000A48  22E2               	addwfc	fsr1h,f,c
   3290   000A4A  50E7               	movf	indf1,w,c
   3291   000A4C  A4D8               	btfss	status,2,c
-  3292   000A4E  EF2B  F005         	goto	i2u127_41
-  3293   000A52  EF2D  F005         	goto	i2u127_40
-  3294   000A56                     i2u127_41:
+  3292   000A4E  EF2B  F005         	goto	i2u137_41
+  3293   000A52  EF2D  F005         	goto	i2u137_40
+  3294   000A56                     i2u137_41:
   3295   000A56  EFEB  F004         	goto	i2l227
-  3296   000A5A                     i2u127_40:
-  3297   000A5A                     i2l2172:
+  3296   000A5A                     i2u137_40:
+  3297   000A5A                     i2l2284:
   3298   000A5A  EE22  F0DE         	lfsr	2,_readyQueue+531
   3299   000A5E  EE10 F003          	lfsr	1,3
   3300   000A62  50DE               	movf	postinc2,w,c
@@ -3322,7 +3322,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3303   000A68  22E2               	addwfc	fsr1h,f,c
   3304   000A6A  0E01               	movlw	1
   3305   000A6C  6EE7               	movwf	indf1,c
-  3306   000A6E                     i2l2174:
+  3306   000A6E                     i2l2286:
   3307                           
   3308                           ;hardware.c: 40:     (INTCONbits.GIE = 1);
   3309   000A6E  8EF2               	bsf	242,7,c	;volatile
@@ -3439,7 +3439,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3419   000AAA                     
   3420                           ;scheduler.c: 15:     uint8_t idle_selected = 0;
   3421   000AAA  6A0B               	clrf	rr_scheduler@idle_selected^0,c
-  3422   000AAC                     i2l1914:
+  3422   000AAC                     i2l2026:
   3423                           
   3424                           ;scheduler.c: 18:         pos_task_running = (pos_task_running+1) % readyQueue.readyQueu
       +                          eSize;
@@ -3469,15 +3469,15 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3447   000AD8  6EDA               	movwf	fsr2h,c
   3448   000ADA  0E56               	movlw	low _os_idle_task
   3449   000ADC  18DE               	xorwf	postinc2,w,c
-  3450   000ADE  E107               	bnz	i2u89_41
+  3450   000ADE  E107               	bnz	i2u99_41
   3451   000AE0  0E0E               	movlw	high _os_idle_task
   3452   000AE2  18DE               	xorwf	postinc2,w,c
   3453   000AE4  A4D8               	btfss	status,2,c
-  3454   000AE6  EF77  F005         	goto	i2u89_41
-  3455   000AEA  EF79  F005         	goto	i2u89_40
-  3456   000AEE                     i2u89_41:
-  3457   000AEE  EF88  F005         	goto	i2l1926
-  3458   000AF2                     i2u89_40:
+  3454   000AE6  EF77  F005         	goto	i2u99_41
+  3455   000AEA  EF79  F005         	goto	i2u99_40
+  3456   000AEE                     i2u99_41:
+  3457   000AEE  EF88  F005         	goto	i2l2038
+  3458   000AF2                     i2u99_40:
   3459   000AF2                     
   3460                           ;scheduler.c: 20:             idle_selected++;
   3461   000AF2  2A0B               	incf	rr_scheduler@idle_selected^0,f,c
@@ -3485,17 +3485,17 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3463                           ;scheduler.c: 21:             if (idle_selected > 1) return &readyQueue.readyQueue[0];
   3464   000AF4  0E01               	movlw	1
   3465   000AF6  640B               	cpfsgt	rr_scheduler@idle_selected^0,c
-  3466   000AF8  EF80  F005         	goto	i2u90_41
-  3467   000AFC  EF82  F005         	goto	i2u90_40
-  3468   000B00                     i2u90_41:
-  3469   000B00  EF88  F005         	goto	i2l1926
-  3470   000B04                     i2u90_40:
+  3466   000AF8  EF80  F005         	goto	i2u100_41
+  3467   000AFC  EF82  F005         	goto	i2u100_40
+  3468   000B00                     i2u100_41:
+  3469   000B00  EF88  F005         	goto	i2l2038
+  3470   000B04                     i2u100_40:
   3471   000B04  0ECB               	movlw	low _readyQueue
   3472   000B06  6E07               	movwf	?_rr_scheduler^0,c
   3473   000B08  0E00               	movlw	high _readyQueue
   3474   000B0A  6E08               	movwf	(?_rr_scheduler+1)^0,c
   3475   000B0C  EFB4  F005         	goto	i2l176
-  3476   000B10                     i2l1926:
+  3476   000B10                     i2l2038:
   3477                           
   3478                           ;scheduler.c: 24:     } while (readyQueue.readyQueue[pos_task_running].task_state != REA
       +                          DY ||
@@ -3509,11 +3509,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3486   000B1E  6EDA               	movwf	fsr2h,c
   3487   000B20  50DF               	movf	indf2,w,c
   3488   000B22  A4D8               	btfss	status,2,c
-  3489   000B24  EF96  F005         	goto	i2u91_41
-  3490   000B28  EF98  F005         	goto	i2u91_40
-  3491   000B2C                     i2u91_41:
-  3492   000B2C  EF56  F005         	goto	i2l1914
-  3493   000B30                     i2u91_40:
+  3489   000B24  EF96  F005         	goto	i2u101_41
+  3490   000B28  EF98  F005         	goto	i2u101_40
+  3491   000B2C                     i2u101_41:
+  3492   000B2C  EF56  F005         	goto	i2l2026
+  3493   000B30                     i2u101_40:
   3494   000B30  500C               	movf	rr_scheduler@pos_task_running^0,w,c
   3495   000B32  0D6A               	mullw	106
   3496   000B34  0ECC               	movlw	low (_readyQueue+1)
@@ -3524,15 +3524,15 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3501   000B3E  6EDA               	movwf	fsr2h,c
   3502   000B40  0E56               	movlw	low _os_idle_task
   3503   000B42  18DE               	xorwf	postinc2,w,c
-  3504   000B44  E109               	bnz	i2u92_40
+  3504   000B44  E109               	bnz	i2u102_40
   3505   000B46  0E0E               	movlw	high _os_idle_task
   3506   000B48  18DE               	xorwf	postinc2,w,c
   3507   000B4A  B4D8               	btfsc	status,2,c
-  3508   000B4C  EFAA  F005         	goto	i2u92_41
-  3509   000B50  EFAC  F005         	goto	i2u92_40
-  3510   000B54                     i2u92_41:
-  3511   000B54  EF56  F005         	goto	i2l1914
-  3512   000B58                     i2u92_40:
+  3508   000B4C  EFAA  F005         	goto	i2u102_41
+  3509   000B50  EFAC  F005         	goto	i2u102_40
+  3510   000B54                     i2u102_41:
+  3511   000B54  EF56  F005         	goto	i2l2026
+  3512   000B58                     i2u102_40:
   3513   000B58                     
   3514                           ;scheduler.c: 27:     return &readyQueue.readyQueue[pos_task_running];
   3515   000B58  500C               	movf	rr_scheduler@pos_task_running^0,w,c
@@ -3587,8 +3587,8 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3564                           ;kernel.c: 53: uint8_t os_task_pos(f_ptr task);kernel.c: 54: {;kernel.c: 55:     for (ui
       +                          nt8_t i = 0; i < readyQueue.readyQueueSize; i++) {
   3565   000DB8  6A05               	clrf	os_task_pos@i^0,c
-  3566   000DBA  EFF7  F006         	goto	i2l1838
-  3567   000DBE                     i2l1830:
+  3566   000DBA  EFF7  F006         	goto	i2l1950
+  3567   000DBE                     i2l1942:
   3568                           
   3569                           ;kernel.c: 56:         if (readyQueue.readyQueue[i].task_func == task) return i;
   3570   000DBE  5005               	movf	os_task_pos@i^0,w,c
@@ -3601,31 +3601,31 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3577   000DCC  6EDA               	movwf	fsr2h,c
   3578   000DCE  5001               	movf	os_task_pos@task^0,w,c
   3579   000DD0  18DE               	xorwf	postinc2,w,c
-  3580   000DD2  E107               	bnz	i2u80_41
+  3580   000DD2  E107               	bnz	i2u90_41
   3581   000DD4  5002               	movf	(os_task_pos@task+1)^0,w,c
   3582   000DD6  18DE               	xorwf	postinc2,w,c
   3583   000DD8  A4D8               	btfss	status,2,c
-  3584   000DDA  EFF1  F006         	goto	i2u80_41
-  3585   000DDE  EFF3  F006         	goto	i2u80_40
-  3586   000DE2                     i2u80_41:
-  3587   000DE2  EFF6  F006         	goto	i2l1836
-  3588   000DE6                     i2u80_40:
+  3584   000DDA  EFF1  F006         	goto	i2u90_41
+  3585   000DDE  EFF3  F006         	goto	i2u90_40
+  3586   000DE2                     i2u90_41:
+  3587   000DE2  EFF6  F006         	goto	i2l1948
+  3588   000DE6                     i2u90_40:
   3589   000DE6  5005               	movf	os_task_pos@i^0,w,c
   3590   000DE8  EF03  F007         	goto	i2l56
-  3591   000DEC                     i2l1836:
+  3591   000DEC                     i2l1948:
   3592                           
   3593                           ;kernel.c: 57:     }
   3594   000DEC  2A05               	incf	os_task_pos@i^0,f,c
-  3595   000DEE                     i2l1838:
+  3595   000DEE                     i2l1950:
   3596   000DEE  EE22  F0DD         	lfsr	2,_readyQueue+530
   3597   000DF2  50DE               	movf	postinc2,w,c
   3598   000DF4  5C05               	subwf	os_task_pos@i^0,w,c
   3599   000DF6  A0D8               	btfss	status,0,c
-  3600   000DF8  EF00  F007         	goto	i2u81_41
-  3601   000DFC  EF02  F007         	goto	i2u81_40
-  3602   000E00                     i2u81_41:
-  3603   000E00  EFDF  F006         	goto	i2l1830
-  3604   000E04                     i2u81_40:
+  3600   000DF8  EF00  F007         	goto	i2u91_41
+  3601   000DFC  EF02  F007         	goto	i2u91_40
+  3602   000E00                     i2u91_41:
+  3603   000E00  EFDF  F006         	goto	i2l1942
+  3604   000E04                     i2u91_40:
   3605   000E04                     
   3606                           ;kernel.c: 59:     return 0;
   3607   000E04  0E00               	movlw	0
@@ -3676,86 +3676,86 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3652                           	callstack 22
   3653   000C1E  6A06               	clrf	___awmod@sign^0,c
   3654   000C20  BE02               	btfsc	(___awmod@dividend+1)^0,7,c
-  3655   000C22  EF17  F006         	goto	i2u82_40
-  3656   000C26  EF15  F006         	goto	i2u82_41
-  3657   000C2A                     i2u82_41:
-  3658   000C2A  EF1D  F006         	goto	i2l1856
-  3659   000C2E                     i2u82_40:
+  3655   000C22  EF17  F006         	goto	i2u92_40
+  3656   000C26  EF15  F006         	goto	i2u92_41
+  3657   000C2A                     i2u92_41:
+  3658   000C2A  EF1D  F006         	goto	i2l1968
+  3659   000C2E                     i2u92_40:
   3660   000C2E  6C01               	negf	___awmod@dividend^0,c
   3661   000C30  1E02               	comf	(___awmod@dividend+1)^0,f,c
   3662   000C32  B0D8               	btfsc	status,0,c
   3663   000C34  2A02               	incf	(___awmod@dividend+1)^0,f,c
   3664   000C36  0E01               	movlw	1
   3665   000C38  6E06               	movwf	___awmod@sign^0,c
-  3666   000C3A                     i2l1856:
+  3666   000C3A                     i2l1968:
   3667   000C3A  BE04               	btfsc	(___awmod@divisor+1)^0,7,c
-  3668   000C3C  EF24  F006         	goto	i2u83_40
-  3669   000C40  EF22  F006         	goto	i2u83_41
-  3670   000C44                     i2u83_41:
-  3671   000C44  EF28  F006         	goto	i2l1860
-  3672   000C48                     i2u83_40:
+  3668   000C3C  EF24  F006         	goto	i2u93_40
+  3669   000C40  EF22  F006         	goto	i2u93_41
+  3670   000C44                     i2u93_41:
+  3671   000C44  EF28  F006         	goto	i2l1972
+  3672   000C48                     i2u93_40:
   3673   000C48  6C03               	negf	___awmod@divisor^0,c
   3674   000C4A  1E04               	comf	(___awmod@divisor+1)^0,f,c
   3675   000C4C  B0D8               	btfsc	status,0,c
   3676   000C4E  2A04               	incf	(___awmod@divisor+1)^0,f,c
-  3677   000C50                     i2l1860:
+  3677   000C50                     i2l1972:
   3678   000C50  5003               	movf	___awmod@divisor^0,w,c
   3679   000C52  1004               	iorwf	(___awmod@divisor+1)^0,w,c
   3680   000C54  B4D8               	btfsc	status,2,c
-  3681   000C56  EF2F  F006         	goto	i2u84_41
-  3682   000C5A  EF31  F006         	goto	i2u84_40
-  3683   000C5E                     i2u84_41:
-  3684   000C5E  EF55  F006         	goto	i2l1876
-  3685   000C62                     i2u84_40:
+  3681   000C56  EF2F  F006         	goto	i2u94_41
+  3682   000C5A  EF31  F006         	goto	i2u94_40
+  3683   000C5E                     i2u94_41:
+  3684   000C5E  EF55  F006         	goto	i2l1988
+  3685   000C62                     i2u94_40:
   3686   000C62  0E01               	movlw	1
   3687   000C64  6E05               	movwf	___awmod@counter^0,c
-  3688   000C66  EF39  F006         	goto	i2l1866
-  3689   000C6A                     i2l1864:
+  3688   000C66  EF39  F006         	goto	i2l1978
+  3689   000C6A                     i2l1976:
   3690   000C6A  90D8               	bcf	status,0,c
   3691   000C6C  3603               	rlcf	___awmod@divisor^0,f,c
   3692   000C6E  3604               	rlcf	(___awmod@divisor+1)^0,f,c
   3693   000C70  2A05               	incf	___awmod@counter^0,f,c
-  3694   000C72                     i2l1866:
+  3694   000C72                     i2l1978:
   3695   000C72  AE04               	btfss	(___awmod@divisor+1)^0,7,c
-  3696   000C74  EF3E  F006         	goto	i2u85_41
-  3697   000C78  EF40  F006         	goto	i2u85_40
-  3698   000C7C                     i2u85_41:
-  3699   000C7C  EF35  F006         	goto	i2l1864
-  3700   000C80                     i2u85_40:
-  3701   000C80                     i2l1868:
+  3696   000C74  EF3E  F006         	goto	i2u95_41
+  3697   000C78  EF40  F006         	goto	i2u95_40
+  3698   000C7C                     i2u95_41:
+  3699   000C7C  EF35  F006         	goto	i2l1976
+  3700   000C80                     i2u95_40:
+  3701   000C80                     i2l1980:
   3702   000C80  5003               	movf	___awmod@divisor^0,w,c
   3703   000C82  5C01               	subwf	___awmod@dividend^0,w,c
   3704   000C84  5004               	movf	(___awmod@divisor+1)^0,w,c
   3705   000C86  5802               	subwfb	(___awmod@dividend+1)^0,w,c
   3706   000C88  A0D8               	btfss	status,0,c
-  3707   000C8A  EF49  F006         	goto	i2u86_41
-  3708   000C8E  EF4B  F006         	goto	i2u86_40
-  3709   000C92                     i2u86_41:
-  3710   000C92  EF4F  F006         	goto	i2l1872
-  3711   000C96                     i2u86_40:
+  3707   000C8A  EF49  F006         	goto	i2u96_41
+  3708   000C8E  EF4B  F006         	goto	i2u96_40
+  3709   000C92                     i2u96_41:
+  3710   000C92  EF4F  F006         	goto	i2l1984
+  3711   000C96                     i2u96_40:
   3712   000C96  5003               	movf	___awmod@divisor^0,w,c
   3713   000C98  5E01               	subwf	___awmod@dividend^0,f,c
   3714   000C9A  5004               	movf	(___awmod@divisor+1)^0,w,c
   3715   000C9C  5A02               	subwfb	(___awmod@dividend+1)^0,f,c
-  3716   000C9E                     i2l1872:
+  3716   000C9E                     i2l1984:
   3717   000C9E  90D8               	bcf	status,0,c
   3718   000CA0  3204               	rrcf	(___awmod@divisor+1)^0,f,c
   3719   000CA2  3203               	rrcf	___awmod@divisor^0,f,c
   3720   000CA4  2E05               	decfsz	___awmod@counter^0,f,c
-  3721   000CA6  EF40  F006         	goto	i2l1868
-  3722   000CAA                     i2l1876:
+  3721   000CA6  EF40  F006         	goto	i2l1980
+  3722   000CAA                     i2l1988:
   3723   000CAA  5006               	movf	___awmod@sign^0,w,c
   3724   000CAC  B4D8               	btfsc	status,2,c
-  3725   000CAE  EF5B  F006         	goto	i2u87_41
-  3726   000CB2  EF5D  F006         	goto	i2u87_40
-  3727   000CB6                     i2u87_41:
-  3728   000CB6  EF61  F006         	goto	i2l1880
-  3729   000CBA                     i2u87_40:
+  3725   000CAE  EF5B  F006         	goto	i2u97_41
+  3726   000CB2  EF5D  F006         	goto	i2u97_40
+  3727   000CB6                     i2u97_41:
+  3728   000CB6  EF61  F006         	goto	i2l1992
+  3729   000CBA                     i2u97_40:
   3730   000CBA  6C01               	negf	___awmod@dividend^0,c
   3731   000CBC  1E02               	comf	(___awmod@dividend+1)^0,f,c
   3732   000CBE  B0D8               	btfsc	status,0,c
   3733   000CC0  2A02               	incf	(___awmod@dividend+1)^0,f,c
-  3734   000CC2                     i2l1880:
+  3734   000CC2                     i2l1992:
   3735   000CC2  C001  F001         	movff	___awmod@dividend,?___awmod
   3736   000CC6  C002  F002         	movff	___awmod@dividend+1,?___awmod+1
   3737   000CCA  0012               	return		;funcret
@@ -3800,8 +3800,8 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3776                           ;kernel.c: 64:     for (uint8_t i = 1; i < readyQueue.readyQueueSize; i++) {
   3777   000CCC  0E01               	movlw	1
   3778   000CCE  6E02               	movwf	os_task_time_decrease@i^0,c
-  3779   000CD0  EF9E  F006         	goto	i2l1300
-  3780   000CD4                     i2l1292:
+  3779   000CD0  EF9E  F006         	goto	i2l1336
+  3780   000CD4                     i2l1328:
   3781                           
   3782                           ;kernel.c: 65:         if (readyQueue.readyQueue[i].task_state == WAITING) {
   3783   000CD4  5002               	movf	os_task_time_decrease@i^0,w,c
@@ -3818,7 +3818,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3794   000CEA  EF79  F006         	goto	i2u15_41
   3795   000CEE  EF7B  F006         	goto	i2u15_40
   3796   000CF2                     i2u15_41:
-  3797   000CF2  EF9D  F006         	goto	i2l1298
+  3797   000CF2  EF9D  F006         	goto	i2l1334
   3798   000CF6                     i2u15_40:
   3799   000CF6                     
   3800                           ;kernel.c: 66:             readyQueue.readyQueue[i].task_time_to_waiting--;
@@ -3846,7 +3846,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3822   000D1C  EF92  F006         	goto	i2u16_41
   3823   000D20  EF94  F006         	goto	i2u16_40
   3824   000D24                     i2u16_41:
-  3825   000D24  EF9D  F006         	goto	i2l1298
+  3825   000D24  EF9D  F006         	goto	i2l1334
   3826   000D28                     i2u16_40:
   3827   000D28                     
   3828                           ;kernel.c: 69:                 readyQueue.readyQueue[i].task_state = READY;
@@ -3859,11 +3859,11 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3835   000D34  20F4               	addwfc	prodh,w,c
   3836   000D36  6EDA               	movwf	fsr2h,c
   3837   000D38  6ADF               	clrf	indf2,c
-  3838   000D3A                     i2l1298:
+  3838   000D3A                     i2l1334:
   3839                           
   3840                           ;kernel.c: 72:     }
   3841   000D3A  2A02               	incf	os_task_time_decrease@i^0,f,c
-  3842   000D3C                     i2l1300:
+  3842   000D3C                     i2l1336:
   3843   000D3C  EE22  F0DD         	lfsr	2,_readyQueue+530
   3844   000D40  50DE               	movf	postinc2,w,c
   3845   000D42  5C02               	subwf	os_task_time_decrease@i^0,w,c
@@ -3871,7 +3871,7 @@ Microchip MPLAB XC8 C Compiler v3.00 (Free license) build 20241204225717 Og1
   3847   000D46  EFA7  F006         	goto	i2u17_41
   3848   000D4A  EFA9  F006         	goto	i2u17_40
   3849   000D4E                     i2u17_41:
-  3850   000D4E  EF6A  F006         	goto	i2l1292
+  3850   000D4E  EF6A  F006         	goto	i2l1328
   3851   000D52                     i2u17_40:
   3852   000D52  0012               	return		;funcret
   3853   000D54                     __end_of_os_task_time_decrease:
@@ -4051,6 +4051,9 @@ Pointer List with Targets:
     ?_rr_scheduler$taskRunning	PTR struct tcb size(2) Largest target is 533
 		 -> readyQueue(BIGRAM[533]), NULL(NULL[0]), 
 
+    S1011pipe$pipe_data	PTR unsigned char  size(2) Largest target is 512
+		 -> _uDynamicHeap(BIGRAM[512]), NULL(NULL[0]), 
+
     S55tcb$task_func	PTR FTN()void  size(2) Largest target is 1
 		 -> os_idle_task(), tarefa_1(), 
 
@@ -4060,11 +4063,8 @@ Pointer List with Targets:
     S806mutex$waiting_tasks	PTR struct tcb[5] size(2) Largest target is 533
 		 -> readyQueue(BIGRAM[533]), NULL(NULL[0]), 
 
-    S874semaphore$sem_queue	PTR struct tcb[5] size(2) Largest target is 533
+    S907semaphore$sem_queue	PTR struct tcb[5] size(2) Largest target is 533
 		 -> readyQueue(BIGRAM[533]), NULL(NULL[0]), 
-
-    S978pipe$pipe_data	PTR unsigned char  size(2) Largest target is 512
-		 -> _uDynamicHeap(BIGRAM[512]), NULL(NULL[0]), 
 
     sem_init@s$sem_queue	PTR struct tcb[5] size(2) Largest target is 533
 		 -> readyQueue(BIGRAM[533]), NULL(NULL[0]), 
@@ -4543,74 +4543,74 @@ DATA                 0      0    1178      0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V3.00 build 20241204225717 
-Symbol Table                                                                                   Wed Oct 22 21:05:43 2025
+Symbol Table                                                                                   Wed Oct 22 21:29:39 2025
 
                            l13 0F0A                             l14 0F0A                             l41 0EA8  
                            l44 0F8E                             l88 0F2E                            l211 0FBA  
-                          l116 0E54                            l208 0F4A                            l362 0ECC  
-                          l356 0F7A                            l359 0F9C                            l448 0DB6  
+                          l116 0E54                            l208 0F4A                            l392 0F7A  
+                          l395 0F9C                            l484 0DB6                            l398 0ECC  
                           _BSR 0FE0                            u100 0D78                            u101 0D74  
-__end_of_os_task_time_decrease 0D54                            _PR2 0FCB                            u881 0E42  
+__end_of_os_task_time_decrease 0D54                            _PR2 0FCB                            u981 0E42  
                           _TOS 0FFD                   ___awmod@sign 0006                            prod 0FF3  
                           wreg 0FE8             set_channel@channel 0007              SRAMInitHeap@pHeap 0006  
-            SRAMInitHeap@count 0008                           l2010 0B6A                           l2020 0BD8  
-                         l2012 0B6A                           l1220 0D5C                           l2022 0BE0  
-                         l2014 0B76                           l1230 0D9C                           l1222 0D62  
-                         l2006 0EF0                           l2024 0BFC                           l2016 0B96  
-                         l1232 0DA8                           l1224 0D78                           l1216 0FB8  
-                         l1152 0F68                           l2008 0F06                           l2026 0C14  
-                         l2018 0BBC                           l1226 0D84                           l1218 0D54  
-                         l1250 0F48                           l1242 0F30                           l1154 0F92  
-                         l1228 0D8C                           l1244 0F34                           l1246 0F44  
-                         l1248 0F46                           l1370 0E56                           l1372 0E58  
-                         l1900 0E28                           l1902 0E4A                           l1904 0F12  
-                         l1906 0F28                           l1844 0EAC                           l1908 0F2C  
-                         l1940 0F80                           l1934 0E84                           l1846 0ECA  
-                         l1942 0F84                           l1936 0E96                           l1944 0F88  
-                         l1890 0E1C                           l1946 0F8C                           l1938 0F7C  
-                         l1892 0E20                           l1884 0E0C                           l1894 0E22  
-                         l1886 0E10                           l1896 0E24                           l1888 0E18  
-                         l1898 0E26                           i2l56 0E06                           i2l65 0D52  
+            SRAMInitHeap@count 0008                           l2000 0E18                           l2010 0E26  
+                         l2002 0E1C                           l2012 0E28                           l2004 0E20  
+                         l2020 0F2C                           l2014 0E4A                           l2006 0E22  
+                         l2008 0E24                           l2016 0F12                           l2120 0F06  
+                         l2130 0BBC                           l2122 0B6A                           l2018 0F28  
+                         l2050 0F7C                           l2132 0BD8                           l2124 0B6A  
+                         l1260 0D78                           l1252 0FB8                           l2052 0F80  
+                         l2134 0BE0                           l2126 0B76                           l1406 0E56  
+                         l2046 0E84                           l1262 0D84                           l1254 0D54  
+                         l1190 0F92                           l2054 0F84                           l2118 0EF0  
+                         l2136 0BFC                           l2128 0B96                           l1408 0E58  
+                         l2048 0E96                           l1264 0D8C                           l1256 0D5C  
+                         l1280 0F34                           l2056 0F88                           l2138 0C14  
+                         l1266 0D9C                           l1258 0D62                           l1282 0F44  
+                         l2058 0F8C                           l1268 0DA8                           l1284 0F46  
+                         l1188 0F68                           l1286 0F48                           l1278 0F30  
+                         l1956 0EAC                           l1958 0ECA                           l1996 0E0C  
+                         l1998 0E10                           i2l56 0E06                           i2l65 0D52  
                          _TMR0 0FD6                           _TMR2 0FCC                           _WREG 0FE8  
                          _main 0EF0                           fsr1h 0FE2                           fsr2h 0FDA  
                          indf1 0FE7                           indf2 0FDF                           fsr1l 0FE1  
                          fsr2l 0FD9                 ??_conf_timer_0 0006                           btemp 001A  
                          prodh 0FF4                           prodl 0FF3                           start 000E  
                  ___param_bank 0000                          ?_main 0001                          _ADRES 0FC3  
-              __end_of___awmod 0CCC                          i1l370 0F5C                          i1l371 0F64  
-                        i1l365 0FB6                          i2l230 0A70                          i1l368 0F4E  
+              __end_of___awmod 0CCC                          i1l401 0FB6                          i1l404 0F4E  
+                        i1l406 0F5C                          i1l407 0F64                          i2l230 0A70  
                         i2l227 09D6                          i2l183 0FAA                          i2l176 0B68  
-                        i2l707 0CCA                          u27_20 0E68                          u27_21 0E62  
+                        i2l743 0CCA                          u27_20 0E68                          u27_21 0E62  
                         u27_26 0E6A                  config_adc@tad 0008                          plusw1 0FE3  
                         plusw2 0FDB                          ttemp5 001B                          ttemp6 001E  
                         ttemp7 0022                          status 0FD8                          wtemp8 001B  
               __initialization 0ECE                   ?_ISR_TIMER_0 0001                   __end_of_main 0F12  
                        ??_main 000A                  __activetblptr 0002                         _CCPR1L 0FBE  
-             __end_of_adc_read 0F66                         u102_20 0B86                         u102_21 0B80  
-                       u102_26 0B88                         u103_20 0BBC                         u103_21 0BB8  
-                       u104_20 0BD8                         u104_21 0BD4                         u105_20 0BFC  
-                       u105_21 0BF8                         u106_20 0C14                         u106_21 0C10  
-                       i2l1300 0D3C                         i1l1950 0F4C                         i2l2140 082E  
-                       i1l1948 0FAC                         i2l2150 0908                         i2l2142 0832  
-                       i2l2160 098C                         i2l2152 0918                         i2l2144 0852  
-                       i2l2136 081C                         i2l1290 0CCC                         i2l2170 0A3A  
-                       i2l2162 09AE                         i2l2146 08A4                         i2l2154 092A  
-                       i2l2138 082C                         i2l1292 0CD4                         i2l2172 0A5A  
-                       i2l2164 09B0                         i2l2156 092E                         i2l2148 08F4  
-                       i2l1294 0CF6                         i2l2166 09D8                         i2l2158 094E  
-                       i2l2174 0A6E                         i2l1296 0D28                         i2l2168 09EA  
-                       i2l1298 0D3A                         i2l1830 0DBE                         i2l1910 0A8C  
-                       i2l1840 0E04                         i2l1832 0DE6                         i2l1920 0AF4  
-                       i2l1912 0AAA                         i2l1850 0C20                         i2l1930 0B58  
-                       i2l1922 0B04                         i2l1914 0AAC                         i2l1860 0C50  
-                       i2l1852 0C2E                         i2l1836 0DEC                         i2l1828 0DB8  
-                       i2l1916 0ACA                         i2l1870 0C96                         i2l1862 0C62  
-                       i2l1854 0C36                         i2l1838 0DEE                         i2l1918 0AF2  
-                       i2l1926 0B10                         i2l1880 0CC2                         i2l1872 0C9E  
-                       i2l1864 0C6A                         i2l1856 0C3A                         i2l1848 0C1E  
-                       i2l1928 0B30                         i2l1952 0F9E                         i2l1874 0CA4  
-                       i2l1866 0C72                         i2l1858 0C48                         i2l1868 0C80  
-                       i2l1876 0CAA                         i2l1878 0CBA                         _STATUS 0FD8  
+             __end_of_adc_read 0F66                         i1l2060 0FAC                         i1l2062 0F4C  
+                       u112_20 0B86                         u112_21 0B80                         u112_26 0B88  
+                       u113_20 0BBC                         u113_21 0BB8                         u114_20 0BD8  
+                       u114_21 0BD4                         i2l2030 0AF2                         i2l2022 0A8C  
+                       i2l2040 0B30                         i2l2032 0AF4                         i2l2024 0AAA  
+                       u115_20 0BFC                         u115_21 0BF8                         i2l1330 0CF6  
+                       i2l2042 0B58                         i2l2034 0B04                         i2l2026 0AAC  
+                       i2l1332 0D28                         i2l2028 0ACA                         i2l1334 0D3A  
+                       i2l1326 0CCC                         i2l2038 0B10                         i2l1328 0CD4  
+                       i2l1336 0D3C                         i2l2064 0F9E                         u116_20 0C14  
+                       u116_21 0C10                         i2l2250 082C                         i2l2260 08F4  
+                       i2l2252 082E                         i2l2270 094E                         i2l2262 0908  
+                       i2l2254 0832                         i2l2280 09EA                         i2l2272 098C  
+                       i2l2264 0918                         i2l2256 0852                         i2l2248 081C  
+                       i2l2282 0A3A                         i2l2274 09AE                         i2l2258 08A4  
+                       i2l2266 092A                         i2l2284 0A5A                         i2l2276 09B0  
+                       i2l2268 092E                         i2l2278 09D8                         i2l2286 0A6E  
+                       i2l1940 0DB8                         i2l1942 0DBE                         i2l1950 0DEE  
+                       i2l1960 0C1E                         i2l1952 0E04                         i2l1944 0DE6  
+                       i2l1970 0C48                         i2l1962 0C20                         i2l1980 0C80  
+                       i2l1972 0C50                         i2l1964 0C2E                         i2l1948 0DEC  
+                       i2l1990 0CBA                         i2l1982 0C96                         i2l1974 0C62  
+                       i2l1966 0C36                         i2l1992 0CC2                         i2l1984 0C9E  
+                       i2l1976 0C6A                         i2l1968 0C3A                         i2l1986 0CA4  
+                       i2l1978 0C72                         i2l1988 0CAA                         _STATUS 0FD8  
                        _STKPTR 0FFC                   ?_set_channel 0001                   ?_os_task_pos 0001  
                config_adc@cclk 0006                         _adc_go 0FAC                      ??___awmod 0005  
                        clear_0 0ED6                ___awmod@divisor 0003                         isa$std 0001  
@@ -4623,46 +4623,46 @@ __end_of_os_task_time_decrease 0D54                            _PR2 0FCB        
                    _config_adc 0EAA          _os_task_time_decrease 0CCC                     _config_app 0F12  
                   tarefa_1@pot 0004                        i2u15_40 0CF6                        i2u15_41 0CF2  
                       i2u16_40 0D28                        i2u16_41 0D24                        i2u17_40 0D52  
-                      i2u17_41 0D4E                        i1u93_25 0FB4                        i1u93_26 0FB6  
-                      i1u94_20 0F5C                        i1u94_21 0F58                        i2u80_40 0DE6  
-                      i2u80_41 0DE2                        i2u81_40 0E04                        i2u81_41 0E00  
-                      i2u82_40 0C2E                        i2u90_40 0B04                        i2u82_41 0C2A  
-                      i2u90_41 0B00                        i2u83_40 0C48                        i2u91_40 0B30  
-                      i2u83_41 0C44                        i2u91_41 0B2C                        i2u84_40 0C62  
-                      i2u92_40 0B58                        i2u84_41 0C5E                        i2u92_41 0B54  
-                      i2u85_40 0C80                        i2u85_41 0C7C                        i2u86_40 0C96  
-                      i2u86_41 0C92                        i2u87_40 0CBA                        i2u87_41 0CB6  
-                      i2u89_40 0AF2                        i2u89_41 0AEE                ?_os_create_task 0006  
-                    ?_tarefa_1 0001                        __Hparam 0000              ??_conf_interrupts 0006  
-                      __Lparam 0000                      ?_set_port 0001                      ?_os_start 0001  
-                      ___awmod 0C1E                   __psmallconst 0800                 ??_os_idle_task 0001  
-                      __pcinit 0ECE                        __ramtop 0800                  ?_SRAMInitHeap 0001  
-                   ??_adc_read 0003                        __ptext0 0EF0                        __ptext1 0F7C  
-                      __ptext2 0F12                        __ptext3 0F90                        __ptext4 0F66  
-                      __ptext5 0EAA                        __ptext6 0F30                        __ptext7 0FB8  
-                      __ptext8 0D54                        __ptext9 0E84                      _T0CONbits 0FD5  
-                    _T2CONbits 0FCA                     _readyQueue 00CB               ___awmod@dividend 0001  
-          os_create_task@prior 0008              __end_of_scheduler 0FAC                 __pintcode_body 0802  
-         end_of_initialization 0EE2              __end_of_os_config 0EAA                  __Lmediumconst 0000  
-                      int_func 0802                   _conf_timer_0 0F30         os_create_task@new_task 0061  
-                   ??_tarefa_1 0003                     ??_set_port 0006                     ??_os_start 000A  
-                      postdec1 0FE5                        postdec2 0FDD                  ?_rr_scheduler 0007  
-                      postinc0 0FEE                        postinc1 0FE6                        postinc2 0FDE  
-               ??_SRAMInitHeap 0006                      _PORTDbits 0F83         ?_os_task_time_decrease 0001  
-                  ?_config_adc 0006                    ?_config_app 0001                      _TRISBbits 0F93  
-                    _TRISCbits 0F94                      _TRISDbits 0F95                    _CCP1CONbits 0FBD  
-               ??_rr_scheduler 0009                 __end_of_adc_go 0FB8            start_initialization 0ECE  
-                adc_go@go_done 0001           __end_of_os_idle_task 0E84                       ??_adc_go 0003  
-                  __pbssBIGRAM 00CB   rr_scheduler@pos_task_running 000C                  __pcstackBANK0 0060  
-              _conf_interrupts 0FB8               ??_os_create_task 0009           __end_of_SRAMInitHeap 0DB8  
-                ??_ISR_TIMER_0 000D                      __pintcode 0008                       ?___awmod 0001  
-                  __smallconst 0800           __end_of_rr_scheduler 0B6A                      _scheduler 0F9E  
-                ??_set_channel 0006                       _LATCbits 0F8B                       _LATDbits 0F8C  
-                    _os_config 0E84                       i2u122_40 082C                       i2u122_41 0828  
-                     i2u123_40 0852                       i2u123_41 084E                       i2u124_40 0918  
-                     i2u124_41 0914                       i2u125_40 094E                       i2u125_41 094A  
-                     i2u126_40 09AE                       i2u126_41 09AA                       i2u127_40 0A5A  
-                     i2u127_41 0A56                  ??_os_task_pos 0003         os_task_time_decrease@i 0002  
+                      i2u17_41 0D4E                        i2u90_40 0DE6                        i2u90_41 0DE2  
+                      i2u91_40 0E04                        i2u91_41 0E00                        i2u92_40 0C2E  
+                      i2u92_41 0C2A                        i2u93_40 0C48                        i2u93_41 0C44  
+                      i2u94_40 0C62                        i2u94_41 0C5E                        i2u95_40 0C80  
+                      i2u95_41 0C7C                        i2u96_40 0C96                        i2u96_41 0C92  
+                      i2u97_40 0CBA                        i2u97_41 0CB6                        i2u99_40 0AF2  
+                      i2u99_41 0AEE                ?_os_create_task 0006                      ?_tarefa_1 0001  
+                      __Hparam 0000              ??_conf_interrupts 0006                        __Lparam 0000  
+                    ?_set_port 0001                      ?_os_start 0001                        ___awmod 0C1E  
+                 __psmallconst 0800                 ??_os_idle_task 0001                        __pcinit 0ECE  
+                      __ramtop 0800                  ?_SRAMInitHeap 0001                     ??_adc_read 0003  
+                      __ptext0 0EF0                        __ptext1 0F7C                        __ptext2 0F12  
+                      __ptext3 0F90                        __ptext4 0F66                        __ptext5 0EAA  
+                      __ptext6 0F30                        __ptext7 0FB8                        __ptext8 0D54  
+                      __ptext9 0E84                      _T0CONbits 0FD5                      _T2CONbits 0FCA  
+                   _readyQueue 00CB               ___awmod@dividend 0001            os_create_task@prior 0008  
+            __end_of_scheduler 0FAC                 __pintcode_body 0802           end_of_initialization 0EE2  
+            __end_of_os_config 0EAA                  __Lmediumconst 0000                        int_func 0802  
+                 _conf_timer_0 0F30         os_create_task@new_task 0061                     ??_tarefa_1 0003  
+                   ??_set_port 0006                     ??_os_start 000A                        postdec1 0FE5  
+                      postdec2 0FDD                  ?_rr_scheduler 0007                        postinc0 0FEE  
+                      postinc1 0FE6                        postinc2 0FDE                 ??_SRAMInitHeap 0006  
+                    _PORTDbits 0F83         ?_os_task_time_decrease 0001                    ?_config_adc 0006  
+                  ?_config_app 0001                      _TRISBbits 0F93                      _TRISCbits 0F94  
+                    _TRISDbits 0F95                    _CCP1CONbits 0FBD                 ??_rr_scheduler 0009  
+               __end_of_adc_go 0FB8            start_initialization 0ECE                  adc_go@go_done 0001  
+         __end_of_os_idle_task 0E84                       ??_adc_go 0003                    __pbssBIGRAM 00CB  
+ rr_scheduler@pos_task_running 000C                  __pcstackBANK0 0060                _conf_interrupts 0FB8  
+             ??_os_create_task 0009           __end_of_SRAMInitHeap 0DB8                  ??_ISR_TIMER_0 000D  
+                    __pintcode 0008                       ?___awmod 0001                    __smallconst 0800  
+         __end_of_rr_scheduler 0B6A                      _scheduler 0F9E                  ??_set_channel 0006  
+                     _LATCbits 0F8B                       _LATDbits 0F8C                      _os_config 0E84  
+                     i1u103_25 0FB4                       i1u103_26 0FB6                       i1u104_20 0F5C  
+                     i1u104_21 0F58                       i2u100_40 0B04                       i2u100_41 0B00  
+                     i2u101_40 0B30                       i2u101_41 0B2C                       i2u102_40 0B58  
+                     i2u102_41 0B54                       i2u132_40 082C                       i2u132_41 0828  
+                     i2u133_40 0852                       i2u133_41 084E                       i2u134_40 0918  
+                     i2u134_41 0914                       i2u135_40 094E                       i2u135_41 094A  
+                     i2u136_40 09AE                       i2u136_41 09AA                       i2u137_40 0A5A  
+                     i2u137_41 0A56                  ??_os_task_pos 0003         os_task_time_decrease@i 0002  
       ??_os_task_time_decrease 0001                     _ADCON0bits 0FC2            __end_of_ISR_TIMER_0 0A8C  
                    _ADCON1bits 0FC1                     _ADCON2bits 0FC0        __end_of_conf_interrupts 0FBC  
                  ??_config_adc 0007                   ??_config_app 0009                    _INTCON2bits 0FF1  
