@@ -7,9 +7,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6 ./syscall.h
 [; ;./syscall.h: 6: void os_create_task(uint8_t id, f_ptr task_f, uint8_t prior);
 [v _os_create_task `(v ~T0 @X0 0 ef3`uc`*F3398`uc ]
-"21 ./user_app.h
-[; ;./user_app.h: 21: TASK tarefa_1(void);
-[v _tarefa_1 `(v ~T0 @X0 0 ef ]
+"28 ./user_app.h
+[; ;./user_app.h: 28: TASK tarefa_controle_central(void);
+[v _tarefa_controle_central `(v ~T0 @X0 0 ef ]
+"29
+[; ;./user_app.h: 29: TASK tarefa_controle_motores(void);
+[v _tarefa_controle_motores `(v ~T0 @X0 0 ef ]
+"30
+[; ;./user_app.h: 30: TASK tarefa_monitor_bateria(void);
+[v _tarefa_monitor_bateria `(v ~T0 @X0 0 ef ]
+"31
+[; ;./user_app.h: 31: TASK tarefa_sensores_inerciais(void);
+[v _tarefa_sensores_inerciais `(v ~T0 @X0 0 ef ]
 "12 ./kernel.h
 [; ;./kernel.h: 12: void os_start(void);
 [v _os_start `(v ~T0 @X0 0 ef ]
@@ -532,26 +541,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _main ]
 [f ]
-"17
-[; ;main.c: 17:     os_config();
+"23
+[; ;main.c: 23:     os_config();
 [e ( _os_config ..  ]
-"20
-[; ;main.c: 20:     os_create_task(100, tarefa_1, 5);
-[e ( _os_create_task (3 , , -> -> 100 `i `uc &U _tarefa_1 -> -> 5 `i `uc ]
-"24
-[; ;main.c: 24:     os_start();
-[e ( _os_start ..  ]
 "26
-[; ;main.c: 26:     while (1);
+[; ;main.c: 26:     os_create_task(200, tarefa_controle_central, 8);
+[e ( _os_create_task (3 , , -> -> 200 `i `uc &U _tarefa_controle_central -> -> 8 `i `uc ]
+"27
+[; ;main.c: 27:     os_create_task(201, tarefa_controle_motores, 7);
+[e ( _os_create_task (3 , , -> -> 201 `i `uc &U _tarefa_controle_motores -> -> 7 `i `uc ]
+"28
+[; ;main.c: 28:     os_create_task(202, tarefa_monitor_bateria, 5);
+[e ( _os_create_task (3 , , -> -> 202 `i `uc &U _tarefa_monitor_bateria -> -> 5 `i `uc ]
+"29
+[; ;main.c: 29:     os_create_task(203, tarefa_sensores_inerciais, 6);
+[e ( _os_create_task (3 , , -> -> 203 `i `uc &U _tarefa_sensores_inerciais -> -> 6 `i `uc ]
+"33
+[; ;main.c: 33:     os_start();
+[e ( _os_start ..  ]
+"35
+[; ;main.c: 35:     while (1);
 [e :U 400 ]
 [e :U 399 ]
 [e $U 400  ]
 [e :U 401 ]
-"28
-[; ;main.c: 28:     return 0;
+"37
+[; ;main.c: 37:     return 0;
 [e ) -> 0 `i ]
 [e $UE 398  ]
-"29
-[; ;main.c: 29: }
+"38
+[; ;main.c: 38: }
 [e :UE 398 ]
 }

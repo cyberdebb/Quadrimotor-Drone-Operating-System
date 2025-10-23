@@ -5986,10 +5986,13 @@ typedef union _SALLOC
  } bits;
 }SALLOC;
 # 6 "./user_app.h" 2
-# 19 "./user_app.h"
+# 26 "./user_app.h"
 void config_app(void);
 
-TASK tarefa_1(void);
+TASK tarefa_controle_central(void);
+TASK tarefa_controle_motores(void);
+TASK tarefa_monitor_bateria(void);
+TASK tarefa_sensores_inerciais(void);
 # 4 "user_app.c" 2
 # 1 "./syscall.h" 1
 
@@ -6134,37 +6137,136 @@ void ext_int_disable(ext_int_t source);
 
 void ext_int_clear_flag(ext_int_t source);
 # 9 "user_app.c" 2
-# 78 "user_app.c"
+# 1 "./mutex.h" 1
+
+
+
+
+
+
+void mutex_init(Mutex *mutex);
+
+
+int mutex_lock(Mutex *mutex);
+
+
+int mutex_unlock(Mutex *mutex);
+# 10 "user_app.c" 2
+# 116 "user_app.c"
+typedef struct {
+    uint8_t payload[8];
+    uint8_t nova_mensagem;
+} motor_mailbox_t;
+
+static motor_mailbox_t g_motor_mailbox;
+static Mutex g_motor_mutex;
+static uint8_t g_motor_duty[4];
+
+static void aplicar_comando_motor(const uint8_t *payload);
+
 void config_app(void)
 {
-    set_channel(CHANNEL_0);
-    set_port(AN00);
-    config_adc(TAD12, FOSC4);
 
-    TRISCbits.RC0 = TRISCbits.RC1 = 0;
-    TRISDbits.RD0 = 0;
+    TRISCbits.TRISC0 = 0;
+    TRISCbits.TRISC1 = 0;
+    TRISCbits.TRISC2 = 0;
+    TRISCbits.TRISC3 = 0;
 
-    __asm("GLOBAL _tarefa_1");
+    mutex_init(&g_motor_mutex);
+    g_motor_mailbox.nova_mensagem = 0;
+
+    for (uint8_t i = 0; i < sizeof(g_motor_mailbox.payload); i++) {
+        g_motor_mailbox.payload[i] = 0;
+    }
+
+    for (uint8_t motor = 0; motor < 4; motor++) {
+        g_motor_duty[motor] = 0;
+    }
+
+    __asm("GLOBAL _tarefa_controle_central, _tarefa_controle_motores, _tarefa_monitor_bateria, _tarefa_sensores_inerciais");
 }
 
-TASK tarefa_1(void)
-{
-    int pot = 0;
 
-    adc_go(1);
+TASK tarefa_controle_central(void)
+{
+    uint8_t perfil = 0;
 
     while (1) {
-        LATDbits.LD0 = ~PORTDbits.RD0;
+        if (mutex_lock(&g_motor_mutex)) {
 
-        pot = adc_read();
+            for (uint8_t motor = 0; motor < 4; motor++) {
+                uint8_t indice = motor * 2;
+                uint8_t velocidade = 40 + (uint8_t)((perfil + motor) % 4) * 10;
 
-        if (pot > 0 && pot < 500) {
-            LATCbits.LATC0 = 1;
-            LATCbits.LATC1 = 0;
+                g_motor_mailbox.payload[indice] = motor + 1;
+                g_motor_mailbox.payload[indice + 1] = velocidade;
+            }
+
+            g_motor_mailbox.nova_mensagem = 1;
+            mutex_unlock(&g_motor_mutex);
         }
-        else if (pot >= 500 && pot <= 1023) {
-            LATCbits.LATC1 = 1;
-            LATCbits.LATC0 = 0;
+
+        perfil = (perfil + 1) % 4;
+        os_delay(20);
+    }
+}
+
+
+TASK tarefa_controle_motores(void)
+{
+    uint8_t comando_local[8];
+
+    while (1) {
+        uint8_t possui_comando = 0;
+
+        if (mutex_lock(&g_motor_mutex)) {
+            if (g_motor_mailbox.nova_mensagem) {
+                for (uint8_t i = 0; i < sizeof(comando_local); i++) {
+                    comando_local[i] = g_motor_mailbox.payload[i];
+                }
+                g_motor_mailbox.nova_mensagem = 0;
+                possui_comando = 1;
+            }
+            mutex_unlock(&g_motor_mutex);
+        }
+
+        if (possui_comando) {
+            aplicar_comando_motor(comando_local);
+        }
+
+        os_delay(10);
+    }
+}
+
+
+TASK tarefa_monitor_bateria(void)
+{
+    while (1) {
+
+        os_delay(100);
+    }
+}
+
+
+TASK tarefa_sensores_inerciais(void)
+{
+    while (1) {
+
+        os_delay(50);
+    }
+}
+
+
+static void aplicar_comando_motor(const uint8_t *payload)
+{
+    for (uint8_t i = 0; i < 8; i += 2) {
+        uint8_t motor_id = payload[i];
+        uint8_t velocidade = payload[i + 1];
+
+        if (motor_id >= 1 && motor_id <= 4) {
+            g_motor_duty[motor_id - 1] = velocidade;
+
+
         }
     }
 }

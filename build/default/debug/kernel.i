@@ -6037,10 +6037,13 @@ void conf_interrupts(void);
 void __attribute__((picinterrupt(("")))) ISR_TIMER_0(void);
 # 5 "kernel.c" 2
 # 1 "./user_app.h" 1
-# 19 "./user_app.h"
+# 26 "./user_app.h"
 void config_app(void);
 
-TASK tarefa_1(void);
+TASK tarefa_controle_central(void);
+TASK tarefa_controle_motores(void);
+TASK tarefa_monitor_bateria(void);
+TASK tarefa_sensores_inerciais(void);
 # 6 "kernel.c" 2
 # 1 "./mem.h" 1
 

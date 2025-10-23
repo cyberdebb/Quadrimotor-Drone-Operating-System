@@ -25,8 +25,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "10 ./mem.h
 [; ;./mem.h: 10: void SRAMInitHeap(void);
 [v _SRAMInitHeap `(v ~T0 @X0 0 ef ]
-"19 ./user_app.h
-[; ;./user_app.h: 19: void config_app(void);
+"26 ./user_app.h
+[; ;./user_app.h: 26: void config_app(void);
 [v _config_app `(v ~T0 @X0 0 ef ]
 "6 ./hardware.h
 [; ;./hardware.h: 6: void conf_timer_0(void);
@@ -99,8 +99,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2734
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 2734: extern volatile PORTDbits_t PORTDbits __attribute__((address(0xF83)));
 [v _PORTDbits `VS123 ~T0 @X0 0 e@3971 ]
-[v F3435 `(v ~T0 @X0 0 tf ]
-[v F3437 `(v ~T0 @X0 0 tf ]
+[v F3438 `(v ~T0 @X0 0 tf ]
+[v F3440 `(v ~T0 @X0 0 tf ]
 "52 /Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h
 [; ;/Users/augustodaleffe/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.7.171/xc8/pic/include/proc/pic18f4550.h: 52: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -695,14 +695,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 "53
 [; ;kernel.c: 53: uint8_t os_task_pos(f_ptr task)
-[v _os_task_pos `(uc ~T0 @X0 1 ef1`*F3435 ]
+[v _os_task_pos `(uc ~T0 @X0 1 ef1`*F3438 ]
 "54
 [; ;kernel.c: 54: {
 {
 [e :U _os_task_pos ]
 "53
 [; ;kernel.c: 53: uint8_t os_task_pos(f_ptr task)
-[v _task `*F3437 ~T0 @X0 1 r1 ]
+[v _task `*F3440 ~T0 @X0 1 r1 ]
 "54
 [; ;kernel.c: 54: {
 [f ]

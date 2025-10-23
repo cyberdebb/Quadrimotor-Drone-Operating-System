@@ -121,6 +121,8 @@ typedef struct {
 static motor_mailbox_t g_motor_mailbox;
 static Mutex g_motor_mutex;
 static uint8_t g_motor_duty[4]; // última velocidade aplicada a cada motor
+static pipe_t *g_sensor_pipe;    // fila básica para mensagens dos sensores
+static uint8_t g_sensor_amostras[3]; // guarda última leitura (pitch, roll, accel)
 
 static void aplicar_comando_motor(const uint8_t *payload);
 
@@ -143,6 +145,12 @@ void config_app(void)
         g_motor_duty[motor] = 0;
     }
 
+    for (uint8_t eixo = 0; eixo < 3; eixo++) {
+        g_sensor_amostras[eixo] = 0;
+    }
+
+    g_sensor_pipe = pipe_create(3); // 3 bytes: pitch, roll e aceleração
+
     asm("GLOBAL _tarefa_controle_central, _tarefa_controle_motores, _tarefa_monitor_bateria, _tarefa_sensores_inerciais");
 }
 
@@ -152,11 +160,25 @@ TASK tarefa_controle_central(void)
     uint8_t perfil = 0;
 
     while (1) {
+        // Aguarda nova amostra dos sensores (pitch, roll, aceleração)
+        if (g_sensor_pipe != 0) {
+            char leitura;
+            read_pipe(g_sensor_pipe, &leitura);      // pitch
+            g_sensor_amostras[0] = (uint8_t)leitura;
+            read_pipe(g_sensor_pipe, &leitura);      // roll
+            g_sensor_amostras[1] = (uint8_t)leitura;
+            read_pipe(g_sensor_pipe, &leitura);      // aceleração
+            g_sensor_amostras[2] = (uint8_t)leitura;
+        }
+
         if (mutex_lock(&g_motor_mutex)) {
             // Preenche pares |M?|VEL|
             for (uint8_t motor = 0; motor < 4; motor++) {
                 uint8_t indice = motor * 2;
                 uint8_t velocidade = 40 + (uint8_t)((perfil + motor) % 4) * 10;
+
+                // Ajuste simples usando pitch (amostras[0]) para ilustrar feedback
+                velocidade += (uint8_t)(g_sensor_amostras[0] / 16);
 
                 g_motor_mailbox.payload[indice]     = motor + 1;
                 g_motor_mailbox.payload[indice + 1] = velocidade;
@@ -210,9 +232,22 @@ TASK tarefa_monitor_bateria(void)
 // Placeholder para leitura dos sensores inerciais (giroscópio/acelerômetro)
 TASK tarefa_sensores_inerciais(void)
 {
+    uint8_t amostra = 0;
+
     while (1) {
-        // Comentário: aqui coletaríamos dados IMU e disponibilizaríamos para controle
-        os_delay(50);
+        // Comentário: leitura simulada de pitch, roll e aceleração
+        uint8_t pitch  = 20 + (amostra % 40);      // variação educativa
+        uint8_t roll   = 15 + ((amostra / 2) % 30);
+        uint8_t accel  = 10 + ((amostra / 3) % 20);
+
+        if (g_sensor_pipe != 0) {
+            write_pipe(g_sensor_pipe, (char)pitch);
+            write_pipe(g_sensor_pipe, (char)roll);
+            write_pipe(g_sensor_pipe, (char)accel);
+        }
+
+        amostra++;
+        os_delay(25); // taxa de atualização dos sensores
     }
 }
 

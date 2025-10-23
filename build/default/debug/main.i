@@ -6017,20 +6017,26 @@ uint8_t os_task_pos(f_ptr task);
 void os_task_time_decrease(void);
 # 4 "main.c" 2
 # 1 "./user_app.h" 1
-# 19 "./user_app.h"
+# 26 "./user_app.h"
 void config_app(void);
 
-TASK tarefa_1(void);
+TASK tarefa_controle_central(void);
+TASK tarefa_controle_motores(void);
+TASK tarefa_monitor_bateria(void);
+TASK tarefa_sensores_inerciais(void);
 # 5 "main.c" 2
 
 
 int main()
 {
-# 17 "main.c"
+# 23 "main.c"
     os_config();
 
 
-    os_create_task(100, tarefa_1, 5);
+    os_create_task(200, tarefa_controle_central, 8);
+    os_create_task(201, tarefa_controle_motores, 7);
+    os_create_task(202, tarefa_monitor_bateria, 5);
+    os_create_task(203, tarefa_sensores_inerciais, 6);
 
 
 
