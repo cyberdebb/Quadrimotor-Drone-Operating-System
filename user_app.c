@@ -124,6 +124,8 @@ static uint8_t g_motor_duty[4]; // última velocidade aplicada a cada motor
 static pipe_t *g_sensor_pipe;    // fila básica para mensagens dos sensores
 static uint8_t g_sensor_amostras[3]; // guarda última leitura (pitch, roll, accel)
 static uint8_t g_bateria_baixa;  // sinalização de carga insuficiente
+static uint16_t g_altitude_estimada; // altitude calculada pelo controle central
+static int16_t g_velocidade_vertical; // derivada simples do vetor aceleração
 
 static void aplicar_comando_motor(const uint8_t *payload);
 
@@ -152,6 +154,8 @@ void config_app(void)
 
     g_sensor_pipe = pipe_create(3); // 3 bytes: pitch, roll e aceleração
     g_bateria_baixa = 0;
+    g_altitude_estimada = 0;
+    g_velocidade_vertical = 0;
 
     asm("GLOBAL _tarefa_controle_central, _tarefa_controle_motores, _tarefa_monitor_bateria, _tarefa_sensores_inerciais");
 }
@@ -171,6 +175,15 @@ TASK tarefa_controle_central(void)
             g_sensor_amostras[1] = (uint8_t)leitura;
             read_pipe(g_sensor_pipe, &leitura);      // aceleração
             g_sensor_amostras[2] = (uint8_t)leitura;
+
+            // Integração bem simples para obter velocidade/altitude educacional
+            int16_t accel_corrigida = (int16_t)g_sensor_amostras[2] - 10; // remove componente estática
+            g_velocidade_vertical += accel_corrigida;
+            if (g_velocidade_vertical < 0) {
+                g_velocidade_vertical = 0;
+            }
+
+            g_altitude_estimada += (uint16_t)(g_velocidade_vertical / 50);
         }
 
         if (mutex_lock(&g_motor_mutex)) {
@@ -181,6 +194,11 @@ TASK tarefa_controle_central(void)
 
                 // Ajuste simples usando pitch (amostras[0]) para ilustrar feedback
                 velocidade += (uint8_t)(g_sensor_amostras[0] / 16);
+
+                // Usa altitude estimada para manter voo estável (corte simples)
+                if (g_altitude_estimada > 800) {
+                    velocidade -= 15;
+                }
 
                 if (g_bateria_baixa) {
                     velocidade /= 2; // reduz potência para retorno à base
