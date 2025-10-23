@@ -9,15 +9,24 @@ int main()
 #if EXAMPLE_1 == YES
     os_config();
     
-    // Cria tarefas de usuário
+    // Cria tarefas de usuï¿½rio
     os_create_task(100, tarefa_1, 5);
     os_create_task(101, tarefa_2, 5);
     os_create_task(102, tarefa_3, 5);
 #elif EXAMPLE_2 == YES
     os_config();
     
-    // Cria tarefas de usuário
+    // Cria tarefas de usuï¿½rio
     os_create_task(100, tarefa_1, 5);
+    
+#elif EXAMPLE_DRONE == YES
+    os_config();
+
+    // Cria tarefas da aplicaÃ§Ã£o educativa do drone
+    os_create_task(200, tarefa_controle_central, 8);
+    os_create_task(201, tarefa_controle_motores, 7);
+    os_create_task(202, tarefa_monitor_bateria, 5);
+    os_create_task(203, tarefa_sensores_inerciais, 6);
     
 #endif    
     

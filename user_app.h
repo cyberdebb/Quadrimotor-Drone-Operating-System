@@ -5,7 +5,8 @@
 #include "types.h"
 
 #define EXAMPLE_1 NO
-#define EXAMPLE_2 YES
+#define EXAMPLE_2 NO
+#define EXAMPLE_DRONE YES
 
 #if EXAMPLE_1 == YES
 
@@ -19,6 +20,15 @@ TASK tarefa_3(void);
 void config_app(void);
 
 TASK tarefa_1(void);
+
+#elif EXAMPLE_DRONE == YES
+
+void config_app(void);
+
+TASK tarefa_controle_central(void);
+TASK tarefa_controle_motores(void);
+TASK tarefa_monitor_bateria(void);
+TASK tarefa_sensores_inerciais(void);
 
 #endif
 
