@@ -593,30 +593,96 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _priority_scheduler ]
 [f ]
-"32
-[; ;scheduler.c: 32:     tcb_t *next = ((void*)0);
-[v _next `*S1 ~T0 @X0 1 a ]
-[e = _next -> -> -> 0 `i `*v `*S1 ]
+"33
+[; ;scheduler.c: 33:     tcb_t *selected = &readyQueue.readyQueue[0];
+[v _selected `*S1 ~T0 @X0 1 a ]
+[e = _selected &U *U + &U . _readyQueue 0 * -> -> -> 0 `i `ui `ux -> -> # *U &U . _readyQueue 0 `ui `ux ]
 "34
-[; ;scheduler.c: 34:     return next;
-[e ) _next ]
+[; ;scheduler.c: 34:     uint8_t highest_priority = 0;
+[v _highest_priority `uc ~T0 @X0 1 a ]
+[e = _highest_priority -> -> 0 `i `uc ]
+"36
+[; ;scheduler.c: 36:     for (uint8_t i = 0; i < readyQueue.readyQueueSize; i++) {
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 410  ]
+[e :U 407 ]
+{
+"37
+[; ;scheduler.c: 37:         tcb_t *candidate = &readyQueue.readyQueue[i];
+[v _candidate `*S1 ~T0 @X0 1 a ]
+[e = _candidate &U *U + &U . _readyQueue 0 * -> _i `ux -> -> # *U &U . _readyQueue 0 `ui `ux ]
+"39
+[; ;scheduler.c: 39:         if (candidate->task_state != READY) {
+[e $ ! != -> . *U _candidate 2 `ui -> . `E39 0 `ui 411  ]
+{
+"40
+[; ;scheduler.c: 40:             continue;
+[e $U 409  ]
+"41
+[; ;scheduler.c: 41:         }
+}
+[e :U 411 ]
+"43
+[; ;scheduler.c: 43:         if (candidate->task_priority > highest_priority) {
+[e $ ! > -> . *U _candidate 3 `i -> _highest_priority `i 412  ]
+{
+"44
+[; ;scheduler.c: 44:             highest_priority = candidate->task_priority;
+[e = _highest_priority . *U _candidate 3 ]
+"45
+[; ;scheduler.c: 45:             selected = candidate;
+[e = _selected _candidate ]
+"46
+[; ;scheduler.c: 46:             continue;
+[e $U 409  ]
+"47
+[; ;scheduler.c: 47:         }
+}
+[e :U 412 ]
+"49
+[; ;scheduler.c: 49:         if (candidate->task_priority == highest_priority &&
+[e $ ! && == -> . *U _candidate 3 `i -> _highest_priority `i == _candidate . _readyQueue 2 413  ]
+"50
+[; ;scheduler.c: 50:             candidate == readyQueue.taskRunning) {
+{
+"51
+[; ;scheduler.c: 51:             selected = candidate;
+[e = _selected _candidate ]
+"52
+[; ;scheduler.c: 52:         }
+}
+[e :U 413 ]
+"53
+[; ;scheduler.c: 53:     }
+}
+[e :U 409 ]
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 410 ]
+[e $ < -> _i `i -> . _readyQueue 1 `i 407  ]
+[e :U 408 ]
+}
+"55
+[; ;scheduler.c: 55:     return selected;
+[e ) _selected ]
 [e $UE 406  ]
-"35
-[; ;scheduler.c: 35: }
+"56
+[; ;scheduler.c: 56: }
 [e :UE 406 ]
 }
-"37
-[; ;scheduler.c: 37: void scheduler()
+"58
+[; ;scheduler.c: 58: void scheduler()
 [v _scheduler `(v ~T0 @X0 1 ef ]
-"38
-[; ;scheduler.c: 38: {
+"59
+[; ;scheduler.c: 59: {
 {
 [e :U _scheduler ]
 [f ]
-"40
-[; ;scheduler.c: 40:     readyQueue.taskRunning = rr_scheduler();
+"61
+[; ;scheduler.c: 61:     readyQueue.taskRunning = rr_scheduler();
 [e = . _readyQueue 2 ( _rr_scheduler ..  ]
-"44
-[; ;scheduler.c: 44: }
-[e :UE 407 ]
+"65
+[; ;scheduler.c: 65: }
+[e :UE 414 ]
 }

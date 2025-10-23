@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 
-// Declaração da fila de aptos
+// Declaraï¿½ï¿½o da fila de aptos
 extern f_aptos_t readyQueue;
 
 
@@ -29,9 +29,30 @@ tcb_t *rr_scheduler()
 
 tcb_t *priority_scheduler()
 {
-    tcb_t *next = NULL;
-    
-    return next;
+    // Seleciona por prioridade; inicia assumindo a tarefa idle na posiÃ§Ã£o 0
+    tcb_t *selected = &readyQueue.readyQueue[0];
+    uint8_t highest_priority = 0;
+
+    for (uint8_t i = 0; i < readyQueue.readyQueueSize; i++) {
+        tcb_t *candidate = &readyQueue.readyQueue[i];
+
+        if (candidate->task_state != READY) {
+            continue;   // Apenas tarefas prontas concorrem pela CPU
+        }
+
+        if (candidate->task_priority > highest_priority) {
+            highest_priority = candidate->task_priority;
+            selected = candidate;
+            continue;
+        }
+
+        if (candidate->task_priority == highest_priority &&
+            candidate == readyQueue.taskRunning) {
+            selected = candidate; // MantÃ©m a tarefa atual em caso de empate
+        }
+    }
+
+    return selected;
 }
 
 void scheduler()

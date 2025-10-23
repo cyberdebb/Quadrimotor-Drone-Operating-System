@@ -6211,9 +6211,30 @@ tcb_t *rr_scheduler()
 
 tcb_t *priority_scheduler()
 {
-    tcb_t *next = ((void*)0);
 
-    return next;
+    tcb_t *selected = &readyQueue.readyQueue[0];
+    uint8_t highest_priority = 0;
+
+    for (uint8_t i = 0; i < readyQueue.readyQueueSize; i++) {
+        tcb_t *candidate = &readyQueue.readyQueue[i];
+
+        if (candidate->task_state != READY) {
+            continue;
+        }
+
+        if (candidate->task_priority > highest_priority) {
+            highest_priority = candidate->task_priority;
+            selected = candidate;
+            continue;
+        }
+
+        if (candidate->task_priority == highest_priority &&
+            candidate == readyQueue.taskRunning) {
+            selected = candidate;
+        }
+    }
+
+    return selected;
 }
 
 void scheduler()
