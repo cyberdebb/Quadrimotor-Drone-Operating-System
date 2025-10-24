@@ -218,8 +218,10 @@ TASK sensors_reading(void) {
         unsigned int valueSensorGyr = readADC(1);
 
         // Converts to tensions (0.0V to 5.0V)
-        float accelerometer = (float)valueSensorAcc * (5.0 / 1023.0);
-        float gyroscope = (float)valueSensorGyr * (5.0 / 1023.0);
+        uint16_t accelerometer_mV = ((uint16_t)valueSensorAcc * 5000) / 1023;
+        uint16_t gyroscope_mV = ((uint16_t)valueSensorGyr * 5000) / 1023;
+        // float accelerometer = (float)valueSensorAcc * (5.0 / 1023.0);
+        // float gyroscope = (float)valueSensorGyr * (5.0 / 1023.0);
         
         // Sends to the central control task
         // ...
