@@ -56,8 +56,8 @@ typedef struct semaphore {
 typedef struct pipe {
     uint8_t pipe_pos_read;
     uint8_t pipe_pos_write;
-    char pipe_data[PIPE_MAX_SIZE];
-    //char* pipe_data;
+    // char pipe_data[PIPE_MAX_SIZE];
+    char *pipe_data;
     sem_t pipe_sem_read;
     sem_t pipe_sem_write;
 } pipe_t;

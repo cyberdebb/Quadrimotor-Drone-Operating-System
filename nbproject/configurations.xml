@@ -15,6 +15,7 @@
       <itemPath>mem.h</itemPath>
       <itemPath>pipe.h</itemPath>
       <itemPath>sync.h</itemPath>
+      <itemPath>mutex.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -38,6 +39,7 @@
       <itemPath>mem.c</itemPath>
       <itemPath>pipe.c</itemPath>
       <itemPath>sync.c</itemPath>
+      <itemPath>mutex.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

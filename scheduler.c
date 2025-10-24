@@ -35,7 +35,7 @@ tcb_t *priority_scheduler()
         if (readyQueue.readyQueue[i].task_priority > highest_priority && 
             readyQueue.readyQueue[i].task_state == READY) {
             highest_priority = readyQueue.readyQueue[i].task_priority;
-            pos_highest_priority_task = i;
+            pos_highest_priority_task = (unsigned char)i;
         }
     }
 
