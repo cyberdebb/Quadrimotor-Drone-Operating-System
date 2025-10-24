@@ -1,6 +1,8 @@
 #ifndef IO_H
 #define	IO_H
 
+#include <stdint.h>
+
 typedef enum {CHANNEL_0     = 0b0000, 
               CHANNEL_1     = 0b0001,
               CHANNEL_2     = 0b0010,
@@ -48,11 +50,28 @@ typedef enum {FRC1      = 0b111,
               FOSC8     = 0b001,
               FOSC2     = 0b000} conversion_clock_t;              
 
+typedef enum {PWM_PRESCALER_1   = 0b00,
+              PWM_PRESCALER_4   = 0b01,
+              PWM_PRESCALER_16  = 0b11} pwm_prescaler_t;
+
+typedef enum {EXT_INT_FALLING = 0,
+              EXT_INT_RISING  = 1} ext_int_edge_t;
+
 void set_channel(channel_t channel);
 void set_port(port_conf_t port);
 void config_adc(tad_t tad, conversion_clock_t cclk);
 void adc_go(int go_done);
 int adc_read();
+
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler);
+void pwm_start(void);
+void pwm_stop(void);
+void pwm_set_duty(uint16_t duty);
+
+void ext_int_init(ext_int_edge_t edge);
+void ext_int_enable(void);
+void ext_int_disable(void);
+void ext_int_clear_flag(void);
         
 
 

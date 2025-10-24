@@ -32,3 +32,63 @@ int adc_read()
     return ADRES;
 }
 
+void pwm_init(uint8_t period, pwm_prescaler_t prescaler)
+{
+    T2CONbits.TMR2ON = 0;
+    T2CONbits.T2CKPS = prescaler;
+    PR2 = period;
+
+    CCP1CONbits.CCP1M = 0b1100;
+    pwm_set_duty(0);
+
+    TRISCbits.TRISC2 = 0;
+}
+
+void pwm_start(void)
+{
+    CCP1CONbits.CCP1M = 0b1100;
+    TMR2 = 0;
+    T2CONbits.TMR2ON = 1;
+}
+
+void pwm_stop(void)
+{
+    T2CONbits.TMR2ON = 0;
+    CCP1CONbits.CCP1M = 0;
+    LATCbits.LATC2 = 0;
+}
+
+void pwm_set_duty(uint16_t duty)
+{
+    if (duty > 1023) {
+        duty = 1023;
+    }
+
+    CCPR1L = (uint8_t)(duty >> 2);
+    CCP1CONbits.DC1B = (uint8_t)(duty & 0x03);
+}
+
+void ext_int_init(ext_int_edge_t edge)
+{
+    TRISBbits.TRISB0 = 1;
+    INTCON2bits.INTEDG0 = edge;
+    INTCONbits.INT0IE = 0;
+    INTCONbits.INT0IF = 0;
+}
+
+void ext_int_enable(void)
+{
+    INTCONbits.INT0IF = 0;
+    INTCONbits.INT0IE = 1;
+}
+
+void ext_int_disable(void)
+{
+    INTCONbits.INT0IE = 0;
+}
+
+void ext_int_clear_flag(void)
+{
+    INTCONbits.INT0IF = 0;
+}
+
