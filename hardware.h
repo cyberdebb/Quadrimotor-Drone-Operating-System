@@ -6,8 +6,9 @@
 void conf_timer_0(void);
 void conf_interrupts(void);
 
-// Tratador de interrupção
-void __interrupt() ISR_TIMER_0(void);
+// Tratador de interrupï¿½ï¿½o
+//Comentei pq debs criou um novo - AUGUSTO
+// void __interrupt() ISR_TIMER_0(void);
 
 
 #endif	/* HARDWARE_H */

@@ -123,8 +123,8 @@ TASK tarefa_1(void)
 
 
 void config_app(void) {
-    TRISCbits.RD0 = 0; // M1
-    TRISCbits.RD1 = 0; // M2
+    TRISDbits.RD0 = 0; // M1
+    TRISDbits.RD1 = 0; // M2
     TRISDbits.RD2 = 0; // M3
     TRISDbits.RD3 = 0; // M4
     TRISAbits.RA0 = 1; // gyroscope
@@ -159,7 +159,7 @@ unsigned int readADC(unsigned char canal) {
     ADCON0bits.ADON = 0; // Turn off ADC module
 
     // Return the result
-    return ((ADRESH << 8) + ADRESL); 
+    return ((uint16_t)ADRESH << 8) + ADRESL; 
 }
 
 // Timer0 Interrupt Service Routine for software PWM
