@@ -128,9 +128,16 @@ typedef struct {
     uint8_t M1, M2, M3, M4;
 } motors;
 
+typedef struct {
+    uint16_t accelerometer_mV;
+    uint16_t gyroscope_mV;
+} sensors_data_t;
+
 static motors motors_data = {0};
+static sensors_data_t sensors_data = {0};
 static pipe_t control_pipe = {0};
 static volatile uint8_t return_to_base_flag = 0;
+static volatile uint8_t battery_low_flag = 0;
 
 
 void config_app(void) {
@@ -153,6 +160,7 @@ void config_app(void) {
     mutex_init(&mutex);
     create_pipe(&control_pipe);
     return_to_base_flag = 0;
+    battery_low_flag = 0;
 }
 
 // Reads ADC values
@@ -227,17 +235,17 @@ TASK motors_control(void) {
 TASK sensors_reading(void) {
     static unsigned int valueSensorAcc;
     static unsigned int valueSensorGyr;
-    static uint16_t accelerometer_mV;
-    static uint16_t gyroscope_mV;
 
     while (1) {
         valueSensorAcc = readADC(0);
         valueSensorGyr = readADC(1);
 
-        accelerometer_mV = ((uint16_t)valueSensorAcc * 5000U) / 1023U;
-        gyroscope_mV    = ((uint16_t)valueSensorGyr * 5000U) / 1023U;
+        if (mutex_lock(&mutex)) {
+            sensors_data.accelerometer_mV = ((uint16_t)valueSensorAcc * 5000U) / 1023U;
+            sensors_data.gyroscope_mV = ((uint16_t)valueSensorGyr * 5000U) / 1023U;
+            mutex_unlock(&mutex);
+        }
 
-        // TODO: enviar dados para o centro de controle
         os_delay(10);
     }
 }
@@ -254,11 +262,7 @@ TASK battery_monitor(void) {
         status = (millivolts < BATTERY_LOW_THRESHOLD_MV) ? 1U : 0U;
 
         if (status != last_status) {
-            if (status) {
-                write_pipe(&control_pipe, 'L');
-            } else {
-                write_pipe(&control_pipe, 'N');
-            }
+            battery_low_flag = status;
             last_status = status;
         }
 
@@ -267,16 +271,53 @@ TASK battery_monitor(void) {
 }
 
 TASK control_center(void) {
-    static char message;
+    static uint16_t acc_local;
+    static uint16_t gyr_local;
+    static uint8_t base_speed;
 
     while (1) {
-        read_pipe(&control_pipe, &message);
-
-        if (message == 'L') {
+        // Verifica status da bateria
+        if (battery_low_flag) {
             return_to_base_flag = 1;
-        } else if (message == 'N') {
+        } else {
             return_to_base_flag = 0;
         }
+        
+        // Le dados dos sensores
+        if (mutex_lock(&mutex)) {
+            acc_local = sensors_data.accelerometer_mV;
+            gyr_local = sensors_data.gyroscope_mV;
+            mutex_unlock(&mutex);
+        }
+
+        // Calculo simples de velocidade base (0-255)
+        // Acelerometro controla velocidade base (0-5000mV -> 0-255)
+        base_speed = (uint8_t)((uint32_t)acc_local * 255U / 5000U);
+
+        // Limita velocidade minima e maxima
+        if (base_speed < 50) base_speed = 50;   // Velocidade minima para hover
+        if (base_speed > 200) base_speed = 200; // Velocidade maxima de seguranca
+
+        // Giroscopio ajusta motores para estabilidade (simplificado)
+        if (mutex_lock(&mutex)) {
+            motors_data.M1 = base_speed;
+            motors_data.M2 = base_speed;
+            motors_data.M3 = base_speed;
+            motors_data.M4 = base_speed;
+            
+            // Ajuste simples baseado no giroscopio para estabilidade
+            if (gyr_local > 2800) {  // Inclinacao detectada
+                motors_data.M1 += 10;
+                motors_data.M4 += 10;
+            } else if (gyr_local < 2200) {
+                motors_data.M2 += 10;
+                motors_data.M3 += 10;
+            }
+            
+            mutex_unlock(&mutex);
+        }
+
+        os_delay(20);
     }
 }
 
