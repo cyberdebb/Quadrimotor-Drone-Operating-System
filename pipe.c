@@ -7,37 +7,27 @@ void create_pipe(pipe_t *p)
 {
     unsigned char i;
 
-    if (p == 0) {
-        return;
-    }
-
     p->pipe_pos_read    = 0;
     p->pipe_pos_write   = 0;
 
     // Inicializa os sem�foros de controle do pipe
     sem_init(&p->pipe_sem_read, 0);
 
+    // Aloca bloco de forma dinamica para o pipe
     if (p->pipe_data == 0) {
         p->pipe_data = (char *)SRAMalloc(PIPE_MAX_SIZE);
-    }
-
-    if (p->pipe_data == 0) {
-        sem_init(&p->pipe_sem_write, 0);
-        return;
     }
 
     for (i = 0; i < PIPE_MAX_SIZE; i++) {
         p->pipe_data[i] = 0;
     }
 
+    // Inicializa semaforo de escrita
     sem_init(&p->pipe_sem_write, PIPE_MAX_SIZE);
 }
 
 void read_pipe(pipe_t *p, char *buffer)
 {
-    if ((p == 0) || (buffer == 0) || (p->pipe_data == 0)) {
-        return;
-    }
 
     di();
     
@@ -55,9 +45,6 @@ void read_pipe(pipe_t *p, char *buffer)
 
 void write_pipe(pipe_t *p, char buffer)
 {
-    if ((p == 0) || (p->pipe_data == 0)) {
-        return;
-    }
 
     di();
     
