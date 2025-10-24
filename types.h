@@ -14,7 +14,7 @@ typedef void TASK;
 typedef void (*f_ptr)(void);
 
 // Define os estados poss�veis
-typedef enum {READY = 0, RUNNING, WAITING} state_t;
+typedef enum {READY = 0, RUNNING, WAITING, WAITING_SEM} state_t;
 
 // Define a TCB 
 typedef struct tcb {
@@ -45,6 +45,36 @@ typedef struct {
     tcb_t* waiting_tasks[MAX_TASKS_ON_READY_QUEUE]; // Waiting tasks queue
     uint8_t waiting_count; // Waiting tasks numeber
 } Mutex;
+
+typedef struct semaphore {
+    int contador;
+    tcb_t *sem_queue[MAX_TASKS_ON_READY_QUEUE];
+    uint8_t sem_queue_in;
+    uint8_t sem_queue_out;
+} sem_t;
+
+typedef struct pipe {
+    uint8_t pipe_pos_read;
+    uint8_t pipe_pos_write;
+    char pipe_data[PIPE_MAX_SIZE];
+    //char* pipe_data;
+    sem_t pipe_sem_read;
+    sem_t pipe_sem_write;
+} pipe_t;
+
+/*********************************************************************
+ * Segment header data type
+ ********************************************************************/
+typedef union _SALLOC
+{
+	unsigned char byte;
+	struct _BITS
+	{
+		unsigned count:7;
+		unsigned alloc:1;	
+	} bits;
+}SALLOC;
+
 
 #endif	/* TYPES_H */
 

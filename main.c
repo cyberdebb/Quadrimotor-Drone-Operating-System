@@ -6,11 +6,27 @@
 
 int main()
 {
+#if EXAMPLE_1 == YES
     os_config();
     
-    // Cria tarefas de usuário
+    // Cria tarefas de usuï¿½rio
+    os_create_task(100, tarefa_1, 5);
+    os_create_task(101, tarefa_2, 5);
+    os_create_task(102, tarefa_3, 5);
+#elif EXAMPLE_2 == YES
+    os_config();
+    
+    // Cria tarefas de usuï¿½rio
+    os_create_task(100, tarefa_1, 5);
+
+#elif TRABALHO_1 == YES
+    os_config();
+    
+    // Cria tarefas de usuï¿½rio
     os_create_task(100, motors_control, 5);
     os_create_task(101, sensors_reading, 5);
+
+#endif    
     
     os_start();
     
