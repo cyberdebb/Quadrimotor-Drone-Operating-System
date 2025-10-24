@@ -28,10 +28,14 @@ tcb_t *rr_scheduler()
 
 tcb_t *priority_scheduler()
 {
-    uint8_t highest_priority = 0;
-    uint8_t pos_highest_priority_task = 0;
+    static uint8_t highest_priority;
+    static uint8_t pos_highest_priority_task;
+    static int i;
 
-    for (int i = 0; i < readyQueue.readyQueueSize; i++) {
+    highest_priority = 0;
+    pos_highest_priority_task = 0;
+
+    for (i = 0; i < readyQueue.readyQueueSize; i++) {
         if (readyQueue.readyQueue[i].task_priority > highest_priority && 
             readyQueue.readyQueue[i].task_state == READY) {
             highest_priority = readyQueue.readyQueue[i].task_priority;

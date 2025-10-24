@@ -25,6 +25,8 @@ int main()
     // Cria tarefas de usu�rio
     os_create_task(100, motors_control, 5);
     os_create_task(101, sensors_reading, 5);
+    os_create_task(102, battery_monitor, 4);
+    os_create_task(103, control_center, 5);
 
 #endif    
     

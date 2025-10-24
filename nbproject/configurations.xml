@@ -121,6 +121,7 @@
         <property key="verbose" value="false"/>
         <property key="warning-level" value="-3"/>
         <property key="what-to-do" value="ignore"/>
+        <appendMe value="-Opa-"/>
       </HI-TECH-COMP>
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>

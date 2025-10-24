@@ -11,6 +11,9 @@
 #define PWM_MIN_DUTY    0      
 #define PWM_MAX_DUTY    255    
 #define PWM_FREQ        50 // 50Hz PWM frequency
+#define BATTERY_LOW_THRESHOLD_MV   3600U
+#define BATTERY_ADC_CHANNEL        2U
+#define BATTERY_MONITOR_DELAY_TICKS 100U
 
 // Add global variables for software PWM for all motors
 volatile uint8_t pwm_counter[4] = {0, 0, 0, 0}; // Counters for M1, M2, M3, M4
@@ -121,6 +124,14 @@ TASK tarefa_1(void)
 
 #elif TRABALHO_1 == YES
 
+typedef struct {
+    double M1, M2, M3, M4;
+} motors;
+
+static motors motors_data = {0};
+static pipe_t control_pipe = {0};
+static volatile uint8_t return_to_base_flag = 0;
+
 
 void config_app(void) {
     TRISDbits.RD0 = 0; // M1
@@ -131,7 +142,7 @@ void config_app(void) {
     TRISAbits.RA1 = 1; // accelerometer
     TRISAbits.RA2 = 1; // batteries
 
-    asm("GLOBAL _motors_control, _sensors_reading");
+    asm("GLOBAL _motors_control, _sensors_reading, _battery_monitor, _control_center");
 
     // Configure Timer0 for software PWM
     T0CON = 0x88; // Enable Timer0, 8-bit, internal clock, 1:1 prescaler
@@ -140,13 +151,9 @@ void config_app(void) {
     GIE = 1; // Enable global interrupts
 
     mutex_init(&mutex);
+    create_pipe(&control_pipe);
+    return_to_base_flag = 0;
 }
-
-typedef struct {
-    double M1, M2, M3, M4;  
-} motors;
-
-motors motors_data = {0};
 
 // Reads ADC values
 unsigned int readADC(unsigned char canal) {
@@ -197,12 +204,18 @@ TASK motors_control(void) {
         // ...
 
         if (mutex_lock(&mutex)) {
-            // Update all duty cycles
-            duty_cycle[0] = convert_to_duty_cycle(motors_data.M1);
-            duty_cycle[1] = convert_to_duty_cycle(motors_data.M2);
-            duty_cycle[2] = convert_to_duty_cycle(motors_data.M3);
-            duty_cycle[3] = convert_to_duty_cycle(motors_data.M4);
-            
+            if (return_to_base_flag) {
+                duty_cycle[0] = PWM_MIN_DUTY;
+                duty_cycle[1] = PWM_MIN_DUTY;
+                duty_cycle[2] = PWM_MIN_DUTY;
+                duty_cycle[3] = PWM_MIN_DUTY;
+            } else {
+                duty_cycle[0] = convert_to_duty_cycle(motors_data.M1);
+                duty_cycle[1] = convert_to_duty_cycle(motors_data.M2);
+                duty_cycle[2] = convert_to_duty_cycle(motors_data.M3);
+                duty_cycle[3] = convert_to_duty_cycle(motors_data.M4);
+            }
+
             mutex_unlock(&mutex);
         }
 
@@ -212,20 +225,55 @@ TASK motors_control(void) {
 
 // Reads the accelerometer sensor and the gyroscope sensor
 TASK sensors_reading(void) {
-    while (1) {
-        // Reads pin ADC values
-        unsigned int valueSensorAcc = readADC(0);
-        unsigned int valueSensorGyr = readADC(1);
+    static unsigned int valueSensorAcc;
+    static unsigned int valueSensorGyr;
+    static uint16_t accelerometer_mV;
+    static uint16_t gyroscope_mV;
 
-        // Converts to tensions (0.0V to 5.0V)
-        uint16_t accelerometer_mV = ((uint16_t)valueSensorAcc * 5000) / 1023;
-        uint16_t gyroscope_mV = ((uint16_t)valueSensorGyr * 5000) / 1023;
-        // float accelerometer = (float)valueSensorAcc * (5.0 / 1023.0);
-        // float gyroscope = (float)valueSensorGyr * (5.0 / 1023.0);
-        
-        // Sends to the central control task
-        // ...
+    while (1) {
+        valueSensorAcc = readADC(0);
+        valueSensorGyr = readADC(1);
+
+        accelerometer_mV = ((uint16_t)valueSensorAcc * 5000U) / 1023U;
+        gyroscope_mV    = ((uint16_t)valueSensorGyr * 5000U) / 1023U;
+
+        // TODO: enviar dados para o centro de controle
         os_delay(10);
+    }
+}
+
+TASK battery_monitor(void) {
+    uint8_t last_status = 0xFF;
+
+    while (1) {
+        unsigned int raw_value = readADC(BATTERY_ADC_CHANNEL);
+        uint32_t millivolts = ((uint32_t)raw_value * 5000U) / 1023U;
+        uint8_t status = (millivolts < BATTERY_LOW_THRESHOLD_MV) ? 1U : 0U;
+
+        if (status != last_status) {
+            if (status) {
+                write_pipe(&control_pipe, 'L');
+            } else {
+                write_pipe(&control_pipe, 'N');
+            }
+            last_status = status;
+        }
+
+        os_delay(BATTERY_MONITOR_DELAY_TICKS);
+    }
+}
+
+TASK control_center(void) {
+    char message;
+
+    while (1) {
+        read_pipe(&control_pipe, &message);
+
+        if (message == 'L') {
+            return_to_base_flag = 1;
+        } else if (message == 'N') {
+            return_to_base_flag = 0;
+        }
     }
 }
 
