@@ -125,7 +125,7 @@ TASK tarefa_1(void)
 #elif TRABALHO_1 == YES
 
 typedef struct {
-    double M1, M2, M3, M4;
+    uint8_t M1, M2, M3, M4;
 } motors;
 
 static motors motors_data = {0};
@@ -171,9 +171,11 @@ unsigned int readADC(unsigned char canal) {
 
 // Timer0 Interrupt Service Routine for software PWM
 void __interrupt() TMR0_ISR(void) {
+    static uint8_t i;
+    
     if (TMR0IF) {
         // Update all motors PWM
-        for(int i = 0; i < 4; i++) {
+        for(i = 0; i < 4; i++) {
             pwm_counter[i]++;
             if (pwm_counter[i] >= PWM_PERIOD) {
                 pwm_counter[i] = 0;
@@ -190,11 +192,9 @@ void __interrupt() TMR0_ISR(void) {
     }
 }
 
-// Convert motor value (0.0 to 1.0) to duty cycle (0 to 255)
-uint8_t convert_to_duty_cycle(double motor_value) {
-    if (motor_value < 0.0) motor_value = 0.0;
-    if (motor_value > 1.0) motor_value = 1.0;
-    return (uint8_t)(motor_value * PWM_MAX_DUTY);
+// Convert motor value (0-255) to duty cycle (0-255)
+uint8_t convert_to_duty_cycle(uint8_t motor_value) {
+    return motor_value;
 }
 
 // Controls the velocities of each motor
@@ -243,12 +243,15 @@ TASK sensors_reading(void) {
 }
 
 TASK battery_monitor(void) {
-    uint8_t last_status = 0xFF;
+    static uint8_t last_status = 0xFF;
+    static unsigned int raw_value;
+    static uint16_t millivolts;
+    static uint8_t status;
 
     while (1) {
-        unsigned int raw_value = readADC(BATTERY_ADC_CHANNEL);
-        uint32_t millivolts = ((uint32_t)raw_value * 5000U) / 1023U;
-        uint8_t status = (millivolts < BATTERY_LOW_THRESHOLD_MV) ? 1U : 0U;
+        raw_value = readADC(BATTERY_ADC_CHANNEL);
+        millivolts = ((uint16_t)raw_value * 5000U) / 1023U;
+        status = (millivolts < BATTERY_LOW_THRESHOLD_MV) ? 1U : 0U;
 
         if (status != last_status) {
             if (status) {
@@ -264,7 +267,7 @@ TASK battery_monitor(void) {
 }
 
 TASK control_center(void) {
-    char message;
+    static char message;
 
     while (1) {
         read_pipe(&control_pipe, &message);

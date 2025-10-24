@@ -27,7 +27,7 @@ typedef struct tcb {
     uint8_t     BSR_reg;
     uint8_t     WORK_reg;
     uint8_t     STATUS_reg;
-    uint24_t    STACK[16];
+    uint24_t    STACK[12];
     uint8_t     task_sp;    
 } tcb_t;
 
@@ -40,14 +40,14 @@ typedef struct f_aptos {
 
 // Mutex
 typedef struct {
-    unsigned int locked; // Mutex state (0 = free, 1 = ocupied)
+    uint8_t locked; // Mutex state (0 = free, 1 = ocupied)
     uint8_t owner; // Mutex owner task ID
     tcb_t* waiting_tasks[MAX_TASKS_ON_READY_QUEUE]; // Waiting tasks queue
     uint8_t waiting_count; // Waiting tasks numeber
 } Mutex;
 
 typedef struct semaphore {
-    int contador;
+    int8_t contador;
     tcb_t *sem_queue[MAX_TASKS_ON_READY_QUEUE];
     uint8_t sem_queue_in;
     uint8_t sem_queue_out;

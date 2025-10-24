@@ -106,7 +106,7 @@
 #include "mem.h"
 
 #define NEAR_MODEL
-#define	MAX_HEAP_SIZE		0x100
+#define	MAX_HEAP_SIZE		0x80
 
 #define	NEAR
 #define	_MAX_SEGMENT_SIZE	0x7F
