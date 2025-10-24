@@ -7,7 +7,7 @@
 #include "mem.h"
 #include "io.h"
 
-#define PWM_PERIOD      255 // 8-bit PWM period
+#define PWM_PERIOD      100 // 8-bit PWM period
 #define PWM_MIN_DUTY    0      
 #define PWM_MAX_DUTY    255    
 #define PWM_FREQ        50 // 50Hz PWM frequency
@@ -18,7 +18,6 @@
 // Add global variables for software PWM for all motors
 volatile uint8_t pwm_counter[4] = {0, 0, 0, 0}; // Counters for M1, M2, M3, M4
 volatile uint8_t duty_cycle[4] = {0, 0, 0, 0}; // Duty cycles for M1, M2, M3, M4
-
 
 #if EXAMPLE_1 == YES
 // Exemplo 1
@@ -150,12 +149,25 @@ void config_app(void) {
     TRISAbits.RA2 = 1; // batteries
 
     asm("GLOBAL _motors_control, _sensors_reading, _battery_monitor, _control_center");
+    
+    // Configura o ADC
+    ADCON0 = 0x00; // Desliga o ADC por enquanto
+    ADCON1 = 0x0C; // 0000 1100 
+    ADCON2 = 0xA9; // 1010 1001
 
-    // Configure Timer0 for software PWM
-    T0CON = 0x88; // Enable Timer0, 8-bit, internal clock, 1:1 prescaler
-    TMR0IE = 1; // Enable Timer0 interrupt
-    PEIE = 1; // Enable peripheral interrupts
-    GIE = 1; // Enable global interrupts
+    // Configure Timer0 for software PWM para 5kHz
+    T0CON = 0xC2;  // 1100 0010: Timer ON, 8-bit, Fosc/4, prescaler 1:8
+    TMR0L = 256 - 125;  // 125 cicles = 1ms @ 1MHz/8 = 125kHz
+                        // 125us each int = 8kHz
+    TMR0IE = 1;
+    PEIE = 1;
+    GIE = 1;
+    
+    // Teste
+    duty_cycle[0] = 100; // 100%
+    duty_cycle[1] = 100;
+    duty_cycle[2] = 50;
+    duty_cycle[3] = 25;
 
     mutex_init(&mutex);
     create_pipe(&control_pipe);
@@ -179,24 +191,23 @@ unsigned int readADC(unsigned char canal) {
 
 // Timer0 Interrupt Service Routine for software PWM
 void __interrupt() TMR0_ISR(void) {
-    static uint8_t i;
+    static uint8_t pwm_count = 0;
     
     if (TMR0IF) {
-        // Update all motors PWM
-        for(i = 0; i < 4; i++) {
-            pwm_counter[i]++;
-            if (pwm_counter[i] >= PWM_PERIOD) {
-                pwm_counter[i] = 0;
-            }
+        TMR0L = 131;  // Recarrega para ~5kHz
+        
+        pwm_count++;
+        if (pwm_count >= PWM_PERIOD) {
+            pwm_count = 0;
         }
         
-        // Set motor pins based on PWM counters
-        PORTCbits.RC2 = (pwm_counter[0] < duty_cycle[0]) ? 1 : 0;  // M1
-        PORTCbits.RC1 = (pwm_counter[1] < duty_cycle[1]) ? 1 : 0;  // M2
-        PORTDbits.RD0 = (pwm_counter[2] < duty_cycle[2]) ? 1 : 0;  // M3
-        PORTDbits.RD1 = (pwm_counter[3] < duty_cycle[3]) ? 1 : 0;  // M4
-
-        TMR0IF = 0;  // Clear Timer0 interrupt flag
+        // Atualiza TODOS os motores a cada interrup??o
+        PORTDbits.RD0 = (pwm_count < duty_cycle[0]) ? 1 : 0;
+        PORTDbits.RD1 = (pwm_count < duty_cycle[1]) ? 1 : 0;
+        PORTDbits.RD2 = (pwm_count < duty_cycle[2]) ? 1 : 0;
+        PORTDbits.RD3 = (pwm_count < duty_cycle[3]) ? 1 : 0;
+        
+        TMR0IF = 0;
     }
 }
 
@@ -322,3 +333,4 @@ TASK control_center(void) {
 }
 
 #endif
+
