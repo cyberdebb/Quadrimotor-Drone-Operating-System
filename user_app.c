@@ -11,9 +11,9 @@
 #define PWM_MIN_DUTY    0      
 #define PWM_MAX_DUTY    255    
 #define PWM_FREQ        50 // 50Hz PWM frequency
-#define BATTERY_LOW_THRESHOLD_MV   3600U
-#define BATTERY_ADC_CHANNEL        2U
-#define BATTERY_MONITOR_DELAY_TICKS 100U
+#define BATTERY_LOW_THRESHOLD_MV   3600U    // 3.6V threshold
+#define BATTERY_ADC_CHANNEL        2U       // Voltagem da bateria no canal AN2
+#define BATTERY_MONITOR_DELAY_TICKS 100U    // Delay entre leituras da bateria
 
 // Add global variables for software PWM for all motors
 volatile uint8_t pwm_counter[4] = {0, 0, 0, 0}; // Counters for M1, M2, M3, M4
@@ -281,7 +281,7 @@ TASK control_center(void) {
     static uint8_t base_speed;
 
     while (1) {
-        // Verifica status da bateria
+        // Verifica status da bateria, se sim, retorna para base
         if (battery_low_flag) {
             return_to_base_flag = 1;
         } else {
@@ -295,7 +295,7 @@ TASK control_center(void) {
             mutex_unlock(&mutex);
         }
 
-        // Calculo simples de velocidade base (0-255)
+        // Calculo de velocidade base (0-255)
         // Acelerometro controla velocidade base (0-5000mV -> 0-255)
         base_speed = (uint8_t)((uint32_t)acc_local * 255U / 5000U);
 
@@ -303,14 +303,13 @@ TASK control_center(void) {
         if (base_speed < 50) base_speed = 50;   // Velocidade minima para hover
         if (base_speed > 200) base_speed = 200; // Velocidade maxima de seguranca
 
-        // Giroscopio ajusta motores para estabilidade (simplificado)
+        // Giroscopio ajusta motores para estabilidade 
         if (mutex_lock(&mutex)) {
             motors_data.M1 = base_speed;
             motors_data.M2 = base_speed;
             motors_data.M3 = base_speed;
             motors_data.M4 = base_speed;
-            
-            // Ajuste simples baseado no giroscopio para estabilidade
+
             if (gyr_local > 2800) {  // Inclinacao detectada
                 motors_data.M1 += 10;
                 motors_data.M4 += 10;
