@@ -17,7 +17,7 @@
 
 // Add global variables for software PWM for all motors
 volatile uint8_t pwm_counter[4] = {0, 0, 0, 0}; // Counters for M1, M2, M3, M4
-volatile uint8_t duty_cycle[4] = {0, 0, 0, 0}; // Duty cycles for M1, M2, M3, M4
+volatile uint8_t duty_cycle[4] = {100, 100, 50, 25}; // Duty cycles for M1, M2, M3, M4
 
 #if EXAMPLE_1 == YES
 // Exemplo 1
@@ -162,12 +162,6 @@ void config_app(void) {
     TMR0IE = 1;
     PEIE = 1;
     GIE = 1;
-    
-    // Teste
-    duty_cycle[0] = 100; // 100%
-    duty_cycle[1] = 100;
-    duty_cycle[2] = 50;
-    duty_cycle[3] = 25;
 
     mutex_init(&mutex);
     create_pipe(&control_pipe);
