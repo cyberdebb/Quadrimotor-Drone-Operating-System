@@ -155,13 +155,13 @@ void config_app(void) {
     ADCON1 = 0x0C; // 0000 1100 
     ADCON2 = 0xA9; // 1010 1001
 
-    // Configure Timer0 for software PWM para 5kHz
-    T0CON = 0xC2;  // 1100 0010: Timer ON, 8-bit, Fosc/4, prescaler 1:8
-    TMR0L = 256 - 125;  // 125 cicles = 1ms @ 1MHz/8 = 125kHz
-                        // 125us each int = 8kHz
-    TMR0IE = 1;
-    PEIE = 1;
-    GIE = 1;
+    // Configure Timer1 for software PWM para 5kHz
+    T1CON = 0x31;  // 0011 0001: Timer1 ON, 16-bit, prescaler 1:8, internal clock (Fosc/4)
+    TMR1H = 0xFF;  // Preload high byte
+    TMR1L = 0x83;  // Preload low byte for ~5kHz interrupt rate
+    TMR1IE = 1;    // Enable Timer1 interrupt
+    PEIE = 1;      // Enable peripheral interrupts
+    GIE = 1;       // Enable global interrupts
 
     mutex_init(&mutex);
     create_pipe(&control_pipe);
@@ -183,12 +183,13 @@ unsigned int readADC(unsigned char canal) {
     return ((uint16_t)ADRESH << 8) + ADRESL; 
 }
 
-// Timer0 Interrupt Service Routine for software PWM
-void __interrupt() TMR0_ISR(void) {
+// Timer1 Interrupt Service Routine for software PWM
+void __interrupt() TMR1_ISR(void) {
     static uint8_t pwm_count = 0;
     
-    if (TMR0IF) {
-        TMR0L = 131;  // Recarrega para ~5kHz
+    if (TMR1IF) {
+        TMR1H = 0xFF;  // Recarrega high byte
+        TMR1L = 0x83;  // Recarrega low byte para ~5kHz
         
         pwm_count++;
         if (pwm_count >= PWM_PERIOD) {
@@ -201,7 +202,7 @@ void __interrupt() TMR0_ISR(void) {
         PORTDbits.RD2 = (pwm_count < duty_cycle[2]) ? 1 : 0;
         PORTDbits.RD3 = (pwm_count < duty_cycle[3]) ? 1 : 0;
         
-        TMR0IF = 0;
+        TMR1IF = 0;
     }
 }
 

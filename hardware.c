@@ -22,21 +22,20 @@ void conf_interrupts(void)
 }
 
 // Tratador de interrup��o
-//Comentei pq debs criou um novo - AUGUSTO
-// void __interrupt() ISR_TIMER_0(void)
-// {
-//     di();
+void __interrupt() ISR_TIMER_0(void)
+{
+    di();
     
-//     if (INTCONbits.TMR0IF == 1) {
-//         INTCONbits.TMR0IF = 0;
+    if (INTCONbits.TMR0IF == 1) {
+        INTCONbits.TMR0IF = 0;
         
-//         // Diminui tempo das tarefas em espera
-//         os_task_time_decrease();
+        // Diminui tempo das tarefas em espera
+        os_task_time_decrease();
         
-//         SAVE_CONTEXT(READY);
-//         scheduler();
-//         RESTORE_CONTEXT();
-//     }
+        SAVE_CONTEXT(READY);
+        scheduler();
+        RESTORE_CONTEXT();
+    }
     
-//     ei();
-// }
+    ei();
+}
